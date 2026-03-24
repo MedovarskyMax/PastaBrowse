@@ -93,3 +93,7 @@ p{
 .win_com:hover{
     background-color: #535353;
 }
+
+.maximize_icon{
+    transform: rotate(180deg);
+}

@@ -6,9 +6,19 @@ root_exit_btn.addEventListener("click", () => {
   window.api.killApp();
 });
 
+let maximized = true;
+
 maximize_btn = document.getElementById("maximize_btn");
 maximize_btn.addEventListener("click", () => {
   window.api.toggleMaximize();
+
+  maximized = !maximized;
+
+  if (!maximized){
+    maximize_btn.querySelector("img").src = "../Icons/unmaximized.svg"
+  } else{
+    maximize_btn.querySelector("img").src = "../Icons/maximized.svg"
+  }
 })
 
 minimize_btn = document.getElementById("minimize_btn");
