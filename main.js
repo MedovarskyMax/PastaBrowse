@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require("electron");
+const {app, BrowserWindow, ipcMain} = require("electron");
 
 const winSize = {width: 1600, height: 900}
 
@@ -8,7 +8,10 @@ function createWindow(){
 		height: winSize.height,
 		title: "PastaBrowse",
 		webPreferences: {
-			webviewTag: true
+			webviewTag: true,
+			preload: __dirname + "/preload.js",
+			contextIsolation: true,
+			nodeIntegration: false
 		},
 		icon: "./pasta_icon.png",
 		frame: false,
@@ -20,5 +23,9 @@ function createWindow(){
 	win.maximize();
 	win.webContents.setZoomFactor(1.0);
 }
+
+ipcMain.on("kill-app", () => {
+	app.quit();
+})
 
 app.whenReady().then(createWindow)
