@@ -2,25 +2,23 @@ const {app, BrowserWindow} = require("electron");
 
 const winSize = {width: 1600, height: 900}
 
-function createWindow() {
-    const win = new BrowserWindow({
-        width: winSize.width,
-        height: winSize.height,
-        title: "PastaBrowse",
-    });
+function createWindow(){
+	const win = new BrowserWindow({
+		width: winSize.width,
+		height: winSize.height,
+		title: "PastaBrowse",
+		webPreferences: {
+			webviewTag: true
+		},
+		icon: "./pasta_icon.png",
+		frame: false,
+		center: true,
+		movable: true
+	});
 
-    const topbar = new BrowserWindow({
-        parent: win,
-        width: winSize.width,
-        height: winSize.height,
-    })
-
-    topbar.webContents.loadFile('./public/index.html');
-    topbar.setPosition(win.getPosition()[0], win.getPosition()[1]);
-
-    topbar.on('move', () => {
-        win.setPosition(topbar.getPosition()[0], topbar.getPosition()[1]);
-    });
+	win.loadFile("public/index.html");
+	win.maximize();
+	win.webContents.setZoomFactor(1.0);
 }
 
-app.on('ready', () => createWindow());
+app.whenReady().then(createWindow)

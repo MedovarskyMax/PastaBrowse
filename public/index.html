@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="not_spagheti">
-    <meta name="description" content="not_spageti's custom browser based on chromium">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <title>PastaBrowse</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="not_spagheti">
+  <meta name="description" content="not_spageti's custom browser based on chromium">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>PastaBrowse</title>
 </head>
 <body>
-    <header>
-        <input id="searchBar" type="text">
-        <button id="searchBtn">Search</button>
-    </header>
+  <header>
+		<div class="tab_container">
+			<div class="tab">
+				<img class="tab_icon" src="" alt="">
+				<p>New Tab</p>
+				<button class="tabXBtn" id="tabXBtn"></button>
+			</div>
+		</div>
+		<nav>
+			<input id="url" type="text" placeholder="Enter URL">
+			<button id="searchBtn">Search</button>
+		</nav>
+	</header>
+	
+	<webview class="view" id="view"></webview>
 
-    <webview id="webPage" src="">
-
-    </webview>
-
-    <script src="main_client.js"></script>
+	<script src="client_main.js"></script>
 </body>
 </html>
