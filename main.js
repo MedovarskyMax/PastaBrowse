@@ -14,7 +14,7 @@ function createWindow(){
 			contextIsolation: true,
 			nodeIntegration: false
 		},
-		icon: "./pasta_icon.png",
+		icon: "./Icons/pasta_icon.png",
 		frame: false,
 		center: true,
 		movable: true
