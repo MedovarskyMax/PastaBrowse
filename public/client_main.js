@@ -38,3 +38,19 @@ function loadURL(){
 
   view.src = url;
 }
+
+const newTabBtn = document.getElementById("newTabBtn");
+newTabBtn.addEventListener("click", newTab);
+
+/*Will later move newTabHTML into own file (templates) and import*/
+
+const newTabHTML = `
+  <div class="tab">
+		<img class="tab_icon" src="" alt="">
+		<p>New Tab</p>
+		<button class="tabXBtn" id="tabXBtn"></button>
+	</div>`
+
+function newTab(){
+  newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
+}
