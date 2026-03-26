@@ -4,6 +4,7 @@ searchBtn.addEventListener("click", loadURL);
 root_exit_btn = document.getElementById("root_exit_btn");
 root_exit_btn.addEventListener("click", root_exit);
 
+
 function root_exit(){
   window.api.killApp();
 }
@@ -28,6 +29,7 @@ minimize_btn.addEventListener("click", () => {
   window.api.minimize();
 })
 
+
 function loadURL(){
   const input = document.getElementById("url").value;
   const view = document.getElementById("view");
@@ -38,6 +40,9 @@ function loadURL(){
     url = "https://" + url
   }
 
+  const id = tab_container.querySelector(".main_tab").id
+  tab_list[id] = url;
+
   view.src = url;
 }
 
@@ -46,20 +51,29 @@ newTabBtn.addEventListener("click", newTab);
 
 /*Will later move newTabHTML into own file (templates) and import*/
 
-const newTabHTML = `
-  <div class="tab main_tab">
-		<img class="tab_icon" src="" alt="">
-		<p>New Tab</p>
-		<button class="tabXBtn" id="tabXBtn"></button>
-	</div>`
+
+let id_count = 1
 
 function newTab(){
-  newTabBtn.previousElementSibling.classList.remove("main_tab");
+  const newTabHTML = `
+    <div class="tab main_tab" id="${id_count}">
+      <img class="tab_icon" src="" alt="">
+      <p>New Tab</p>
+      <button class="tabXBtn" id="tabXBtn"></button>
+    </div>`;
+
+  tab_container.querySelector(".main_tab").classList.remove("main_tab");
   newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
+
+  tab_list[String(id_count)] = "";
+  id_count += 1;
+
+  reloadView();
 }
 
 const tab_container = document.getElementById("tab_container");
 tab_container.addEventListener("click", onClickRouter);   
+
 
 function onClickRouter(e){          /*Determines the function to be executed based on emitter of click*/
   el = e.target;
@@ -101,9 +115,49 @@ function removeTab(tab){
       root_exit();
     }
   }
+
+  const newTab = tab_container.querySelector(".main_tab");
+
+  if (tab_list[newTab.id] !== ""){
+    loadURLfromTabList(newTab);
+  } else {
+    reloadView();
+  }
 }
+
+let tab_list = {
+  "0": "",
+}
+
 
 function switchTab(tab){
   tab_container.querySelector(".main_tab").classList.remove("main_tab");
   tab.classList.add("main_tab");
+  
+  if (tab_list[tab.id] !== ""){
+    loadURLfromTabList(tab);
+  } else {
+    reloadView();
+  }
+  
+}
+
+function loadURLfromTabList(tab){
+  const view = document.getElementById("view");
+  const id = tab.id;
+  const url = tab_list[id];
+
+  view.src = url;
+}
+
+
+function reloadView(){
+  document.querySelector("webview").remove();
+
+  const newView = document.createElement("webview");
+  newView.src = "about:blank";
+  newView.id = "view";
+  newView.classList.add("view");
+
+  document.body.appendChild(newView);
 }
