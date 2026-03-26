@@ -24,6 +24,7 @@ function createWindow(){
 
 	win.loadFile("public/index.html");
 	win.webContents.setZoomFactor(1.0);
+	win.maximize();
 }
 
 ipcMain.on("kill-app", () => {

@@ -106,3 +106,13 @@ p{
     width: 100%;
     aspect-ratio: 1;
 }
+
+.newTabBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    aspect-ratio: 1;
+    border: 0;
+    padding: 0;
+}
