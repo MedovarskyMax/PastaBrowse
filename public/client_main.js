@@ -59,15 +59,21 @@ function newTab(){
 }
 
 const tab_container = document.getElementById("tab_container");
-tab_container.addEventListener("click", onClickRouter);   /*Determines the function to be executed based on emitter of click*/
+tab_container.addEventListener("click", onClickRouter);   
 
-function onClickRouter(e){
-  if (e.target.classList.contains("tabXBtn")){
-    removeTab(e.target.parentElement);
-  }
+function onClickRouter(e){          /*Determines the function to be executed based on emitter of click*/
+  el = e.target;
+  parentEl = e.target.parentElement;
   
-
+  if (el.classList.contains("tabXBtn")){
+    removeTab(parentEl);
+  } else if ((el.tagName === "IMG" && el.classList.contains("tab_icon")) || el.tagName === "P"){
+    switchTab(parentEl);
+  } else if (el.tagName === "DIV"){
+    switchTab(el);
+  }
 }
+
 
 function removeTab(tab){
   const previousEl = tab.previousElementSibling;
@@ -95,4 +101,9 @@ function removeTab(tab){
       root_exit();
     }
   }
+}
+
+function switchTab(tab){
+  tab_container.querySelector(".main_tab").classList.remove("main_tab");
+  tab.classList.add("main_tab");
 }
