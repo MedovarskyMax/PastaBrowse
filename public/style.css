@@ -80,7 +80,11 @@ p{
 }
 
 .win_com{
-    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 33%;
     aspect-ratio: 1;
     background-color: #3f3f3f;
     color: #ccc;
@@ -96,4 +100,9 @@ p{
 
 .maximize_icon{
     transform: rotate(180deg);
+}
+
+.img100{
+    width: 100%;
+    aspect-ratio: 1;
 }
