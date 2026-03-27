@@ -1,7 +1,14 @@
-searchBtn = document.getElementById("searchBtn");
+const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", loadURL);
 
-root_exit_btn = document.getElementById("root_exit_btn");
+const input = document.getElementById("url");
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter"){
+    loadURL();
+  }
+})
+
+const root_exit_btn = document.getElementById("root_exit_btn");
 root_exit_btn.addEventListener("click", root_exit);
 
 
@@ -11,7 +18,7 @@ function root_exit(){
 
 let maximized = true;
 
-maximize_btn = document.getElementById("maximize_btn");
+const maximize_btn = document.getElementById("maximize_btn");
 maximize_btn.addEventListener("click", () => {
   window.api.toggleMaximize();
 
@@ -31,10 +38,10 @@ minimize_btn.addEventListener("click", () => {
 
 
 function loadURL(){
-  const input = document.getElementById("url").value;
+  const val = input.value;
   const view = document.getElementById("view");
 
-  let url = input;
+  let url = val;
 
   if (!url.startsWith("http")) {
     url = "https://" + url
