@@ -173,8 +173,6 @@ function reloadView(){
 }
 
 function saveNav(e){
-  console.log("Navved");
-
   const id = tab_container.querySelector(".main_tab").id
   const view = document.getElementById("view");
 
