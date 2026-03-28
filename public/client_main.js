@@ -51,6 +51,7 @@ function loadURL(){
   tab_list[id] = url;
 
   view.src = url;
+  input.value = url;
 }
 
 const newTabBtn = document.getElementById("newTabBtn");
@@ -74,6 +75,8 @@ function newTab(){
 
   tab_list[String(id_count)] = "";
   id_count += 1;
+
+  input.value = "";
 
   reloadView();
 }
@@ -146,7 +149,6 @@ function switchTab(tab){
   } else {
     reloadView();
   }
-  
 }
 
 function loadURLfromTabList(tab){
@@ -155,6 +157,12 @@ function loadURLfromTabList(tab){
   const url = tab_list[id];
 
   view.src = url;
+  
+  if (url !== "about:blank"){
+    input.value = url;
+  } else {
+    input.value = "";
+  }
 }
 
 
@@ -177,4 +185,14 @@ function saveNav(e){
   const view = document.getElementById("view");
 
   tab_list[id] = e.url;
+  
+  if (e.url !== "about:blank"){
+    input.value = e.url;
+  } else{
+    input.value = "";
+  }
 }
+
+const initalView = document.getElementById("view");
+initalView.addEventListener("did-navigate", saveNav);
+initalView.addEventListener("did-navigate-in-page", saveNav);
