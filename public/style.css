@@ -74,12 +74,31 @@ p{
     text-justify: center;
 }
 
-.tabXBtn{
+.tab .tabXBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
     margin-right: 5%;
-    height: 45%;
+    height: 65%;
     aspect-ratio: 1;
-    border-radius: 100%;
+    padding: 0;
+    background-color: #3f3f3f;
+    outline: 0;
+    border: 0;
+    border-radius: 50%;
+}
+
+.main_tab .tabXBtn{
+    background-color: #535353;
+}
+
+.tabXBtn:hover{
+    background-color: #7b7b7b;
+}
+
+.tabXBtn img {
+    pointer-events: none;
 }
 
 .view{

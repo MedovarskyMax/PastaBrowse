@@ -8,7 +8,7 @@ export function newTab(){
     <div class="tab main_tab" id="${id_count}">
       <img class="tab_icon" src="" alt="">
       <p>New Tab</p>
-      <button class="tabXBtn" id="tabXBtn"></button>
+      <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
     </div>`;
 
   const tab_container = document.getElementById("tab_container");
