@@ -1,4 +1,4 @@
-import {setTitleAndFavIcon} from "./tabs.js";
+import {setTitleAndFavIcon} from "./tabs.js"; 
 
 export let tab_list = {
   "0": "",
@@ -96,4 +96,15 @@ export function saveNav(e){
   }
 
   setTitleAndFavIcon();
+}
+
+
+export function refresh(){
+  const newTab = tab_container.querySelector(".main_tab");
+  
+  if (tab_list[newTab.id] !== ""){
+    loadURLfromTabList(newTab);
+  } else {
+    reloadView();
+  }
 }

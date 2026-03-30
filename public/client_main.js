@@ -1,4 +1,4 @@
-import {loadURL, saveNav} from "./navigation.js";
+import {loadURL, saveNav, refresh} from "./navigation.js";
 import {newTab, removeTab, setTitleAndFavIcon, switchTab} from "./tabs.js";
 import {root_exit} from "./window-controls.js";
 
@@ -61,3 +61,6 @@ function onClickRouter(e){          /*Determines the function to be executed bas
 const initalView = document.getElementById("view");
 initalView.addEventListener("did-navigate", saveNav);
 initalView.addEventListener("did-navigate-in-page", saveNav);
+
+const refreshBtn = document.getElementById("refreshBtn");
+refreshBtn.addEventListener("click", refresh);

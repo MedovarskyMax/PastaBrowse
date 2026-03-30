@@ -1,4 +1,4 @@
-import {tab_list, reloadView, loadURLfromTabList} from "./navigation.js";
+import {tab_list, reloadView, loadURLfromTabList, refresh} from "./navigation.js";
 import {root_exit} from "./window-controls.js";
 
 let id_count = 1
@@ -55,13 +55,7 @@ export function removeTab(tab){
     }
   }
 
-  const newTab = tab_container.querySelector(".main_tab");
-
-  if (tab_list[newTab.id] !== ""){
-    loadURLfromTabList(newTab);
-  } else {
-    reloadView();
-  }
+  refresh();
 }
 
 
@@ -88,7 +82,7 @@ export async function setTitleAndFavIcon(){
   const img = main_tab.querySelector(".tab_icon");
   
   const title = handleTitle(await webview.executeJavaScript("document.title"));
-  
+
   if (title){
     p.innerHTML = title;
   }
