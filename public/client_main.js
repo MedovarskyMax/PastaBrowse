@@ -1,5 +1,5 @@
 import {loadURL, saveNav} from "./navigation.js";
-import {newTab, removeTab, switchTab} from "./tabs.js";
+import {newTab, removeTab, setTitleAndFavIcon, switchTab} from "./tabs.js";
 import {root_exit} from "./window-controls.js";
 
 const searchBtn = document.getElementById("searchBtn");

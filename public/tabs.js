@@ -6,7 +6,7 @@ let id_count = 1
 export function newTab(){
   const newTabHTML = `
     <div class="tab main_tab" id="${id_count}">
-      <img class="tab_icon" src="" alt="">
+      <img id="tab_icon" class="tab_icon" src="" alt="">
       <p>New Tab</p>
       <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
     </div>`;
@@ -75,4 +75,31 @@ export function switchTab(tab){
   } else {
     reloadView();
   }
+}
+
+
+export async function setTitleAndFavIcon(){
+  console.log("working");
+
+  const webview = document.getElementById("view");
+  const tab_container = document.getElementById("tab_container");
+  const main_tab = tab_container.querySelector(".main_tab");
+  const p = main_tab.querySelector("p");
+  const img = main_tab.querySelector(".tab_icon");
+  
+  const title = handleTitle(await webview.executeJavaScript("document.title"));
+  
+  if (title){
+    p.innerHTML = title;
+  }
+}
+
+function handleTitle(title){
+  if (!title){
+    return ""
+  }
+  
+  let newTitle = title.split(" ")
+
+  return newTitle[0];
 }

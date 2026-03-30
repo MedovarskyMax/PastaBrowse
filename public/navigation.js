@@ -1,3 +1,5 @@
+import {setTitleAndFavIcon} from "./tabs.js";
+
 export let tab_list = {
   "0": "",
 }
@@ -92,4 +94,6 @@ export function saveNav(e){
   } else{
     input.value = "";
   }
+
+  setTitleAndFavIcon();
 }
