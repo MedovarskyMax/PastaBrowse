@@ -25,7 +25,10 @@ export function loadURL(){
     const id = tab_container.querySelector(".main_tab").id
     tab_list[id] = url;
   } else {
-    const url = search_engines[0] + encodeURIComponent(trimmed_input);
+    const search_engine_select = document.getElementById("search_engine_select");
+    const s_e = Number(search_engine_select.value);
+
+    const url = search_engines[s_e] + encodeURIComponent(trimmed_input);
 
     view.src = url;
     input.value = url;
