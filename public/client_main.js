@@ -1,9 +1,9 @@
-import {loadURL, saveNav, refresh, history_backward, history_forward, tab_list} from "./navigation.js";
+import {loadURL, saveNav, refresh, history_backward, history_forward} from "./navigation.js";
 import {newTab, removeTab, setTitleAndFavIcon, switchTab} from "./tabs.js";
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW} from "./ipc.js";
 
 const searchBtn = document.getElementById("searchBtn");
-searchBtn.addEventListener("click", /*loadUrl*/ () => {console.log(tab_list)});
+searchBtn.addEventListener("click", loadURL);
 
 const input = document.getElementById("url");
 input.addEventListener("keypress", (e) => {
