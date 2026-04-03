@@ -1,7 +1,10 @@
 import {setTitleAndFavIcon} from "./tabs.js"; 
 
 export let tab_list = {
-  "0": "",
+  "0": {
+    current_tab_id: 0,
+    tab_history: [""]
+  }
 }
 
 export function loadURL(){
@@ -23,7 +26,9 @@ export function loadURL(){
     view.src = url;
     input.value = url;
     const id = tab_container.querySelector(".main_tab").id
-    tab_list[id] = url;
+
+    tab_list[id].tab_history.push(url);
+    tab_list[id].current_tab_id = tab_list[id].tab_history.length - 1;
   } else {
     const search_engine_select = document.getElementById("search_engine_select");
     const s_e = Number(search_engine_select.value);
@@ -33,7 +38,10 @@ export function loadURL(){
     view.src = url;
     input.value = url;
     const id = tab_container.querySelector(".main_tab").id
-    tab_list[id] = url;
+
+    
+    tab_list[id].tab_history.push(url);
+    tab_list[id].current_tab_id = tab_list[id].tab_history.length - 1;
   }
 }
 
@@ -56,8 +64,10 @@ function ensureProtocol(url){
 export function loadURLfromTabList(tab){
   const input = document.getElementById("url");
   const view = document.getElementById("view");
-  const id = tab.id;
-  const url = tab_list[id];
+
+  const tab_id = tab.id;
+  const newTab = tab_list[tab_id];
+  const url = newTab.tab_history[newTab.current_tab_id];
 
   view.src = url;
   
@@ -90,7 +100,8 @@ export function saveNav(e){
   const input = document.getElementById("url");
   const view = document.getElementById("view");
 
-  tab_list[id] = e.url;
+  tab_list[id].tab_history.push(e.url);
+  tab_list[id].current_tab_id = tab_list[id].tab_history.length - 1;
   
   if (e.url !== "about:blank"){
     input.value = e.url;
@@ -105,7 +116,7 @@ export function saveNav(e){
 export function refresh(){
   const newTab = tab_container.querySelector(".main_tab");
   
-  if (tab_list[newTab.id] !== ""){
+  if (tab_list[newTab.id].tab_history[tab_list[newTab.id].current_tab_id] !== ""){
     loadURLfromTabList(newTab);
   } else {
     reloadView();

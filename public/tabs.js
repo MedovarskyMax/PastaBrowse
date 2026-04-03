@@ -18,7 +18,11 @@ export function newTab(){
   tab_container.querySelector(".main_tab").classList.remove("main_tab");
   newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
 
-  tab_list[String(id_count)] = "";
+  tab_list[String(id_count)] = {
+    current_tab_id: 0,
+    tab_history: [""]
+  };
+
   id_count += 1;
 
   input.value = "";
