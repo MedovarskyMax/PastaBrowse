@@ -33,3 +33,11 @@ export function onCtrlT(callback){
 export function onCtrlW(callback){
   window.api.onCtrlW(callback);
 }
+
+export function getHistory(){
+  window.api.getHistory();
+}
+
+export function onResHistory(callback){
+  window.api.onResHistory(callback);
+}

@@ -1,5 +1,5 @@
 import {tab_list, reloadView, loadURLfromTabList, refresh} from "./navigation.js";
-import {root_exit} from "./ipc.js";
+import {root_exit, getHistory} from "./ipc.js";
 
 let id_count = 1
 
@@ -98,4 +98,25 @@ function handleTitle(title){
   let newTitle = title.split(" ")
 
   return newTitle[0];
+}
+/*
+export function loadLastSesh(data){
+  for (const key of Object.keys(data)){
+    tab_list[key] = data[key];
+    loadURLfromTabList(data[key]);
+    newTab();
+  }
+}*/
+
+export function loadLastSesh(data){
+  for (const key of Object.keys(data)){
+    tab_list[key] = data[key];
+    const tabEl = document.getElementById(String(id_count - 1));
+    tabEl.id = key; 
+    loadURLfromTabList(tabEl);
+
+    if (data[String(Number(key) + 1)] !== undefined){
+      newTab();
+    }
+  }
 }

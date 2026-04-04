@@ -56,3 +56,10 @@ app.on("ready", () => {
 		win.webContents.send("ctrl-w");
 	})
 })
+
+ipcMain.on("get-history", () => {
+	const history_json = readFileSync("./history.json");
+	const history = JSON.parse(history_json);
+
+	win.webContents.send("res-history", history);
+})
