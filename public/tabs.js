@@ -1,4 +1,4 @@
-import {tab_list, reloadView, loadURLfromTabList, refresh} from "./navigation.js";
+import {tab_list, reloadView, loadURLfromTabList, refresh, history_backward} from "./navigation.js";
 import {root_exit, getHistory} from "./ipc.js";
 
 let id_count = 1
@@ -99,24 +99,34 @@ function handleTitle(title){
 
   return newTitle[0];
 }
-/*
-export function loadLastSesh(data){
-  for (const key of Object.keys(data)){
-    tab_list[key] = data[key];
-    loadURLfromTabList(data[key]);
-    newTab();
-  }
-}*/
+
 
 export function loadLastSesh(data){
-  for (const key of Object.keys(data)){
+  const keys = Object.keys(data);
+  
+  for (let i = 0; i < keys.length; i++){
+    const key = keys[i];
     tab_list[key] = data[key];
-    const tabEl = document.getElementById(String(id_count - 1));
-    tabEl.id = key; 
-    loadURLfromTabList(tabEl);
 
-    if (data[String(Number(key) + 1)] !== undefined){
-      newTab();
+    if (i === 0) {
+      const tabEl = document.getElementById("0");
+      tabEl.id = key;
+    } else {
+      const tab_container = document.getElementById("tab_container");
+      const newTabBtn = document.getElementById("newTabBtn");
+      const newTabHTML = `
+        <div class="tab" id="${key}">
+          <img id="tab_icon" class="tab_icon" src="" alt="">
+          <p>New Tab</p>
+          <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
+        </div>`;
+      newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
     }
   }
+  
+  const lastKey = keys[keys.length - 1];
+  const lastTab = document.getElementById(lastKey);
+  tab_container.querySelector(".main_tab").classList.remove("main_tab");
+  lastTab.classList.add("main_tab");
+  loadURLfromTabList(lastTab);
 }
