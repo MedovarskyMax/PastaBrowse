@@ -5,6 +5,7 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 header{
@@ -25,7 +26,7 @@ header{
 }
 
 .tab{
-    width: 10%;
+    width: 12.5%;
     height: 100%;
     background-color: #3f3f3f;
     display: flex;
@@ -187,4 +188,12 @@ p{
 
 .loadLastSeshBtn{
     margin-left: auto;
+}
+
+.tab_title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    font-size: 1.2rem;
 }

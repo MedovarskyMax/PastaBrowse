@@ -7,7 +7,7 @@ export function newTab(){
   const newTabHTML = `
     <div class="tab main_tab" id="${id_count}">
       <img id="tab_icon" class="tab_icon" src="" alt="">
-      <p>New Tab</p>
+      <p class="tab_title">New Tab</p>
       <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
     </div>`;
 
@@ -83,21 +83,11 @@ export async function setTitleAndFavIcon(){
   const p = main_tab.querySelector("p");
   const img = main_tab.querySelector(".tab_icon");
   
-  const title = handleTitle(await webview.executeJavaScript("document.title"));
+  const title = await webview.executeJavaScript("document.title");
 
   if (title){
     p.innerHTML = title;
   }
-}
-
-function handleTitle(title){
-  if (!title){
-    return ""
-  }
-  
-  let newTitle = title.split(" ")
-
-  return newTitle[0];
 }
 
 
@@ -117,7 +107,7 @@ export function loadLastSesh(data){
       const newTabHTML = `
         <div class="tab" id="${key}">
           <img id="tab_icon" class="tab_icon" src="" alt="">
-          <p>New Tab</p>
+          <p class="tab_title">New Tab</p>
           <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
         </div>`;
       newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
