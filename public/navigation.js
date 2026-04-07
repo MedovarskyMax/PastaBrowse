@@ -88,21 +88,6 @@ export function loadURLfromTabList(tab, h = 0){
 }
 
 
-export function reloadView(){
-  document.querySelector("webview").remove();
-
-  const newView = document.createElement("webview");
-  newView.src = "about:blank";
-  newView.id = "view";
-  newView.classList.add("view");
-
-  newView.addEventListener("did-navigate", saveNav);
-  newView.addEventListener("did-navigate-in-page", saveNav);
-
-  document.body.appendChild(newView);
-}
-
-
 export function saveNav(e){
   const tab_container = document.getElementById("tab_container");
   const id = tab_container.querySelector(".main_tab").id.slice(4);
