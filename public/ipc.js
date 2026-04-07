@@ -1,6 +1,11 @@
 import {tab_list} from "./navigation.js";
 
 export function root_exit(){
+  const tab_container = document.getElementById("tab_container");
+  const main_tab_id = tab_container.querySelector(".main_tab").id.slice(4);
+
+  tab_list["main_tab_id"] = Number(main_tab_id);
+
   window.api.killApp(tab_list);
 };
 

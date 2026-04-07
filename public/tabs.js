@@ -21,7 +21,7 @@ export function newTab(){
   tab_list["tabs"].push(
     {
       "tab_id": id_count,
-      "current_tab_id": 0, 
+      "history_url_id": 0, 
       "tab_history": [""]
     }
   ) 
