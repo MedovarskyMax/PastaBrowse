@@ -17,6 +17,8 @@ export function toggleMaximize(){
 
   maximized = !maximized;
 
+  const maximize_btn = document.getElementById("maximize_btn");
+
   if (!maximized){
     maximize_btn.querySelector("img").src = "../Icons/unmaximized.svg"
   } else{

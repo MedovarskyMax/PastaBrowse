@@ -134,6 +134,7 @@ export function saveNav(e){
 
 
 export function refresh(){
+  const tab_container = document.getElementById("tab_container");
   const newTabId = tab_container.querySelector(".main_tab").id.slice(4);
   const newTab = tab_list["tabs"].find(obj => obj["tab_id"] === Number(newTabId));
 
