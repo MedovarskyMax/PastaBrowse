@@ -36,6 +36,7 @@ export function newTab(){
 
 export function removeTab(tab){
   const tab_container = document.getElementById("tab_container");
+
   const previousEl = tab.previousElementSibling;
   let nextEl = tab.nextElementSibling;
   
@@ -44,11 +45,11 @@ export function removeTab(tab){
   }
 
   if (tab.classList.contains("main_tab")){
-    if (previousEl !== null){
-      previousEl.classList.add("main_tab")
+    if (nextEl !== null){
+      switchTab(nextEl);
       tab.remove();
-    } else if (nextEl !== null){
-      nextEl.classList.add("main_tab");
+    } else if (previousEl !== null){
+      switchTab(previousEl);
       tab.remove();
     } else {
       root_exit();
@@ -61,8 +62,6 @@ export function removeTab(tab){
       root_exit();
     }
   }
-
-  refresh();
 }
 
 
@@ -90,7 +89,7 @@ export async function setTitleAndFavIcon(){
 
   const tab_container = document.getElementById("tab_container");
   const main_tab = tab_container.querySelector(".main_tab");
-  
+
   const p = main_tab.querySelector("p");
   const img = main_tab.querySelector(".tab_icon");
   
