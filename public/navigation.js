@@ -135,7 +135,8 @@ export function refresh(){
 
 export function history_backward(){
   const tab_container = document.getElementById("tab_container");
-  const tab = tab_container.querySelector(".main_tab");
+  const tab_id = tab_container.querySelector(".main_tab").id.slice(4);
+  const tab = tab_list["tabs"].find(obj => obj["tab_id"] === Number(tab_id))
 
   isProgrammaticNav = true;
   loadURLfromTabList(tab, -1);
@@ -143,9 +144,9 @@ export function history_backward(){
 
 export function history_forward(){
   const tab_container = document.getElementById("tab_container");
-  const tab = tab_container.querySelector(".main_tab");
+  const tab_id = tab_container.querySelector(".main_tab").id.slice(4);
+  const tab = tab_list["tabs"].find(obj => obj["tab_id"] === Number(tab_id))
 
   isProgrammaticNav = true;
   loadURLfromTabList(tab, 1);
 }
-
