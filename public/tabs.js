@@ -91,7 +91,12 @@ export function switchTab(tab){
   
   const input = document.getElementById("url");
   const tab_obj = tab_list["tabs"].find(obj => obj["tab_id"] === tab_id);
-  input.value = tab_obj["tab_history"][tab_obj["history_url_id"]];
+  const url = tab_obj["tab_history"][tab_obj["history_url_id"]];
+  if (url !== undefined){
+    input.value = url;
+  } else {
+    input.value = "";
+  }
 
   const view_container = document.getElementById("webview_container");
   const oldView = view_container.querySelector(".main_view");
