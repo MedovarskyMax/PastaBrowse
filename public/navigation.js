@@ -14,7 +14,7 @@ export let tab_list = {
     {
       "tab_id": 0,
       "history_url_id": 0,
-      "tab_history": [""]
+      "tab_history": []
     }
   ]
 }

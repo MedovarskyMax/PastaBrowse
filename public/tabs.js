@@ -22,7 +22,7 @@ export function newTab(){
     {
       "tab_id": id_count,
       "history_url_id": 0, 
-      "tab_history": [""]
+      "tab_history": []
     }
   ) 
   
