@@ -153,6 +153,10 @@ p{
     background-color: #535353;
 }
 
+.red_hover:hover{
+    background-color: #f00;
+}
+
 .maximize_icon{
     transform: rotate(180deg);
 }
