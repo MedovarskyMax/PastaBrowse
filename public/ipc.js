@@ -41,6 +41,12 @@ export function onCtrlW(callback){
   window.api.onCtrlW(callback);
 }
 
+
+export function onCtrlR(callback){
+  window.api.onCtrlR(callback);
+}
+
+
 export function getHistory(){
   window.api.getHistory();
 }

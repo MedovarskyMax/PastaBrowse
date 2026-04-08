@@ -61,6 +61,13 @@ app.on("ready", () => {
 			win.webContents.send("ctrl-w");
 		}
 	})
+
+
+	globalShortcut.register("CommandOrControl+R", () => {
+		if (win.isFocused()){
+			win.webContents.send("ctrl-r");
+		}
+	})
 })
 
 ipcMain.on("get-history", () => {

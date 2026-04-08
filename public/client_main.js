@@ -1,6 +1,6 @@
 import {loadURL, saveNav, refresh, history_backward, history_forward} from "./navigation.js";
 import {newTab, removeTab, switchTab, loadLastSesh} from "./tabs.js";
-import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, getHistory, onResHistory} from "./ipc.js";
+import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, getHistory, onResHistory} from "./ipc.js";
 
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", loadURL);
@@ -70,6 +70,11 @@ onCtrlW(() => {
   const tab = tab_container.querySelector(".main_tab");
 
   removeTab(tab);
+})
+
+
+onCtrlR(() => {
+  refresh();
 })
 
 

@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld("api", {
   minimize: () => ipcRenderer.send("minimize"),
   onCtrlT: (callback) => ipcRenderer.on("ctrl-t", (_event) => callback()),
   onCtrlW: (callback) => ipcRenderer.on("ctrl-w", (_event) => callback()),
+  onCtrlR: (callback) => ipcRenderer.on("ctrl-r", (_event) => callback()),
   getHistory: () => ipcRenderer.send("get-history"),
   onResHistory: (callback) => ipcRenderer.on("res-history", (_event, data) => callback(data))
 });
