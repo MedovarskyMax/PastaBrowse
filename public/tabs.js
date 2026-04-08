@@ -6,7 +6,7 @@ let id_count = 1
 export function newTab(){
   const newTabHTML = `
     <div class="tab main_tab" id="tab_${id_count}">
-      <img id="tab_icon" class="tab_icon" src="" alt="">
+      <img id="tab_icon" src="" alt="">
       <p class="tab_title">New Tab</p>
       <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
     </div>`;
@@ -102,7 +102,7 @@ export async function setTitleAndFavIcon(url){
   const main_tab = tab_container.querySelector(".main_tab");
 
   const p = main_tab.querySelector("p");
-  const img = main_tab.querySelector(".tab_icon");
+  const img = main_tab.firstElementChild;
   
   const title = await webview.executeJavaScript("document.title");
   
@@ -112,6 +112,9 @@ export async function setTitleAndFavIcon(url){
 
   const favIconSize = 64;
 
+  if (!img.classList.contains("tab_icon")){
+    img.classList.add("tab_icon")
+  }
   img.src = `https://www.google.com/s2/favicons?domain=${url}&sz=${String(favIconSize)}`;
 }
 
