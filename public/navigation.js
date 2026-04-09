@@ -1,10 +1,16 @@
 import {setTitleAndFavIcon} from "./tabs.js"; 
 
 let isProgrammaticNav = false;
+let isRestoringSession = false;
 
 
 export function setIsProgrammaticNav(val){
   isProgrammaticNav = val;
+}
+
+
+export function setIsRestoringSession(val){
+  isRestoringSession = val;
 }
 
 
@@ -94,16 +100,23 @@ export function loadURLfromTabList(tab, h = 0){
 }
 
 
-export function saveNav(e){
+export function saveNav(e, tab_id){
+  if (isRestoringSession){
+    return;
+  }
+
   if (e.url === "about:blank"){
     return;
   }
 
-  const tab_container = document.getElementById("tab_container");
-  const id = tab_container.querySelector(".main_tab").id.slice(4);
+  const id = tab_id !== undefined
+    ? tab_id
+    : Number(document.getElementById("tab_container").querySelector(".main_tab").id.slice(4));
+
+  const isActiveTab = (id === tab_list["main_tab_id"]);
   const input = document.getElementById("url");
 
-  if (isProgrammaticNav){
+  if (isProgrammaticNav && isActiveTab){
     isProgrammaticNav = false;
 
     if (e.url !== "about:blank"){
@@ -117,19 +130,24 @@ export function saveNav(e){
   }
 
   const tab = tab_list["tabs"].find(obj => obj["tab_id"] === Number(id));
+  if (!tab){
+    return;
+  }
 
   if (e.url !== tab["tab_history"][tab["history_url_id"]]){
     tab["tab_history"].push(e.url);
     tab["history_url_id"] = tab["tab_history"].length - 1;
   }
-  
-  if (e.url !== "about:blank"){
-    input.value = e.url;
-  } else{
-    input.value = "";
-  }
 
-  setTitleAndFavIcon(e.url);
+  if (isActiveTab){
+    if (e.url !== "about:blank"){
+      input.value = e.url;
+    } else{
+      input.value = "";
+    }
+    
+    setTitleAndFavIcon(e.url);
+  }
 }
 
 

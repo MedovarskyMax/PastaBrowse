@@ -1,5 +1,5 @@
-import {tab_list, loadURLfromTabList, saveNav, setIsProgrammaticNav} from "./navigation.js";
-import {root_exit, getHistory} from "./ipc.js";
+import {tab_list, saveNav, setIsRestoringSession} from "./navigation.js";
+import {root_exit} from "./ipc.js";
 
 let id_count = 1
 
@@ -146,6 +146,10 @@ export async function setTitleAndFavIcon(url){
 
 
 export function loadLastSesh(data){
+  setIsRestoringSession(true);
+
+  const promises = [];
+
   for (let tab_obj of data["tabs"]){
     newTab();
 
@@ -160,18 +164,38 @@ export function loadLastSesh(data){
     
     if (tab_obj["title"]){
       main_tab.querySelector("p").innerHTML = tab_obj["title"];
+      tab_in_tabList["title"] = tab_obj["title"];
     }
 
     if (tab_obj["favicon_url"]){
       main_tab.querySelector("img").src = tab_obj["favicon_url"];
       main_tab.querySelector("img").classList.add("tab_icon");
+      tab_in_tabList["favicon_url"] = tab_obj["favicon_url"];
     }
 
-    
+    const input = document.getElementById("url");
+    const view = document.getElementById(`view_${tab_id}`);
+    const tab = document.getElementById(`tab_${tab_id}`);
 
-    setIsProgrammaticNav(true);
-    loadURLfromTabList(tab_in_tabList);
+    const target_url = tab_in_tabList["tab_history"][tab_in_tabList["history_url_id"]];
+
+    const p = new Promise((resolve) => {
+      view.addEventListener("did-navigate", resolve, {once: true});
+      view.addEventListener("did-navigate-in-page", resolve, {once: true});
+    });
+
+    promises.push(p)
+
+    view.src = target_url;
+
+    if (target_url && target_url !== "about:blank"){
+      input.value = target_url;
+    }
   }
+
+  Promise.all(promises).then(() => {
+    setIsRestoringSession(false);
+  })
 }
 
 function newWebview(){
@@ -187,8 +211,10 @@ function newWebview(){
   newView.classList.add("view");
   newView.classList.add("main_view");
 
-  newView.addEventListener("did-navigate", saveNav);
-  newView.addEventListener("did-navigate-in-page", saveNav);
+  const captured_id = id_count;
+
+  newView.addEventListener("did-navigate", (e) => saveNav(e, captured_id));
+  newView.addEventListener("did-navigate-in-page", (e) => saveNav(e, captured_id));
 
   webview_container.appendChild(newView);
 }

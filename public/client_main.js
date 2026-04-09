@@ -52,8 +52,8 @@ function onClickRouter(e){          /*Determines the function to be executed bas
 
 
 const initalView = document.getElementById("view_0");
-initalView.addEventListener("did-navigate", saveNav);
-initalView.addEventListener("did-navigate-in-page", saveNav);
+initalView.addEventListener("did-navigate", (e) => saveNav(e, 0));
+initalView.addEventListener("did-navigate-in-page", (e) => saveNav(e, 0));
 
 
 const refreshBtn = document.getElementById("refreshBtn");
