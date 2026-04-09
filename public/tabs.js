@@ -26,6 +26,8 @@ export function newTab(){
   tab_list["tabs"].push(
     {
       "tab_id": id_count,
+      "title": "New Tab",
+      "favicon_url": null,
       "history_url_id": 0, 
       "tab_history": []
     }
@@ -117,6 +119,8 @@ export async function setTitleAndFavIcon(url){
 
   const tab_container = document.getElementById("tab_container");
   const main_tab = tab_container.querySelector(".main_tab");
+  const tab_id = main_tab.id.slice(4);
+  const tab_obj = tab_list["tabs"].find(obj => obj["tab_id"] === Number(tab_id));
 
   const p = main_tab.querySelector("p");
   const img = main_tab.firstElementChild;
@@ -125,6 +129,7 @@ export async function setTitleAndFavIcon(url){
   
   if (title){
     p.innerHTML = title;
+    tab_obj["title"] = title;
   }
 
   const favIconSize = 64;
@@ -132,7 +137,11 @@ export async function setTitleAndFavIcon(url){
   if (!img.classList.contains("tab_icon")){
     img.classList.add("tab_icon")
   }
-  img.src = `https://www.google.com/s2/favicons?domain=${url}&sz=${String(favIconSize)}`;
+
+  const favicon_url = `https://www.google.com/s2/favicons?domain=${url}&sz=${String(favIconSize)}`; 
+
+  img.src = favicon_url;
+  tab_obj["favicon_url"] = favicon_url;
 }
 
 
@@ -141,13 +150,18 @@ export function loadLastSesh(data){
     newTab();
 
     const tab_container = document.getElementById("tab_container");
-    const tab_id = tab_container.querySelector(".main_tab").id.slice(4);
+    const main_tab = tab_container.querySelector(".main_tab");
+    const tab_id = main_tab.id.slice(4);
 
     const tab_in_tabList = tab_list["tabs"].find(obj => obj["tab_id"] === Number(tab_id));
 
     tab_in_tabList["history_url_id"] = tab_obj["history_url_id"];
     tab_in_tabList["tab_history"] = tab_obj["tab_history"];
     
+    main_tab.querySelector("p").innerHTML = tab_obj["title"];
+    main_tab.querySelector("img").src = tab_obj["favicon_url"];
+    main_tab.querySelector("img").classList.add("tab_icon");
+
     setIsProgrammaticNav(true);
     loadURLfromTabList(tab_in_tabList);
   }
