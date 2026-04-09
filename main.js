@@ -5,11 +5,11 @@ let win;
 
 function createWindow(){
 	const primaryDisplay = screen.getPrimaryDisplay();
-	const {screen_width, screen_height} = primaryDisplay.workArea;
+	const {width, height} = primaryDisplay.workArea;
 
 	win = new BrowserWindow({
-		width: Math.floor(0.7*screen_width),
-		height: Math.floor(0.7*screen_height),
+		width: Math.floor(0.7*width),
+		height: Math.floor(0.7*height),
 		minWidth: 1200,
 		minHeight: 800,
 		title: "PastaBrowse",
