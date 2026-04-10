@@ -60,3 +60,18 @@ export function onResHistory(callback){
 export function onF5(callback){
   window.api.onF5(callback);
 }
+
+
+export function onCtrlEqual(callback){
+  window.api.onCtrlEqual(callback);
+}
+
+
+export function onCtrlMinus(callback){
+  window.api.onCtrlMinus(callback);
+}
+
+
+export function onCtrlZero(callback){
+  window.api.onCtrlZero(callback);
+}

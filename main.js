@@ -74,6 +74,24 @@ app.on("ready", () => {
 			win.webContents.send("F5");
 		}
 	})
+
+	globalShortcut.register("CommandOrControl+=", () => {
+		if (win.isFocused()){
+			win.webContents.send("ctrl-=");
+		}
+	})
+
+	globalShortcut.register("CommandOrControl+0", () => {
+		if (win.isFocused()){
+			win.webContents.send("ctrl-0");
+		}
+	})
+	
+	globalShortcut.register("CommandOrControl+-", () => {
+		if (win.isFocused()){
+			win.webContents.send("ctrl--");
+		}
+	})
 })
 
 ipcMain.on("get-history", () => {
