@@ -12,18 +12,42 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hot-spagheti/PastaBrowse.git"
+    "url": "git+https://github.com/MedovarskyMax/PastaBrowse.git"
   },
   "keywords": [],
   "author": "Medovarský Max",
   "license": "GPL-2.0",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/hot-spagheti/PastaBrowse/issues"
+    "url": "https://github.com/MedovarskyMax/PastaBrowse/issues"
   },
-  "homepage": "https://github.com/hot-spagheti/PastaBrowse#readme",
+  "homepage": "https://github.com/MedovarskyMax/PastaBrowse#readme",
   "devDependencies": {
     "electron": "^41.0.3",
     "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "io.github.medovarskymax.pastabrowse",
+    "productName": "PastaBrowse",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "public/**/*",
+      "Icons/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "Icons/pasta_icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "Icons/pasta_icon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "Icons/pasta_icon"
+    }
   }
 }
