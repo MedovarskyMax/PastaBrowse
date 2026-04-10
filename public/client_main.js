@@ -1,10 +1,10 @@
 import {loadURL, saveNav, refresh, history_backward, history_forward} from "./navigation.js";
 import {newTab, removeTab, switchTab, loadLastSesh} from "./tabs.js";
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory, onCtrlEqual, onCtrlMinus, onCtrlZero} from "./ipc.js";
-import {setViewZoom, resetViewZoom, logZoomFactor} from "./zoom.js";
+import {setViewZoom, resetViewZoom} from "./zoom.js";
 
 const searchBtn = document.getElementById("searchBtn");
-searchBtn.addEventListener("click", logZoomFactor);
+searchBtn.addEventListener("click", loadURL);
 
 const input = document.getElementById("url");
 input.addEventListener("keypress", (e) => {

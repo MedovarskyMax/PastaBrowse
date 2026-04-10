@@ -13,9 +13,3 @@ export function resetViewZoom(){
     
     view.setZoomFactor(1);
 }
-
-export function logZoomFactor(){
-    const view = document.querySelector(".main_view");
-    
-    console.log(view.getZoomFactor());
-}

@@ -6,7 +6,7 @@ let id_count = 1
 export function newTab(){
   const newTabHTML = `
     <div class="tab main_tab" id="tab_${id_count}">
-      <img id="tab_icon" src="" alt="">
+      <img src="" alt="">
       <p class="tab_title">New Tab</p>
       <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
     </div>`;
