@@ -1,7 +1,11 @@
 const {app, BrowserWindow, ipcMain, screen, globalShortcut} = require("electron");
 const {writeFileSync, readFileSync} = require("fs");
+const path = require("path");
 
 let win;
+
+const rootDir = path.join(__dirname, "..");
+
 
 function createWindow(){
 	const primaryDisplay = screen.getPrimaryDisplay();
@@ -15,23 +19,23 @@ function createWindow(){
 		title: "PastaBrowse",
 		webPreferences: {
 			webviewTag: true,
-			preload: __dirname + "/preload.js",
+			preload: path.join(__dirname, "preload.js"),
 			contextIsolation: true,
 			nodeIntegration: false
 		},
-		icon: "./Icons/pasta_icon.png",
+		icon: path.join(rootDir, "Icons", "pasta_icon.png"),
 		frame: false,
 		center: true,
 		movable: true
 	});
 
-	win.loadFile("public/index.html");
+	win.loadFile(path.join(rootDir, "public", "index.html"));
 	win.webContents.setZoomFactor(1.0);
 	win.maximize();
 }
 
 ipcMain.on("kill-app", (_event, data) => {
-	writeFileSync("./history.json", JSON.stringify(data));
+	writeFileSync(path.join(__dirname, "history.json"), JSON.stringify(data));
 	app.quit();
 })
 
@@ -95,7 +99,7 @@ app.on("ready", () => {
 })
 
 ipcMain.on("get-history", () => {
-	const history_json = readFileSync("./history.json");
+	const history_json = readFileSync(path.join(__dirname, "history.json"));
 	const history = JSON.parse(history_json);
 
 	win.webContents.send("res-history", history);
