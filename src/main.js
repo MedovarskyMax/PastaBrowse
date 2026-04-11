@@ -29,6 +29,12 @@ function createWindow(){
 		movable: true
 	});
 
+	win.webContents.on("before-input-event", (event, input) => {
+		if (input.key === "F12" || input.control && input.shift && input.key === "I"){
+			event.preventDefault();
+		}
+	})
+
 	win.loadFile(path.join(rootDir, "public", "index.html"));
 	win.webContents.setZoomFactor(1.0);
 	win.maximize();
