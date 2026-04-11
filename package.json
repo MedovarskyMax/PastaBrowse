@@ -6,9 +6,9 @@
   "scripts": {
     "start": "electron src/main.js",
     "build": "electron-builder",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
+    "build:win": "electron-builder --win --config.directories.output=dist/win",
+    "build:mac": "electron-builder --mac --config.directories.output=dist/mac",
+    "build:linux": "electron-builder --linux --config.directories.output=dist/linux"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
   "build": {
     "appId": "io.github.medovarskymax.pastabrowse",
     "productName": "PastaBrowse",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
@@ -43,11 +44,11 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "Icons/pasta_icon.png"
+      "icon": "Icons/pasta_icon.icns"
     },
     "linux": {
       "target": "AppImage",
-      "icon": "Icons/pasta_icon"
+      "icon": "Icons/pasta_icon.png"
     }
   }
 }
