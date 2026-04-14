@@ -1,4 +1,4 @@
-import {setTitleAndFavIcon} from "./tabs.js"; 
+import {setTitleAndFavIcon, newTab} from "./tabs.js"; 
 
 let isProgrammaticNav = false;
 let isRestoringSession = false;
@@ -178,4 +178,19 @@ export function history_forward(){
 
   isProgrammaticNav = true;
   loadURLfromTabList(tab, 1);
+}
+
+
+export function openSettings(){
+    newTab(true);
+
+    const view_container = document.getElementById("webview_container");
+    const main_view = view_container.querySelector(".main_view");
+
+    const tab_container = document.getElementById("tab_container");
+    const main_tab = tab_container.querySelector(".main_tab");
+
+    main_tab.querySelector("p").innerHTML = "Settings";
+
+    main_view.src = "./settings_page/settings.html";
 }

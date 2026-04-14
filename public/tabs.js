@@ -3,7 +3,7 @@ import {root_exit} from "./ipc.js";
 
 let id_count = 1
 
-export function newTab(){
+export function newTab(isSettings = false){
   const newTabHTML = `
     <div class="tab main_tab" id="tab_${id_count}">
       <img src="" alt="">
@@ -23,22 +23,22 @@ export function newTab(){
   
   newTabBtn.insertAdjacentHTML("beforebegin", newTabHTML);
 
-  tab_list["tabs"].push(
-    {
-      "tab_id": id_count,
-      "title": "New Tab",
-      "favicon_url": null,
-      "history_url_id": 0, 
-      "tab_history": []
-    }
-  ) 
+  if (!isSettings){
+    tab_list["tabs"].push(
+      {
+        "tab_id": id_count,
+        "title": "New Tab",
+        "favicon_url": null,
+        "history_url_id": 0, 
+        "tab_history": []
+      }
+    ) 
   
-  tab_list["main_tab_id"] = id_count;
+    tab_list["main_tab_id"] = id_count;
+    id_count += 1;
+  }
 
-  newWebview();
-
-  id_count += 1;
-
+  newWebview(isSettings);
   input.value = "";
 }
 
@@ -198,7 +198,7 @@ export function loadLastSesh(data){
   })
 }
 
-function newWebview(){
+function newWebview(isSettings = false){
   const webview_container = document.getElementById("webview_container");
   const oldMainView = webview_container.querySelector(".main_view");
 
@@ -206,15 +206,18 @@ function newWebview(){
   oldMainView.classList.add("bg_view");
 
   const newView = document.createElement("webview");
-  newView.id = `view_${id_count}`;
 
   newView.classList.add("view");
   newView.classList.add("main_view");
 
-  const captured_id = id_count;
+  if (!isSettings){
+    newView.id = `view_${id_count}`;
 
-  newView.addEventListener("did-navigate", (e) => saveNav(e, captured_id));
-  newView.addEventListener("did-navigate-in-page", (e) => saveNav(e, captured_id));
+    const captured_id = id_count;
+
+    newView.addEventListener("did-navigate", (e) => saveNav(e, captured_id));
+    newView.addEventListener("did-navigate-in-page", (e) => saveNav(e, captured_id));
+  }
 
   webview_container.appendChild(newView);
 }
