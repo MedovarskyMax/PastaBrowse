@@ -35,11 +35,14 @@ export function newTab(isSettings = false){
     ) 
   
     tab_list["main_tab_id"] = id_count;
-    id_count += 1;
   }
 
   newWebview(isSettings);
   input.value = "";
+
+  if (!isSettings){
+    id_count += 1;
+  }
 }
 
 
