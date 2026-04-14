@@ -88,18 +88,23 @@ export function switchTab(tab){
   tab.classList.add("main_tab");
 
   const tab_id = Number(tab.id.slice(4));
+  console.log(tab_id)
 
-  tab_list["main_tab_id"] = tab_id;
-  
-  const input = document.getElementById("url");
-  const tab_obj = tab_list["tabs"].find(obj => obj["tab_id"] === tab_id);
-  const url = tab_obj["tab_history"][tab_obj["history_url_id"]];
-  if (url !== undefined){
-    input.value = url;
-  } else {
-    input.value = "";
+
+  if (tab_id){
+    tab_list["main_tab_id"] = tab_id;
+    
+    const input = document.getElementById("url");
+    const tab_obj = tab_list["tabs"].find(obj => obj["tab_id"] === tab_id);
+    const url = tab_obj["tab_history"][tab_obj["history_url_id"]];
+
+    if (url !== undefined){
+      input.value = url;
+    } else {
+      input.value = "";
+    }
   }
-
+  
   const view_container = document.getElementById("webview_container");
   const oldView = view_container.querySelector(".main_view");
 
@@ -210,9 +215,9 @@ function newWebview(isSettings = false){
   newView.classList.add("view");
   newView.classList.add("main_view");
 
-  if (!isSettings){
-    newView.id = `view_${id_count}`;
+  newView.id = `view_${isSettings ? "settings" : id_count}`;
 
+  if (!isSettings){
     const captured_id = id_count;
 
     newView.addEventListener("did-navigate", (e) => saveNav(e, captured_id));
