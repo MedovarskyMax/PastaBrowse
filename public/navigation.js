@@ -182,6 +182,10 @@ export function history_forward(){
 
 
 export function openSettings(){
+  if (document.getElementById("tab_settings")){
+    return;
+  }
+
     newTab(true);
 
     const view_container = document.getElementById("webview_container");

@@ -44,8 +44,6 @@ export function newTab(isSettings = false){
 
 
 export function removeTab(tab){
-  const tab_container = document.getElementById("tab_container");
-
   const previousEl = tab.previousElementSibling;
   let nextEl = tab.nextElementSibling;
   
@@ -88,8 +86,6 @@ export function switchTab(tab){
   tab.classList.add("main_tab");
 
   const tab_id = Number(tab.id.slice(4));
-  console.log(tab_id)
-
 
   if (tab_id){
     tab_list["main_tab_id"] = tab_id;

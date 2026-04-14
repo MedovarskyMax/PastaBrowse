@@ -32,7 +32,7 @@ minimize_btn.addEventListener("click", minimize);
 
 
 const newTabBtn = document.getElementById("newTabBtn");
-newTabBtn.addEventListener("click", newTab);
+newTabBtn.addEventListener("click", () => newTab());
 
 
 const tab_container = document.getElementById("tab_container");
