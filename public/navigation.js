@@ -1,4 +1,4 @@
-import {setTitleAndFavIcon, newTab} from "./tabs.js"; 
+import {setTitleAndFavIcon, newTab, switchTab} from "./tabs.js"; 
 
 let isProgrammaticNav = false;
 let isRestoringSession = false;
@@ -182,19 +182,22 @@ export function history_forward(){
 
 
 export function openSettings(){
-  if (document.getElementById("tab_settings")){
+  const settings_tab = document.getElementById("tab_settings"); 
+  
+  if (settings_tab){
+    switchTab(settings_tab);
     return;
   }
 
-    newTab(true);
+  newTab(true);
 
-    const view_container = document.getElementById("webview_container");
-    const main_view = view_container.querySelector(".main_view");
+  const view_container = document.getElementById("webview_container");
+  const main_view = view_container.querySelector(".main_view");
 
-    const tab_container = document.getElementById("tab_container");
-    const main_tab = tab_container.querySelector(".main_tab");
+  const tab_container = document.getElementById("tab_container");
+  const main_tab = tab_container.querySelector(".main_tab");
 
-    main_tab.querySelector("p").innerHTML = "Settings";
+  main_tab.querySelector("p").innerHTML = "Settings";
 
-    main_view.src = "./settings_page/settings.html";
+  main_view.src = "./settings_page/settings.html";
 }
