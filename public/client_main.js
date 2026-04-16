@@ -3,6 +3,8 @@ import {newTab, removeTab, switchTab, loadLastSesh, openSettings} from "./tabs.j
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory, onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
 
+document.documentElement.classList.add("theme-grey");
+
 let settingsPreloadPath;
 
 onSettingsPreloadPath((path) => {

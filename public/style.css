@@ -1,18 +1,4 @@
-:root{
-    --text: #ccc;
-    --exit: #f00;
-    --border: #2e2e2e;
-
-    --bg-0: #7b7b7b;
-    --bg-50: #565656;
-    --bg-100: #5a5959;
-    --bg-150: #535353;
-    --bg-200: #515151;
-    --bg-250: #494949;
-    --bg-300: #3f3f3f;
-    --bg-350: #2f2f2f;
-}
-
+@import url("theme.css");
 
 body{
     margin: 0;
