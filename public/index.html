@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="not_spagheti">
@@ -8,47 +9,49 @@
   <link rel="stylesheet" href="style.css" type="text/css">
   <title>PastaBrowse</title>
 </head>
+
 <body>
-	<header>
-		<div id="tab_container" class="tab_container">
+  <header>
+    <div id="tab_container" class="tab_container">
 
-			<div class="tab main_tab" id="tab_0">
-				<img src="" alt="">
-				<p class="tab_title">New Tab</p>
-				<button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
-			</div>
-			
-			<button class="newTabBtn" id="newTabBtn"><img class="win_com img100" src="../Icons/add.svg" alt=""></button>
+      <div class="tab main_tab" id="tab_0">
+        <img src="" alt="">
+        <p class="tab_title">New Tab</p>
+        <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
+      </div>
 
-			<div class="win_com_container">
-				<button id="minimize_btn" class="win_com"><img class="img100" src="../Icons/minimize.svg" alt="-"></button>
-				<button id="maximize_btn" class="win_com"><img class="maximize_icon img100" src="../Icons/maximized.svg" alt="o"></button>
-				<button id="root_exit_btn" class="win_com red_hover"><img class="img100" src="../Icons/close.svg" alt="x"></button>
-			</div>
-		</div>
-		<nav>
-			<button id="backwardBtn" class="navBtn"><img src="../Icons/arrow_back.svg" alt="[--"></button>
-			<button id="forwardBtn" class="navBtn"><img src="../Icons/arrow_forward.svg" alt="--]"></button>
-			<button id="refreshBtn" class="navBtn"><img src="../Icons/refresh.svg" alt=""></button>
+      <button class="newTabBtn" id="newTabBtn"><img class="win_com img100" src="../Icons/add.svg" alt=""></button>
 
-			<select class="search_engine_select" name="searchEngine" id="search_engine_select">
-				<option class="sEs_op" value="0">Google</option>
-				<option class="sEs_op" value="1">DuckDuckGo</option>
-				<option class="sEs_op" value="2">Bing</option>
-			</select>
+      <div class="win_com_container">
+        <button id="minimize_btn" class="win_com"><img class="img100" src="../Icons/minimize.svg" alt="-"></button>
+        <button id="maximize_btn" class="win_com"><img class="maximize_icon img100" src="../Icons/maximized.svg" alt="o"></button>
+        <button id="root_exit_btn" class="win_com red_hover"><img class="img100" src="../Icons/close.svg" alt="x"></button>
+      </div>
+    </div>
+    <nav>
+      <button id="backwardBtn" class="navBtn"><img src="../Icons/arrow_back.svg" alt="[--"></button>
+      <button id="forwardBtn" class="navBtn"><img src="../Icons/arrow_forward.svg" alt="--]"></button>
+      <button id="refreshBtn" class="navBtn"><img src="../Icons/refresh.svg" alt=""></button>
 
-			<input autofocus class="url_input" id="url" type="text">
-			<button class="search_btn" id="searchBtn"><img src="../Icons/search.svg" alt=""></button>
-			<button class="navBtn loadLastSeshBtn" id="loadLastSeshBtn"><img src="../Icons/history.svg" alt="ReLoad"></button>
-			<button id="settingsBtn" class="navBtn"><img src="../Icons/settings.svg" alt="Settings"></button>
-		</nav>
-	</header>
-	
-	<div class="webview_container" id="webview_container">
-		<webview class="view main_view" id="view_0"></webview>
-	</div>
-	
+      <select class="search_engine_select" name="searchEngine" id="search_engine_select">
+        <option class="sEs_op" value="0">Google</option>
+        <option class="sEs_op" value="1">DuckDuckGo</option>
+        <option class="sEs_op" value="2">Bing</option>
+      </select>
 
-	<script type="module" src="client_main.js"></script>
+      <input autofocus class="url_input" id="url" type="text">
+      <button class="search_btn" id="searchBtn"><img src="../Icons/search.svg" alt=""></button>
+      <button class="navBtn loadLastSeshBtn" id="loadLastSeshBtn"><img src="../Icons/history.svg" alt="ReLoad"></button>
+      <button id="settingsBtn" class="navBtn"><img src="../Icons/settings.svg" alt="Settings"></button>
+    </nav>
+  </header>
+
+  <div class="webview_container" id="webview_container">
+    <webview class="view main_view" id="view_0"></webview>
+  </div>
+
+
+  <script type="module" src="client_main.js"></script>
 </body>
+
 </html>
