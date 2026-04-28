@@ -3,10 +3,10 @@ import {newTab, removeTab, switchTab, loadLastSesh} from "./tabs.js";
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory,
     onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
-import {openSettings} from "./settings.js"
+import {openSettings, setTheme} from "./settings.js"
 
 onSettings((settings) => {
-  document.documentElement.classList.add(settings["theme"]);
+  setTheme(settings["theme"]);
 })
 
 let settingsPreloadPath;

@@ -1,14 +1,15 @@
 @import url("../theme.css");
 
-body {
-  height: 98vh;
+body{
   width: 99vw;
+  height: 98vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
+.subsettings_container{
+  width: 50vw;
+  height: 20vh;
+  background-color: var(--bg-300);
 }

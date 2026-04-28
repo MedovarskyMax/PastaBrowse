@@ -26,13 +26,14 @@ export function openSettings(preloadPath) {
   main_view.addEventListener("ipc-message", (event) => {
     if (event.channel === "theme-change") {
       const variant = event.args[0];
-      settings["theme"] = variant;
       setTheme(variant);
     }
   })
 }
 
 export function setTheme(variant){
+  settings["theme"] = variant;
+  
   try {
     document.documentElement.classList = variant;
   } catch (er){
