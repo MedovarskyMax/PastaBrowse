@@ -21,15 +21,20 @@ export function openSettings(preloadPath) {
   main_tab.querySelector("p").innerHTML = "Settings";
   
   main_view.setAttribute("preload", preloadPath);
+  main_view.addEventListener("ipc-message", (event) => {handleIpcMessage(main_view, event)});
+  main_view.addEventListener("dom-ready", () => {main_view.send("res-theme", settings["theme"])});
   main_view.src = "./settings_page/settings.html";
+}
 
-  main_view.addEventListener("ipc-message", (event) => {
-    if (event.channel === "theme-change") {
+
+function handleIpcMessage(webview, event){
+  switch (event.channel){
+    case "theme-change":
       const variant = event.args[0];
       setTheme(variant);
-    }
-  })
-}
+      break;
+  }
+};
 
 export function setTheme(variant){
   settings["theme"] = variant;
