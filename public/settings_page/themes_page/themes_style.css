@@ -1,4 +1,4 @@
-@import url("../theme.css");
+@import url("../../theme.css");
 
 body {
   height: 98vh;
@@ -11,4 +11,7 @@ body {
 .column {
   display: flex;
   flex-direction: column;
+  width: 50vw;
+  height: 25vh;
+  background-color: var(--bg-300);
 }

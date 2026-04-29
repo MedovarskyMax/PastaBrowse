@@ -32,6 +32,7 @@ function handleIpcMessage(webview, event){
     case "theme-change":
       const variant = event.args[0];
       setTheme(variant);
+      webview.send("res-theme", variant);
       break;
   }
 };
