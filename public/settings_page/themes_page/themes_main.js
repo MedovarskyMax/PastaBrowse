@@ -5,7 +5,7 @@ onResTheme((theme) => {
 })
 
 const redBtn = document.getElementById("redBtn");
-redBtn.addEventListener("click", () => {redBtn.innerHTML = `${document.documentElement.classList}`});
+redBtn.addEventListener("click", () => {setTheme("theme-red")});
 
 const greenBtn = document.getElementById("greenBtn");
 greenBtn.addEventListener("click", () => {setTheme("theme-green")});
