@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .column {
@@ -13,5 +14,35 @@ body {
   flex-direction: column;
   width: 50vw;
   height: 25vh;
-  background-color: var(--bg-300);
+  background-color: var(--bg-250);
+  padding: 1.5%;
+  border: 2px solid var(--bg-0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px 5px var(--bg-300);
+}
+
+.btn_container{
+  margin-bottom: 1.5%; 
+}
+
+.themeBtn{
+  color: var(--text);
+  height: 4vh;
+  width: 7.6vw;
+  background-color: var(--bg-150);
+  border: 2px solid var(--bg-0);
+  border-radius: 5px;
+  outline: none;
+  margin-right: 1%;
+  font-size: 1rem;
+  
+  transition: ease 200ms;
+}
+
+.no_right_margin{
+  margin-right: 0;
+}
+
+.themeBtn:hover{
+  background-color: var(--bg-100);
 }
