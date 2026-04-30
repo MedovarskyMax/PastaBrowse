@@ -16,8 +16,8 @@ blueBtn.addEventListener("click", () => {setTheme("theme-blue")});
 const orangeBtn = document.getElementById("orangeBtn");
 orangeBtn.addEventListener("click", () => {setTheme("theme-orange")});
 
-const amberBtn = document.getElementById("amberBtn");
-amberBtn.addEventListener("click", () => {setTheme("theme-amber")});
+const bronzeBtn = document.getElementById("bronzeBtn");
+bronzeBtn.addEventListener("click", () => {setTheme("theme-bronze")});
 
 const tealBtn = document.getElementById("tealBtn");
 tealBtn.addEventListener("click", () => {setTheme("theme-teal")});
@@ -33,3 +33,9 @@ pinkBtn.addEventListener("click", () => {setTheme("theme-pink")});
 
 const greyBtn = document.getElementById("greyBtn");
 greyBtn.addEventListener("click", () => {setTheme("theme-grey")});
+
+const darkBtn = document.getElementById("darkBtn");
+darkBtn.addEventListener("click", () => {setTheme("theme-dark")});
+
+const fGreenBtn = document.getElementById("fGreenBtn");
+fGreenBtn.addEventListener("click", () => {setTheme("theme-forest-green")});
