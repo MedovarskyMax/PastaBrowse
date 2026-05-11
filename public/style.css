@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  background-color: var(--bg-350);
+  background: var(--bg-350);
   color: var(--text);
   height: 100vh;
   display: flex;
@@ -18,7 +18,7 @@ header {
 .tab_container {
   width: 100%;
   height: 50%;
-  background-color: var(--bg-350);
+  background: var(--bg-350);
   -webkit-app-region: drag;
   display: flex;
 }
@@ -31,7 +31,7 @@ header {
 .tab {
   width: 12.5%;
   height: 100%;
-  background-color: var(--bg-300);
+  background: var(--bg-300);
   display: flex;
   align-items: center;
 }
@@ -40,7 +40,7 @@ nav {
   display: flex;
   height: 50%;
   align-items: center;
-  background-color: var(--bg-300);
+  background: var(--bg-300);
 }
 
 .url_input {
@@ -48,7 +48,7 @@ nav {
   width: 45%;
   margin: 0 0 0 1.25%;
   padding: 0 0 0 1%;
-  background-color: var(--bg-0);
+  background: var(--bg-0);
   border-radius: 0.75rem;
   border: 0;
   outline: 0;
@@ -57,7 +57,7 @@ nav {
 }
 
 .search_btn {
-  background-color: var(--bg-300);
+  background: var(--bg-300);
   margin: 0 0 0 0.33%;
   height: 90%;
   aspect-ratio: 1;
@@ -66,7 +66,7 @@ nav {
 }
 
 .search_btn:hover {
-  background-color: var(--bg-150);
+  background: var(--bg-150);
 }
 
 p {
@@ -87,18 +87,18 @@ p {
   height: 65%;
   aspect-ratio: 1;
   padding: 0;
-  background-color: var(--bg-300);
+  background: transparent;
   outline: 0;
   border: 0;
   border-radius: 50%;
 }
 
 .main_tab .tabXBtn {
-  background-color: var(--bg-150);
+  background: transparent;
 }
 
 .tabXBtn:hover {
-  background-color: var(--bg-0);
+  background: var(--bg-0);
 }
 
 .tabXBtn img {
@@ -117,7 +117,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bg-50);
+  background: var(--bg-50);
 }
 
 .main_view {
@@ -144,7 +144,7 @@ p {
 
   width: 33%;
   aspect-ratio: 1;
-  background-color: var(--bg-300);
+  background: var(--bg-300);
   color: var(--text);
   outline: 2px solid var(--border);
   border: none;
@@ -153,11 +153,11 @@ p {
 }
 
 .win_com:hover {
-  background-color: var(--bg-150);
+  background: var(--bg-150);
 }
 
 .red_hover:hover {
-  background-color: var(--exit);
+  background: var(--exit);
 }
 
 .maximize_icon {
@@ -180,7 +180,7 @@ p {
 }
 
 .main_tab {
-  background-color: var(--bg-200);
+  background: var(--bg-200);
 }
 
 .navBtn {
@@ -188,7 +188,7 @@ p {
   justify-content: center;
   align-items: center;
 
-  background-color: var(--bg-300);
+  background: var(--bg-300);
   border: 0;
   outline: 2px solid var(--border);
   height: 90%;
@@ -196,11 +196,11 @@ p {
 }
 
 .navBtn:hover {
-  background-color: var(--bg-150);
+  background: var(--bg-150);
 }
 
 .search_engine_select {
-  background-color: var(--bg-300);
+  background: var(--bg-300);
   padding: 0 0 0 0.5%;
   color: var(--text);
   height: 90%;
@@ -211,7 +211,7 @@ p {
 }
 
 .search_engine_select:hover {
-  background-color: var(--bg-150);
+  background: var(--bg-150);
 }
 
 .loadLastSeshBtn {
@@ -236,13 +236,13 @@ p {
 }
 
 .side_tab:hover {
-  background-color: var(--bg-250);
+  background: var(--bg-250);
 }
 
 .side_tab:hover .side_tabXBtn {
-  background-color: var(--bg-250);
+  background: transparent;
 }
 
 .side_tab:hover .side_tabXBtn:hover {
-  background-color: var(--bg-100);
+  background: var(--bg-100);
 }

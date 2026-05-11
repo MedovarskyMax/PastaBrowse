@@ -39,3 +39,6 @@ darkBtn.addEventListener("click", () => {setTheme("theme-dark")});
 
 const fGreenBtn = document.getElementById("fGreenBtn");
 fGreenBtn.addEventListener("click", () => {setTheme("theme-forest-green")});
+
+const greyLinearBtn = document.getElementById("greyLinearBtn");
+greyLinearBtn.addEventListener("click", () => {setTheme("theme-grey-linear")});
