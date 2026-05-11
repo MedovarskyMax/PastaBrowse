@@ -3,5 +3,5 @@ const {contextBridge, ipcRenderer} = require("electron");
 contextBridge.exposeInMainWorld("settingsApi", {
   setTheme: (variant) => ipcRenderer.sendToHost("theme-change", variant),
   onResTheme: (callback) => ipcRenderer.on("res-theme", (_event, data) => callback(data)),
-  setLinearGradient: (val) => ipcRenderer.sendToHost("set-linear-gradient", val)
+  setLinearGradient: () => ipcRenderer.sendToHost("set-linear-gradient")
 })

@@ -8,6 +8,6 @@ export function onResTheme(callback){
 }
 
 
-export function setLinearGradient(val){
-  window.settingsApi.setLinearGradient(val);
+export function setLinearGradient(){
+  window.settingsApi.setLinearGradient();
 }

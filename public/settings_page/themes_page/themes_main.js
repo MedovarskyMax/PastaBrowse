@@ -5,7 +5,7 @@ onResTheme((theme) => {
 })
 
 const linearGradientCheck = document.getElementById("linearGradient");
-linearGradientCheck.addEventListener("change", (e) => {setLinearGradient(e.target.checked)});
+linearGradientCheck.addEventListener("change", (e) => {setLinearGradient()});
 
 
 const redBtn = document.getElementById("redBtn");
