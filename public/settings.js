@@ -22,7 +22,7 @@ export function openSettings(preloadPath) {
   
   main_view.setAttribute("preload", preloadPath);
   main_view.addEventListener("ipc-message", (event) => {handleIpcMessage(main_view, event)});
-  main_view.addEventListener("dom-ready", () => {main_view.send("res-theme", settings["theme"])});
+  main_view.addEventListener("dom-ready", () => {main_view.send("res-settings", settings)});
   main_view.src = "./settings_page/settings.html";
 }
 
@@ -32,17 +32,31 @@ function handleIpcMessage(webview, event){
     case "theme-change":
       const variant = event.args[0];
       setTheme(variant);
-      webview.send("res-theme", variant);
+      webview.send("res-settings", settings);
       break;
     
     case "set-linear-gradient":
-      const theme = settings["theme"];
-      const new_theme = theme.includes("-linear-gradient") ? theme.replace("-linear-gradient", "") : theme + "-linear-gradient";
-      setTheme(new_theme);
-      webview.send("res-theme", new_theme);
+      toggleLinearGradient();
+      webview.send("res-settings", settings);
       break;
   }
 };
+
+
+function toggleLinearGradient(){
+  const theme = settings["theme"];
+  let new_theme;
+
+  if (theme.includes("-linear-gradient")){
+    new_theme = theme.replace("-linear-gradient", "");
+    settings["linear-gradient"] = false;
+  } else {
+    new_theme = theme + "-linear-gradient";
+    settings["linear-gradient"] = true;
+  }
+
+  setTheme(new_theme);
+}
 
 export function setTheme(variant){
   settings["theme"] = variant;
@@ -53,3 +67,8 @@ export function setTheme(variant){
     console.error(er);
   }
 };
+
+
+export function setSetting(key, value){
+  settings[key] = value;
+}

@@ -19,7 +19,8 @@ if (isDev) {
 }
 
 const default_settings = {
-  "theme": "theme-grey"
+  "theme": "theme-grey",
+  "linear-gradient": false
 };
 
 function createWindow() {

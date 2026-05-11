@@ -1,7 +1,8 @@
-import {setTheme, onResTheme, setLinearGradient} from "../settings_ipc.js";
+import {setTheme, onResSettings, setLinearGradient} from "../settings_ipc.js";
 
-onResTheme((theme) => {
-  document.documentElement.classList = theme;
+onResSettings((settings) => {
+  document.documentElement.classList = settings["theme"];
+  linearGradientCheck.checked = settings["linear-gradient"];
 })
 
 const linearGradientCheck = document.getElementById("linearGradient");

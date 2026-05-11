@@ -1,5 +1,5 @@
-import {onResTheme} from "./settings_ipc.js";
+import {onResSettings} from "./settings_ipc.js";
 
-onResTheme((theme) => {
-  document.documentElement.classList = theme;
+onResSettings((settings) => {
+  document.documentElement.classList = settings["theme"];
 })

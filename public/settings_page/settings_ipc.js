@@ -3,8 +3,8 @@ export function setTheme(variant){
 }
 
 
-export function onResTheme(callback){
-  window.settingsApi.onResTheme(callback);
+export function onResSettings(callback){
+  window.settingsApi.onResSettings(callback);
 }
 
 

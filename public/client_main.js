@@ -3,10 +3,11 @@ import {newTab, removeTab, switchTab, loadLastSesh, switchToNeigborTab} from "./
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory,
     onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings, onCtrlTab, onCtrlShiftTab} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
-import {openSettings, setTheme} from "./settings.js";
+import {openSettings, setTheme, setSetting} from "./settings.js";
 
 onSettings((settings) => {
   setTheme(settings["theme"]);
+  setSetting("linear-gradient", settings["linear-gradient"]);
 })
 
 let settingsPreloadPath;
