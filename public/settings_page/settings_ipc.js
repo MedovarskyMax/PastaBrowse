@@ -6,3 +6,8 @@ export function setTheme(variant){
 export function onResTheme(callback){
   window.settingsApi.onResTheme(callback);
 }
+
+
+export function setLinearGradient(val){
+  window.settingsApi.setLinearGradient(val);
+}

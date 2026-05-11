@@ -1,8 +1,12 @@
-import {setTheme, onResTheme} from "../settings_ipc.js";
+import {setTheme, onResTheme, setLinearGradient} from "../settings_ipc.js";
 
 onResTheme((theme) => {
   document.documentElement.classList = theme;
 })
+
+const linearGradientCheck = document.getElementById("linearGradient");
+linearGradientCheck.addEventListener("change", (e) => {setLinearGradient(e.target.checked)});
+
 
 const redBtn = document.getElementById("redBtn");
 redBtn.addEventListener("click", () => {setTheme("theme-red")});
@@ -39,6 +43,3 @@ darkBtn.addEventListener("click", () => {setTheme("theme-dark")});
 
 const fGreenBtn = document.getElementById("fGreenBtn");
 fGreenBtn.addEventListener("click", () => {setTheme("theme-forest-green")});
-
-const greyLinearBtn = document.getElementById("greyLinearBtn");
-greyLinearBtn.addEventListener("click", () => {setTheme("theme-grey-linear")});

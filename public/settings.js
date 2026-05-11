@@ -34,6 +34,13 @@ function handleIpcMessage(webview, event){
       setTheme(variant);
       webview.send("res-theme", variant);
       break;
+    
+    case "set-linear-gradient":
+      const theme = settings["theme"];
+      const new_theme = theme.includes("-linear-gradient") ? theme.replace("-linear-gradient", "") : theme + "-linear-gradient";
+      setTheme(new_theme);
+      webview.send("res-theme", new_theme);
+      break;
   }
 };
 
