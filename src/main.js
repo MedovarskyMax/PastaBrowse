@@ -175,4 +175,10 @@ app.on("ready", () => {
       win.webContents.send("ctrl-shift-tab");
     }
   })
+
+  globalShortcut.register("CommandOrControl+Shift+T", () => {
+    if (win.isFocused()){
+      win.webContents.send("ctrl-shift-t");
+    }
+  })
 })

@@ -101,3 +101,8 @@ export function onCtrlTab(callback){
 export function onCtrlShiftTab(callback){
   window.api.onCtrlShiftTab(callback);
 }
+
+
+export function onCtrlShiftT(callback){
+  window.api.onCtrlShiftT(callback);
+}

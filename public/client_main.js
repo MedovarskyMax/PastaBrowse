@@ -1,7 +1,8 @@
 import {loadURL, saveNav, refresh, history_backward, history_forward} from "./navigation.js";
 import {newTab, removeTab, switchTab, loadLastSesh, switchToNeigborTab} from "./tabs.js";
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory,
-    onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings, onCtrlTab, onCtrlShiftTab} from "./ipc.js";
+    onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings, onCtrlTab, onCtrlShiftTab,
+    onCtrlShiftT} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
 import {openSettings, setTheme, setSetting} from "./settings.js";
 
@@ -129,4 +130,8 @@ onCtrlTab(() => {
 
 onCtrlShiftTab(() => {
   switchToNeigborTab("left");
+})
+
+onCtrlShiftT(() => {
+  getHistory();
 })
