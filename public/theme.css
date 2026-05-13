@@ -293,7 +293,13 @@
   --border: #2e2e2e;
 
   --col-0: #7b7b7b;
-  --col-300: #404040;
+  --col-50: #565656;
+  --col-100: #5a5959;
+  --col-150: #535353;
+  --col-200: #515151;
+  --col-250: #494949;
+  --col-300: #3f3f3f;
+  --col-350: #2f2f2f;
 
   --bg-0: linear-gradient(135deg, #8a8a8a, #7b7b7b, #6e6e6e);
   --bg-50: linear-gradient(135deg, #636363, #565656, #4e4e4e);
@@ -311,7 +317,13 @@
   --border: #161616;
 
   --col-0: #2a2a2a;
+  --col-50: #232323;
+  --col-100: #212121;
+  --col-150: #1e1e1e;
+  --col-200: #1c1c1c;
+  --col-250: #191919;
   --col-300: #161616;
+  --col-350: #111111;
 
   --bg-0: linear-gradient(135deg, #333333, #2a2a2a, #222222);
   --bg-50: linear-gradient(135deg, #2c2c2c, #232323, #1c1c1c);
@@ -329,7 +341,13 @@
   --border: #3a1f1f;
 
   --col-0: #bf3737;
+  --col-50: #852727;
+  --col-100: #8b2828;
+  --col-150: #812525;
+  --col-200: #7e2424;
+  --col-250: #712121;
   --col-300: #621c1c;
+  --col-350: #491515;
 
   --bg-0: linear-gradient(135deg, #cc4040, #bf3737, #b03030);
   --bg-50: linear-gradient(135deg, #903030, #852727, #7a2222);
@@ -347,7 +365,13 @@
   --border: #3a2418;
 
   --col-0: #cb662b;
+  --col-50: #8e471e;
+  --col-100: #944a1f;
+  --col-150: #89451d;
+  --col-200: #86431c;
+  --col-250: #783c1a;
   --col-300: #683416;
+  --col-350: #4e2710;
 
   --bg-0: linear-gradient(135deg, #d97035, #cb662b, #bc5c22);
   --bg-50: linear-gradient(135deg, #995228, #8e471e, #843d16);
@@ -365,7 +389,13 @@
   --border: #281a0a;
 
   --col-0: #a0722a;
+  --col-50: #8a5e22;
+  --col-100: #7e561e;
+  --col-150: #724e1b;
+  --col-200: #664619;
+  --col-250: #593d15;
   --col-300: #4a3211;
+  --col-350: #36240c;
 
   --bg-0: linear-gradient(135deg, #ae7d34, #a0722a, #926721);
   --bg-50: linear-gradient(135deg, #95682c, #8a5e22, #7f5419);
@@ -383,7 +413,13 @@
   --border: #1f3324;
 
   --col-0: #4aac5a;
+  --col-50: #34783f;
+  --col-100: #367d42;
+  --col-150: #32743d;
+  --col-200: #31713b;
+  --col-250: #2c6636;
   --col-300: #26582e;
+  --col-350: #1c4222;
 
   --bg-0: linear-gradient(135deg, #55b865, #4aac5a, #40a050);
   --bg-50: linear-gradient(135deg, #3d8449, #34783f, #2b6c35);
@@ -401,7 +437,13 @@
   --border: #1f3331;
 
   --col-0: #50a69d;
+  --col-50: #38746e;
+  --col-100: #3a7973;
+  --col-150: #36706a;
+  --col-200: #356d68;
+  --col-250: #2f635d;
   --col-300: #295551;
+  --col-350: #1f3f3c;
 
   --bg-0: linear-gradient(135deg, #5cb2a9, #50a69d, #469a91);
   --bg-50: linear-gradient(135deg, #428079, #38746e, #2e6863);
@@ -419,7 +461,13 @@
   --border: #1c2a3a;
 
   --col-0: #3e73b9;
+  --col-50: #2b5081;
+  --col-100: #2d5486;
+  --col-150: #294d7c;
+  --col-200: #294c7a;
+  --col-250: #25446e;
   --col-300: #203b5f;
+  --col-350: #182c47;
 
   --bg-0: linear-gradient(135deg, #4880c4, #3e73b9, #3567ae);
   --bg-50: linear-gradient(135deg, #33598e, #2b5081, #234774);
@@ -437,7 +485,13 @@
   --border: #1c1c3a;
 
   --col-0: #4444b2;
+  --col-50: #2f2f7d;
+  --col-100: #313182;
+  --col-150: #2e2e78;
+  --col-200: #2d2d75;
+  --col-250: #28286a;
   --col-300: #23235b;
+  --col-350: #1a1a44;
 
   --bg-0: linear-gradient(135deg, #4f4fbe, #4444b2, #3939a6);
   --bg-50: linear-gradient(135deg, #38388a, #2f2f7d, #262670);
@@ -455,7 +509,13 @@
   --border: #2a1c3a;
 
   --col-0: #7b44b2;
+  --col-50: #562f7d;
+  --col-100: #5a3182;
+  --col-150: #532e78;
+  --col-200: #512d75;
+  --col-250: #49286a;
   --col-300: #3f235b;
+  --col-350: #2f1a44;
 
   --bg-0: linear-gradient(135deg, #874fbe, #7b44b2, #6f39a6);
   --bg-50: linear-gradient(135deg, #60388a, #562f7d, #4c2670);
@@ -473,7 +533,13 @@
   --border: #3a1c2a;
 
   --col-0: #b93e7b;
+  --col-50: #812b56;
+  --col-100: #862d5a;
+  --col-150: #7c2953;
+  --col-200: #7a2951;
+  --col-250: #6e2549;
   --col-300: #5f203f;
+  --col-350: #47182f;
 
   --bg-0: linear-gradient(135deg, #c54988, #b93e7b, #ad336e);
   --bg-50: linear-gradient(135deg, #8d3461, #812b56, #75224b);
@@ -491,7 +557,13 @@
   --border: #0f2a1b;
 
   --col-0: #023002;
+  --col-50: #022802;
+  --col-100: #022c02;
+  --col-150: #022702;
+  --col-200: #022402;
+  --col-250: #011f01;
   --col-300: #011801;
+  --col-350: #010f01;
 
   --bg-0: linear-gradient(135deg, #033803, #023002, #022802);
   --bg-50: linear-gradient(135deg, #033003, #022802, #022002);

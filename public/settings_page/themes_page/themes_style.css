@@ -10,7 +10,7 @@ body {
   color: var(--text);
 }
 
-h2{
+h3{
   width: fit-content;
   height: fit-content;
   margin: 0;
@@ -23,15 +23,16 @@ h2{
   height: 25vh;
   background: var(--bg-250);
   padding: 1.5%;
-  border: 2px solid var(--border-0);
+  border: 2px solid var(--col-0);
   border-radius: 10px;
-  box-shadow: 0 0 15px 5px var(--shadow-300);
+  box-shadow: 0 0 15px 5px var(--col-300);
 }
 
 .vertical_container{
   display: flex;
   flex-direction: column;
   width: 50%;
+  margin-top: 1%;
 }
 
 .btn_container{
@@ -45,7 +46,7 @@ h2{
   height: 4vh;
   width: 7.6vw;
   background: var(--bg-150);
-  border: 2px solid var(--border-0);
+  border: 2px solid var(--col-0);
   border-radius: 5px;
   outline: none;
   margin-right: 1%;
@@ -66,8 +67,21 @@ h2{
 .switch{
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
 }
 
 .switch input{
@@ -83,7 +97,8 @@ h2{
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #ccc;
+  background-color: var(--col-150);
+  border: 2px solid var(--col-0);
 
   -webkit-transition: 400ms;
   transition: 400ms;
@@ -92,28 +107,29 @@ h2{
 .slider:before{
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--text);
 
   -webkit-transition: 400ms;
   transition: 400ms;
 }
 
 input:checked + .slider{
-  background-color: #2196F3;
+  background-color: var(--text);
 }
 
 input:focus + .slider{
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--col-0);
 }
 
 input:checked + .slider:before{
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+  background-color: var(--col-150) !important;
 }
 
 .slider.round{
@@ -122,4 +138,13 @@ input:checked + .slider:before{
 
 .slider.round:before{
   border-radius: 50%;
+}
+
+.slider.round:before{
+  border-radius: 50%;
+}
+
+.toggle_setting{
+  border-bottom: 1px solid var(--col-0);
+  padding-bottom: 5px;
 }
