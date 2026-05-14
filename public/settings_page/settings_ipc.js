@@ -11,3 +11,8 @@ export function onResSettings(callback){
 export function setLinearGradient(){
   window.settingsApi.setLinearGradient();
 }
+
+
+export function toggleRGB(data){
+  window.settingsApi.toggleRGB(data);
+}

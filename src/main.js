@@ -20,7 +20,8 @@ if (isDev) {
 
 const default_settings = {
   "theme": "theme-grey",
-  "linear-gradient": false
+  "linear-gradient": false,
+  "rgb-cycle": false
 };
 
 function createWindow() {

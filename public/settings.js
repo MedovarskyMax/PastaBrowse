@@ -39,8 +39,40 @@ function handleIpcMessage(webview, event){
       toggleLinearGradient();
       webview.send("res-settings", settings);
       break;
+    
+    case "toggle-rgb":
+      toggleRGB(event.args[0]);
+      break;
   }
 };
+
+const rgb_themes = ["theme-red", "theme-green", "theme-blue"];
+let rgbThemeIndex = 0;
+let rgbInterval = null;
+
+function toggleRGB(state){
+  if (state){
+    settings["rgb-cycle"] = true;
+
+    rgbThemeIndex = 0;
+    rgbCycle();
+    rgbInterval = setInterval(rgbCycle, 1000)
+  } else {
+    settings["rgb-cycle"] = false;
+    clearInterval(rgbInterval);
+    rgbInterval = null;
+  }
+}
+
+function rgbCycle(webview){
+  const settings_webview = document.getElementById("view_settings");
+
+  setTheme(settings["linear-gradient"] ? `${rgb_themes[rgbThemeIndex]}-linear-gradient` : rgb_themes[rgbThemeIndex]);
+  
+  if (settings_webview){ settings_webview.send("res-settings", settings) }
+  
+  rgbThemeIndex = (rgbThemeIndex + 1) % rgb_themes.length;
+}
 
 
 function toggleLinearGradient(){
