@@ -1,5 +1,32 @@
 import {setTheme, onResSettings, setLinearGradient} from "../settings_ipc.js";
 
+const themes = [
+  "theme-grey", "theme-red", "theme-green", "theme-blue", "theme-orange", "theme-bronze", "theme-teal",
+  "theme-indigo", "theme-purple", "theme-pink", "theme-dark", "theme-forest-green"
+]
+
+
+function rgbCycle(){
+  setTheme(linearGradientCheck.checked ? `${themes[themeIndex]}-linear-gradient` : themes[themeIndex])
+  themeIndex = (themeIndex + 1) % themes.length;
+}
+
+let rgbInterval = null;
+let themeIndex = 0;
+
+const rgbCheck = document.getElementById("rgbCheck");
+rgbCheck.addEventListener("change", (e) => {
+  if (e.target.checked){
+    themeIndex = 0;
+    rgbCycle()
+    rgbInterval = setInterval(rgbCycle, 1000);
+  } else {
+    clearInterval(rgbInterval);
+    rgbInterval = null;
+  }
+})
+
+
 onResSettings((settings) => {
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
