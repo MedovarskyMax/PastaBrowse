@@ -18,6 +18,7 @@ onResSettings((settings) => {
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
   rgbCheck.checked = settings["rgb-cycle"];
+  autoDarkMode.checked = settings["auto-dark-mode"];
 })
 
 const linearGradientCheck = document.getElementById("linearGradient");

@@ -9,6 +9,7 @@ import {openSettings, setTheme, setSetting} from "./settings.js";
 onSettings((settings) => {
   setTheme(settings["theme"]);
   setSetting("linear-gradient", settings["linear-gradient"]);
+  setSetting("auto-dark-mode", settings["auto-dark-mode"]);
 })
 
 let settingsPreloadPath;

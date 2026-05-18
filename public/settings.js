@@ -53,6 +53,8 @@ function handleIpcMessage(webview, event){
 let darkModeTimer = null;
 
 function scheduleAutoDarkMode(){
+  settings["auto-dark-mode"] = true;
+
   const settings_webview = document.getElementById("view_settings");
     
   const now = new Date();
@@ -88,6 +90,8 @@ function toggleAutoDarkMode(){
   } else {
     clearTimeout(darkModeTimer);
     darkModeTimer = null;
+
+    settings["auto-dark-mode"] = false;
   }
 }
 

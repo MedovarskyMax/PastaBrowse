@@ -21,7 +21,8 @@ if (isDev) {
 const default_settings = {
   "theme": "theme-grey",
   "linear-gradient": false,
-  "rgb-cycle": false
+  "rgb-cycle": false,
+  "auto-dark-mode": false
 };
 
 function createWindow() {
