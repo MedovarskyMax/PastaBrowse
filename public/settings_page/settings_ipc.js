@@ -16,3 +16,8 @@ export function setLinearGradient(){
 export function toggleRGB(data){
   window.settingsApi.toggleRGB(data);
 }
+
+
+export function toggleAutoDarkMode(){
+  window.settingsApi.toggleAutoDarkMode();
+}

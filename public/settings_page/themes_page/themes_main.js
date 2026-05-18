@@ -1,5 +1,9 @@
-import {setTheme, onResSettings, setLinearGradient, toggleRGB} from "../settings_ipc.js";
+import {setTheme, onResSettings, setLinearGradient, toggleRGB, toggleAutoDarkMode} from "../settings_ipc.js";
 
+const autoDarkMode = document.getElementById("autoDarkMode");
+autoDarkMode.addEventListener("change", (e) => {
+  toggleAutoDarkMode();
+})
 
 const rgbCheck = document.getElementById("rgbCheck");
 rgbCheck.addEventListener("change", (e) => {

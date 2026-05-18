@@ -43,8 +43,53 @@ function handleIpcMessage(webview, event){
     case "toggle-rgb":
       toggleRGB(event.args[0]);
       break;
+    
+    case "toggle-auto-dark-mode":
+      toggleAutoDarkMode();
+      break;
   }
 };
+
+let darkModeTimer = null;
+
+function scheduleAutoDarkMode(){
+  const settings_webview = document.getElementById("view_settings");
+    
+  const now = new Date();
+  const hours = now.getHours();
+  const isDark = hours >= 20 || hours < 7;
+
+  const next = new Date(now);
+
+  if (isDark){
+    setTheme(settings["linear-gradient"] ? "theme-dark-linear-gradient" : "theme-dark")
+    if (settings_webview){ settings_webview.send("res-settings", settings) };
+
+    if (hours < 7){
+      next.setHours(7, 0, 0, 0);
+    } else {
+      next.setDate(next.getDate() + 1);
+      next.setHours(7, 0, 0, 0);
+    }
+  } else {
+    setTheme(settings["linear-gradient"] ? "theme-grey-linear-gradient" : "theme-grey");
+    if (settings_webview){ settings_webview.send("res-settings", settings) };
+
+    next.setHours(20, 0, 0, 0);
+  }
+
+  darkModeTimer = setTimeout(scheduleAutoDarkMode, next - now)
+}
+
+
+function toggleAutoDarkMode(){
+  if (!darkModeTimer){
+    scheduleAutoDarkMode();
+  } else {
+    clearTimeout(darkModeTimer);
+    darkModeTimer = null;
+  }
+}
 
 const rgb_themes = ["theme-red", "theme-green", "theme-blue"];
 let rgbThemeIndex = 0;
@@ -69,7 +114,7 @@ function rgbCycle(webview){
 
   setTheme(settings["linear-gradient"] ? `${rgb_themes[rgbThemeIndex]}-linear-gradient` : rgb_themes[rgbThemeIndex]);
   
-  if (settings_webview){ settings_webview.send("res-settings", settings) }
+  if (settings_webview){ settings_webview.send("res-settings", settings) };
   
   rgbThemeIndex = (rgbThemeIndex + 1) % rgb_themes.length;
 }
