@@ -17,8 +17,16 @@ rgbCheck.addEventListener("change", (e) => {
 onResSettings((settings) => {
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
-  rgbCheck.checked = settings["rgb-cycle"];
-  autoDarkMode.checked = settings["auto-dark-mode"];
+
+  if (settings["rgb-cycle"]){
+    rgbCheck.checked = true;
+    rgbCheck.dispatchEvent(new Event("change"));
+  }
+
+  if (settings["auto-dark-mode"]){
+    autoDarkMode.checked = true;
+    autoDarkMode.dispatchEvent(new Event("change"))
+  }
 })
 
 const linearGradientCheck = document.getElementById("linearGradient");
