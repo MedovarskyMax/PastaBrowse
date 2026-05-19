@@ -149,3 +149,31 @@ input:checked + .slider:before{
   padding-bottom: 5px;
   margin-top: 5px;
 }
+
+.flex{
+  display: flex;
+}
+
+.custom_theme_container{
+  padding: 0 10% 0 10%;
+  margin-top: 1;
+  margin-bottom: 1.5%; 
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+}
+
+.custom_theme_btn{
+  width: 35%;
+  height: 90%;
+  border-radius: 10px;
+  border: 3px dashed var(--col-0);
+  background: transparent;
+  color: var(--col-0);
+  font-size: 2rem;
+}
+
+.custom_theme_btn:hover{
+  background: var(--bg-150);
+  cursor: pointer;
+}
