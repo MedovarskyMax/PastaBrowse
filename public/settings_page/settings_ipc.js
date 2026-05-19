@@ -18,6 +18,6 @@ export function toggleRGB(data){
 }
 
 
-export function toggleAutoDarkMode(){
-  window.settingsApi.toggleAutoDarkMode();
+export function toggleAutoDarkMode(state){
+  window.settingsApi.toggleAutoDarkMode(state);
 }

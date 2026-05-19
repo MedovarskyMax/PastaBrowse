@@ -2,7 +2,7 @@ import {setTheme, onResSettings, setLinearGradient, toggleRGB, toggleAutoDarkMod
 
 const autoDarkMode = document.getElementById("autoDarkMode");
 autoDarkMode.addEventListener("change", (e) => {
-  toggleAutoDarkMode();
+  toggleAutoDarkMode(autoDarkMode.checked);
 })
 
 const rgbCheck = document.getElementById("rgbCheck");
@@ -17,16 +17,8 @@ rgbCheck.addEventListener("change", (e) => {
 onResSettings((settings) => {
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
-
-  if (settings["rgb-cycle"]){
-    rgbCheck.checked = true;
-    rgbCheck.dispatchEvent(new Event("change"));
-  }
-
-  if (settings["auto-dark-mode"]){
-    autoDarkMode.checked = true;
-    autoDarkMode.dispatchEvent(new Event("change"))
-  }
+  rgbCheck.checked = settings["rgb-cycle"];
+  autoDarkMode.checked = settings["auto-dark-mode"];
 })
 
 const linearGradientCheck = document.getElementById("linearGradient");

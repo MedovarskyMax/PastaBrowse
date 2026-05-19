@@ -45,14 +45,20 @@ function handleIpcMessage(webview, event){
       break;
     
     case "toggle-auto-dark-mode":
-      toggleAutoDarkMode();
+      const state = event.args[0];
+      toggleAutoDarkMode(state);
       break;
   }
 };
 
-let darkModeTimer = null;
+export let darkModeTimer = null;
 
 function scheduleAutoDarkMode(){
+  if (darkModeTimer){
+    clearTimeout(darkModeTimer);
+    darkModeTimer = null;
+  }
+
   settings["auto-dark-mode"] = true;
 
   const settings_webview = document.getElementById("view_settings");
@@ -84,8 +90,8 @@ function scheduleAutoDarkMode(){
 }
 
 
-function toggleAutoDarkMode(){
-  if (!darkModeTimer){
+export function toggleAutoDarkMode(state){
+  if (state){
     scheduleAutoDarkMode();
   } else {
     clearTimeout(darkModeTimer);
