@@ -4,7 +4,7 @@ import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, ge
     onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings, onCtrlTab, onCtrlShiftTab,
     onCtrlShiftT} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
-import {openSettings, setTheme, setSetting, darkModeTimer, toggleAutoDarkMode} from "./settings.js";
+import {openSettings, setTheme, setSetting, toggleAutoDarkMode} from "./settings.js";
 
 onSettings((settings) => {
   setTheme(settings["theme"]);
