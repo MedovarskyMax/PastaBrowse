@@ -24,7 +24,7 @@ onSettingsPreloadPath((paths_obj) => {
 })
 
 const searchBtn = document.getElementById("searchBtn");
-searchBtn.addEventListener("click", /*loadURL*/ () => {console.log(darkModeTimer)});
+searchBtn.addEventListener("click", loadURL);
 
 const input = document.getElementById("url");
 input.addEventListener("keypress", (e) => {
