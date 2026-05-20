@@ -1,4 +1,5 @@
 import {setTheme, onResSettings, setLinearGradient, toggleRGB, toggleAutoDarkMode} from "../settings_ipc.js";
+import {openCustomThemeConfig} from "./themes_custom_themes"
 
 const autoDarkMode = document.getElementById("autoDarkMode");
 autoDarkMode.addEventListener("change", (e) => {
@@ -60,3 +61,13 @@ darkBtn.addEventListener("click", () => {setTheme(linearGradientCheck.checked ? 
 
 const fGreenBtn = document.getElementById("fGreenBtn");
 fGreenBtn.addEventListener("click", () => {setTheme(linearGradientCheck.checked ? "theme-forest-green-linear-gradient" : "theme-forest-green")});
+
+const newCustomThemeBtn1 = document.getElementById("newCustomThemeBtn1");
+const newCustomThemeBtn2 = document.getElementById("newCustomThemeBtn2");
+const newCustomThemeBtn3 = document.getElementById("newCustomThemeBtn3");
+const newCustomThemeBtn4 = document.getElementById("newCustomThemeBtn4");
+
+newCustomThemeBtn1.addEventListener("click", (e) => {openCustomThemeConfig(e.target.id)});
+newCustomThemeBtn2.addEventListener("click", (e) => {openCustomThemeConfig(e.target.id)});
+newCustomThemeBtn3.addEventListener("click", (e) => {openCustomThemeConfig(e.target.id)});
+newCustomThemeBtn4.addEventListener("click", (e) => {openCustomThemeConfig(e.target.id)});
