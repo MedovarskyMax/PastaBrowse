@@ -16,7 +16,12 @@ h3{
   margin: 0;
 }
 
-.column {
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+.theme_settings {
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -176,4 +181,15 @@ input:checked + .slider:before{
 .custom_theme_btn:hover{
   background: var(--bg-150);
   cursor: pointer;
+}
+
+.custom_theme_config{
+  width: 50vw;
+  height: 50vh;
+  margin-top: 2.5%;
+  background: var(--bg-250);
+  padding: 1.5%;
+  border: 2px solid var(--col-0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px 5px var(--col-300);
 }
