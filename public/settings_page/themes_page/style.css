@@ -20,6 +20,13 @@ h3{
   margin: 0;
 }
 
+.h2_underline{
+  padding-right: 10%;
+  margin-left: 0.5%;
+  border-bottom: 1px solid var(--col-0);
+  height: fit-content;
+}
+
 .column{
   display: flex;
   flex-direction: column;
@@ -201,5 +208,24 @@ input:checked + .slider:before{
 .topbar{
   display: flex;
   justify-content: space-between;
-  height: 5%;
+  align-items: center;
+  height: 10%;
+}
+
+.closeCustomThemeConfigBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 80%;
+  aspect-ratio: 1;
+  border: 0;
+  outline: 1px solid var(--col-0);
+  background: var(--bg-250);
+  color: var(--text);
+  border-radius: 15px;
+}
+
+.closeCustomThemeConfigBtn:hover{
+  background: var(--bg-150);
 }

@@ -11,8 +11,8 @@ export function openCustomThemeConfig(e){
   const html = `
   <div id="customThemeConfig_${cThemeId}" class="custom_theme_config">
     <div class="topbar">
-      <h3>Custom Theme ${cThemeId}</h3>
-      <button id="closeCustomThemeConfigBtn" class="">X</button>
+      <h2 class="h2_underline">Custom Theme ${cThemeId}</h2>
+      <button id="closeCustomThemeConfigBtn" class="closeCustomThemeConfigBtn"><img src="../../../Icons/close.svg"></button>
     </div>
   </div>`;
 
@@ -23,6 +23,7 @@ export function openCustomThemeConfig(e){
 }
 
 
-function closeCustomThemeConfig(e){
-  e.target.parentElement.parentElement.remove();
+function closeCustomThemeConfig(){
+  const ct_config = document.querySelector(".custom_theme_config");
+  ct_config.remove();
 }
