@@ -48,12 +48,19 @@ export function openCustomThemeConfig(e){
         <input type="color" id="--col-350">
       </div>
     </div>
+    <div class="ct_controls">
+      <button id="cancelBtn">Cancel</button>
+      <button id="confirmBtn">Confirm</button>
+    </div>
   </div>`;
 
   themeSettings.insertAdjacentHTML("afterend", html);
 
   const closeCustomThemeConfigBtn = document.getElementById("closeCustomThemeConfigBtn");
   closeCustomThemeConfigBtn.addEventListener("click", closeCustomThemeConfig)
+
+  const cancelBtn = document.getElementById("cancelBtn");
+  cancelBtn.addEventListener("click", closeCustomThemeConfig);
 }
 
 
