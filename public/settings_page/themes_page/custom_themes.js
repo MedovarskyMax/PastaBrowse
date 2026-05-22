@@ -14,6 +14,40 @@ export function openCustomThemeConfig(e){
       <h2 class="h2_underline">Custom Theme ${cThemeId}</h2>
       <button id="closeCustomThemeConfigBtn" class="closeCustomThemeConfigBtn"><img src="../../../Icons/close.svg"></button>
     </div>
+    <div class="column">
+      <div class="ct_flex">
+        <h3>--col-0 :</h3>
+        <input type="color" id="--col-0">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-50 :</h3>
+        <input type="color" id="--col-50">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-100 :</h3>
+        <input type="color" id="--col-100">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-150 :</h3>
+        <input type="color" id="--col-150">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-200 :</h3>
+        <input type="color" id="--col-200">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-250 :</h3>
+        <input type="color" id="--col-250">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-300 :</h3>
+        <input type="color" id="--col-300">
+      </div>
+      <div class="ct_flex">
+        <h3>--col-350 :</h3>
+        <input type="color" id="--col-350">
+      </div>
+    </div>
   </div>`;
 
   themeSettings.insertAdjacentHTML("afterend", html);

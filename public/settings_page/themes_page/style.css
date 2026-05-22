@@ -229,3 +229,12 @@ input:checked + .slider:before{
 .closeCustomThemeConfigBtn:hover{
   background: var(--bg-150);
 }
+
+.ct_flex{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--col-0);
+  margin-bottom: 1%;
+}
