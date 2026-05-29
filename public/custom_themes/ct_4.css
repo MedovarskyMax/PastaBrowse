@@ -1,0 +1,47 @@
+.theme_custom_1{
+  --text: #ccc;
+  --exit: #f00;
+  --border: #2e2e2e;
+
+  --col-0: var(--bg-0);
+  --col-50: var(--bg-50);
+  --col-100: var(--bg-100);
+  --col-150: var(--bg-150);
+  --col-200: var(--bg-200);
+  --col-250: var(--bg-250);
+  --col-300: var(--bg-300);
+  --col-350: var(--bg-350);
+
+  --bg-0: #7b7b7b;
+  --bg-50: #565656;
+  --bg-100: #5a5959;
+  --bg-150: #535353;
+  --bg-200: #515151;
+  --bg-250: #494949;
+  --bg-300: #3f3f3f;
+  --bg-350: #2f2f2f;
+};
+
+.theme_custom_1_linear_gradient{
+  --text: #ccc;
+  --exit: #f00;
+  --border: #2e2e2e;
+
+  --col-0: #7b7b7b;
+  --col-50: #565656;
+  --col-100: #5a5959;
+  --col-150: #535353;
+  --col-200: #515151;
+  --col-250: #494949;
+  --col-300: #3f3f3f;
+  --col-350: #2f2f2f;
+
+  --bg-0: linear-gradient(135deg, #8a8a8a, #7b7b7b, #6e6e6e);
+  --bg-50: linear-gradient(135deg, #636363, #565656, #4e4e4e);
+  --bg-100: linear-gradient(135deg, #676666, #5a5959, #515050);
+  --bg-150: linear-gradient(135deg, #606060, #535353, #4b4b4b);
+  --bg-200: linear-gradient(135deg, #5e5e5e, #515151, #494949);
+  --bg-250: linear-gradient(135deg, #555555, #494949, #424242);
+  --bg-300: linear-gradient(135deg, #4c4c4c, #3f3f3f, #363636);
+  --bg-350: linear-gradient(135deg, #3c3c3c, #2f2f2f, #252525);
+};
