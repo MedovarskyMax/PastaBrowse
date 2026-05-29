@@ -21,3 +21,8 @@ export function toggleRGB(data){
 export function toggleAutoDarkMode(state){
   window.settingsApi.toggleAutoDarkMode(state);
 }
+
+
+export function sendCustomTheme(theme_obj){
+  window.settingsApi.sendCustomTheme(theme_obj);
+}

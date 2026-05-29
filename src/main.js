@@ -120,6 +120,51 @@ ipcMain.on("get-history", () => {
 
 })
 
+ipcMain.on("save-custom-theme", (_event, data) => {
+  const custom_theme = `.custom-theme-${data["id"]}{
+    --text: #ccc;
+    --exit: #f00;
+    --border: #2e2e2e;
+
+    --col-0: var(--bg-0);
+    --col-50: var(--bg-50);
+    --col-100: var(--bg-100);
+    --col-150: var(--bg-150);
+    --col-200: var(--bg-200);
+    --col-250: var(--bg-250);
+    --col-300: var(--bg-300);
+    --col-350: var(--bg-350);
+
+    --bg-0: ${data["--col-0"]};
+    --bg-50: ${data["--col-50"]};
+    --bg-100: ${data["--col-100"]};
+    --bg-150: ${data["--col-150"]};
+    --bg-200: ${data["--col-200"]};
+    --bg-250: ${data["--col-250"]};
+    --bg-300: ${data["--col-300"]};
+    --bg-350: ${data["--col-350"]};
+  }
+  
+  .custom-theme-${data["id"]}-linear-gradient{
+    --text: #ccc;
+    --exit: #f00;
+    --border: #2e2e2e;
+
+    --col-0: ${data["--col-0"]};
+    --col-50: ${data["--col-50"]};
+    --col-100: ${data["--col-100"]};
+    --col-150: ${data["--col-150"]};
+    --col-200: ${data["--col-200"]};
+    --col-250: ${data["--col-250"]};
+    --col-300: ${data["--col-300"]};
+    --col-350: ${data["--col-350"]};
+
+    --bg-0: linear-gradient(135deg)
+    --bg-50: linear-gradient(135deg)
+  }`
+})
+
+
 app.on("ready", () => {
   createWindow();
 

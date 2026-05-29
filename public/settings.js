@@ -1,4 +1,5 @@
 import {newTab, switchTab} from "./tabs.js";
+import {saveCustomTheme} from "./ipc.js";
 
 export let settings = {};
 
@@ -47,6 +48,11 @@ function handleIpcMessage(webview, event){
     case "toggle-auto-dark-mode":
       const state = event.args[0];
       toggleAutoDarkMode(state);
+      break;
+    
+    case "save-custom-theme":
+      const cTheme = event.args[0];
+      saveCustomTheme(cTheme);
       break;
   }
 };

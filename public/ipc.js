@@ -106,3 +106,8 @@ export function onCtrlShiftTab(callback){
 export function onCtrlShiftT(callback){
   window.api.onCtrlShiftT(callback);
 }
+
+
+export function saveCustomTheme(cTheme){
+  window.api.saveCustomTheme(cTheme);
+}

@@ -1,3 +1,5 @@
+import {sendCustomTheme} from "../ipc.js" 
+
 export function openCustomThemeConfig(e){
   const cThemeId = e.target.id.slice(17);
 
@@ -61,8 +63,25 @@ export function openCustomThemeConfig(e){
 
   const cancelBtn = document.getElementById("cancelBtn");
   cancelBtn.addEventListener("click", closeCustomThemeConfig);
+
+  const confirmBtn = document.getElementById("confirmBtn");
+  confirmBtn.addEventListener("click", () => {
+    saveCustomTheme(cThemeId);
+  })
 }
 
+function saveCustomTheme(cThemeId){
+  let custom_theme = {
+    "id": cThemeId
+  };
+
+  for (let i = 0; i < 400; i + 50){
+    const input = document.getElementById(`--col-${i}`);
+    custom_theme[`--col-${i}`] = input.value; 
+  };
+
+  sendCustomTheme(custom_theme);
+}
 
 function closeCustomThemeConfig(){
   const ct_config = document.querySelector(".custom_theme_config");
