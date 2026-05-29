@@ -5,6 +5,7 @@ const path = require("path");
 let win;
 let historyPath;
 let settingsPath;
+let customThemesPathsObj;
 
 const settings_preload_path = path.join(__dirname, "..", "public", "settings_preload.js")
 
@@ -12,10 +13,22 @@ const isDev = !app.isPackaged;
 
 if (isDev) {
   historyPath = path.join(__dirname, "history.json");
-  settingsPath = path.join(__dirname, "settings.json")
+  settingsPath = path.join(__dirname, "settings.json");
+  customThemesPathsObj = {
+    "ct_1": path.join(__dirname, "..", "public", "custom_themes", "ct_1.css"),
+    "ct_2": path.join(__dirname, "..", "public", "custom_themes", "ct_2.css"),
+    "ct_3": path.join(__dirname, "..", "public", "custom_themes", "ct_3.css"),
+    "ct_4": path.join(__dirname, "..", "public", "custom_themes", "ct_4.css")
+  }
 } else {
   historyPath = path.join(app.getPath("userData"), "history.json");
   settingsPath = path.join(app.getPath("userData"), "settings.json");
+  customThemesPathsObj = {
+    "ct_1": path.join(app.getPath("userData"), "custom_themes", "ct_1.css"),
+    "ct_2": path.join(app.getPath("userData"), "custom_themes", "ct_2.css"),
+    "ct_3": path.join(app.getPath("userData"), "custom_themes", "ct_3.css"),
+    "ct_4": path.join(app.getPath("userData"), "custom_themes", "ct_4.css")
+  }
 }
 
 const default_settings = {
@@ -83,6 +96,17 @@ function createWindow() {
     win.webContents.send("settings-preload-path", settings_preload_path);
   })
 }
+
+
+function adjustColor(hex, delta){
+  const v = parseInt(hex.slice(1), 16);
+  const r = Math.min(255, Math.max(0, ((v >> 16) & 255) + delta));
+  const g = Math.min(255, Math.max(0, ((v >> 8) & 255) + delta));
+  const b = Math.min(255, Math.max(0, (v & 255) + delta));
+  
+  return "#" + [r, g, b].map(c => c.toString(16).padStart(2, "0")).join("");
+}
+
 
 ipcMain.on("kill-app", (_event, data) => {
   const tab_list = data["tab_list"];
@@ -159,9 +183,17 @@ ipcMain.on("save-custom-theme", (_event, data) => {
     --col-300: ${data["--col-300"]};
     --col-350: ${data["--col-350"]};
 
-    --bg-0: linear-gradient(135deg)
-    --bg-50: linear-gradient(135deg)
+    --bg-0: linear-gradient(135deg, ${adjustColor(data["--col-0"], + 9)}, ${data["--col-0"]}, ${adjustColor(data["--col-0"], - 8)});
+    --bg-50: linear-gradient(135deg, ${adjustColor(data["--col-50"], + 9)}, ${data["--col-50"]}, ${adjustColor(data["--col-50"], - 8)});
+    --bg-100: linear-gradient(135deg, ${adjustColor(data["--col-100"], + 9)}, ${data["--col-100"]}, ${adjustColor(data["--col-100"], - 8)});
+    --bg-150: linear-gradient(135deg, ${adjustColor(data["--col-150"], + 9)}, ${data["--col-150"]}, ${adjustColor(data["--col-150"], - 8)});
+    --bg-200: linear-gradient(135deg, ${adjustColor(data["--col-200"], + 9)}, ${data["--col-200"]}, ${adjustColor(data["--col-200"], - 8)});
+    --bg-250: linear-gradient(135deg, ${adjustColor(data["--col-250"], + 9)}, ${data["--col-250"]}, ${adjustColor(data["--col-250"], - 8)});
+    --bg-300: linear-gradient(135deg, ${adjustColor(data["--col-300"], + 9)}, ${data["--col-300"]}, ${adjustColor(data["--col-300"], - 8)});
+    --bg-350: linear-gradient(135deg, ${adjustColor(data["--col-350"], + 9)}, ${data["--col-350"]}, ${adjustColor(data["--col-350"], - 8)});
   }`
+
+  writeFileSync(customThemesPathsObj[`ct_${data["id"]}`]);
 })
 
 
