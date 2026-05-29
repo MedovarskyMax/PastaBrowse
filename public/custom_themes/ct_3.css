@@ -1,4 +1,4 @@
-.theme_custom_3{
+.theme-custom-3{
   --text: #ccc;
   --exit: #f00;
   --border: #2e2e2e;
@@ -22,7 +22,7 @@
   --bg-350: #2f2f2f;
 };
 
-.theme_custom_3_linear_gradient{
+.theme-custom-3-linear-gradient{
   --text: #ccc;
   --exit: #f00;
   --border: #2e2e2e;
