@@ -75,7 +75,7 @@ function saveCustomTheme(cThemeId){
     "id": cThemeId
   };
 
-  for (let i = 0; i < 400; i + 50){
+  for (let i = 0; i < 400; i += 50){
     const input = document.getElementById(`--col-${i}`);
     custom_theme[`--col-${i}`] = input.value; 
   };

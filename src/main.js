@@ -193,7 +193,7 @@ ipcMain.on("save-custom-theme", (_event, data) => {
     --bg-350: linear-gradient(135deg, ${adjustColor(data["--col-350"], + 9)}, ${data["--col-350"]}, ${adjustColor(data["--col-350"], - 8)});
   }`
 
-  writeFileSync(customThemesPathsObj[`ct_${data["id"]}`]);
+  writeFileSync(customThemesPathsObj[`ct_${data["id"]}`], custom_theme);
 })
 
 
