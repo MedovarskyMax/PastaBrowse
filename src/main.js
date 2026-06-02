@@ -176,7 +176,7 @@ ipcMain.on("get-custom-theme", (_event, cThemeId) => {
 });
 
 ipcMain.on("save-custom-theme", (_event, data) => {
-  const custom_theme = `.custom-theme-${data["id"]}{
+  const custom_theme = `.theme-custom-${data["id"]}{
     --text: #ccc;
     --exit: #f00;
     --border: #2e2e2e;
@@ -199,8 +199,8 @@ ipcMain.on("save-custom-theme", (_event, data) => {
     --bg-300: ${data["--col-300"]};
     --bg-350: ${data["--col-350"]};
   }
-  
-  .custom-theme-${data["id"]}-linear-gradient{
+
+  .theme-custom-${data["id"]}-linear-gradient{
     --text: #ccc;
     --exit: #f00;
     --border: #2e2e2e;
@@ -222,7 +222,7 @@ ipcMain.on("save-custom-theme", (_event, data) => {
     --bg-250: linear-gradient(135deg, ${adjustColor(data["--col-250"], + 9)}, ${data["--col-250"]}, ${adjustColor(data["--col-250"], - 8)});
     --bg-300: linear-gradient(135deg, ${adjustColor(data["--col-300"], + 9)}, ${data["--col-300"]}, ${adjustColor(data["--col-300"], - 8)});
     --bg-350: linear-gradient(135deg, ${adjustColor(data["--col-350"], + 9)}, ${data["--col-350"]}, ${adjustColor(data["--col-350"], - 8)});
-  }`
+  }`.replace(/^  /gm, "");
 
   writeFileSync(customThemesPathsObj[`ct_${data["id"]}`], custom_theme);
 })
