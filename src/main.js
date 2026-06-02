@@ -99,8 +99,8 @@ function createWindow() {
 
 
 function parseThemesCss(filePath){
-  const css = readFileSync(filePath);
-  const themesRegex = /\.(theme-[\w]+)\s*\{([^}]+)\}/g;
+  const css = readFileSync(filePath, "utf-8");
+  const themesRegex = /\.(theme-[-\w]+)\s*\{([^}]+)\}/g;
   const themes = {};
   let match;
 
