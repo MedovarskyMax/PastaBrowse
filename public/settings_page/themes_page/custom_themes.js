@@ -76,6 +76,7 @@ export function openCustomThemeConfig(e){
   const confirmBtn = document.getElementById("confirmBtn");
   confirmBtn.addEventListener("click", () => {
     saveCustomTheme(cThemeId);
+    closeCustomThemeConfig();
   })
 }
 
