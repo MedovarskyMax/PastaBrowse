@@ -1,16 +1,8 @@
 import {sendCustomTheme, getCustomTheme, onResCustomTheme} from "../ipc.js" 
 
-onResCustomTheme((theme) => {
-    for (let i = 0; i < 400; i += 50){
-      document.getElementById(`--col-${i}`).value = theme[`--col--${i}`];
-    }
-  })
-
 
 export function openCustomThemeConfig(e){
   const cThemeId = e.target.id.slice(17);
-
-  getCustomTheme(cThemeid);
 
   const themeSettings = document.getElementById("themeSettings");
   const customThemeConfig = document.querySelector(".custom_theme_config");
@@ -66,6 +58,14 @@ export function openCustomThemeConfig(e){
   </div>`;
 
   themeSettings.insertAdjacentHTML("afterend", html);
+
+  onResCustomTheme((theme) => {
+    for (let i = 0; i < 400; i += 50){
+      document.getElementById(`--col-${i}`).value = theme[`--bg-${i}`];
+    }
+  })
+
+  getCustomTheme(cThemeId);
 
   const closeCustomThemeConfigBtn = document.getElementById("closeCustomThemeConfigBtn");
   closeCustomThemeConfigBtn.addEventListener("click", closeCustomThemeConfig)
