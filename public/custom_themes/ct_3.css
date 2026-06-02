@@ -20,7 +20,7 @@
   --bg-250: #494949;
   --bg-300: #3f3f3f;
   --bg-350: #2f2f2f;
-};
+}
 
 .theme-custom-3-linear-gradient{
   --text: #ccc;
@@ -36,12 +36,12 @@
   --col-300: #3f3f3f;
   --col-350: #2f2f2f;
 
-  --bg-0: linear-gradient(135deg, #8a8a8a, #7b7b7b, #6e6e6e);
-  --bg-50: linear-gradient(135deg, #636363, #565656, #4e4e4e);
-  --bg-100: linear-gradient(135deg, #676666, #5a5959, #515050);
-  --bg-150: linear-gradient(135deg, #606060, #535353, #4b4b4b);
-  --bg-200: linear-gradient(135deg, #5e5e5e, #515151, #494949);
-  --bg-250: linear-gradient(135deg, #555555, #494949, #424242);
-  --bg-300: linear-gradient(135deg, #4c4c4c, #3f3f3f, #363636);
-  --bg-350: linear-gradient(135deg, #3c3c3c, #2f2f2f, #252525);
-};
+  --bg-0: linear-gradient(135deg, #848484, #7b7b7b, #737373);
+  --bg-50: linear-gradient(135deg, #5f5f5f, #565656, #4e4e4e);
+  --bg-100: linear-gradient(135deg, #636262, #5a5959, #525151);
+  --bg-150: linear-gradient(135deg, #5c5c5c, #535353, #4b4b4b);
+  --bg-200: linear-gradient(135deg, #5a5a5a, #515151, #494949);
+  --bg-250: linear-gradient(135deg, #525252, #494949, #414141);
+  --bg-300: linear-gradient(135deg, #484848, #3f3f3f, #373737);
+  --bg-350: linear-gradient(135deg, #383838, #2f2f2f, #272727);
+}
