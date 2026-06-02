@@ -19,5 +19,7 @@ contextBridge.exposeInMainWorld("api", {
   onCtrlTab: (callback) => ipcRenderer.on("ctrl-tab", (_event) => callback()),
   onCtrlShiftTab: (callback) => ipcRenderer.on("ctrl-shift-tab", (_event) => callback()),
   onCtrlShiftT: (callback) => ipcRenderer.on("ctrl-shift-t", (_event) => callback()),
-  saveCustomTheme: (cTheme) => ipcRenderer.send("save-custom-theme", cTheme)
+  saveCustomTheme: (cTheme) => ipcRenderer.send("save-custom-theme", cTheme),
+  getCustomTheme: (id) => ipcRenderer.send("get-custom-theme", id),
+  onResCustomTheme: (callback) => ipcRenderer.on("res-custom-theme", (_event, theme) => callback(theme))
 });

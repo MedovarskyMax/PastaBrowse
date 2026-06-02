@@ -98,6 +98,31 @@ function createWindow() {
 }
 
 
+function parseThemesCss(filePath){
+  const css = readFileSync(filePath);
+  const themesRegex = /\.(theme-[\w]+)\s*\{([^}]+)\}/g;
+  const themes = {};
+  let match;
+
+  while ((match = themesRegex.exec(css)) !== null){
+    const [, name, body] = match;
+
+    const variables = {};
+    const varRegex = /(--[\w-]+)\s*:\s*([^;]+);/g;
+    let varMatch;
+
+    while ((varMatch = varRegex.exec(body)) !== null){
+      const [, prop, value] = varMatch;
+      variables[prop] = value.trim();
+    };
+
+    themes[name] = variables
+  };
+
+  return themes;
+};
+
+
 function adjustColor(hex, delta){
   const v = parseInt(hex.slice(1), 16);
   const r = Math.min(255, Math.max(0, ((v >> 16) & 255) + delta));
@@ -143,6 +168,12 @@ ipcMain.on("get-history", () => {
   }
 
 })
+
+ipcMain.on("get-custom-theme", (_event, cThemeId) => {
+  const css = parseThemesCss(customThemesPathsObj[`ct_${cThemeId}`]);
+  const theme = css[`theme-custom-${cThemeId}`];
+  win.webContents.send("res-custom-theme", theme);
+});
 
 ipcMain.on("save-custom-theme", (_event, data) => {
   const custom_theme = `.custom-theme-${data["id"]}{

@@ -26,3 +26,13 @@ export function toggleAutoDarkMode(state){
 export function sendCustomTheme(theme_obj){
   window.settingsApi.sendCustomTheme(theme_obj);
 }
+
+
+export function getCustomTheme(id){
+  window.settingsApi.getCustomTheme(id);
+}
+
+
+export function onResCustomTheme(callback){
+  window.settingsApi.onResCustomTheme(callback);
+}

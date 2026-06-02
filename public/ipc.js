@@ -111,3 +111,13 @@ export function onCtrlShiftT(callback){
 export function saveCustomTheme(cTheme){
   window.api.saveCustomTheme(cTheme);
 }
+
+
+export function getCustomTheme(id){
+  window.api.getCustomTheme(id);
+}
+
+
+export function onResCustomTheme(callback){
+  window.api.onResCustomTheme(callback);
+}

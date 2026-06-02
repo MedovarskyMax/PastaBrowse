@@ -1,5 +1,11 @@
 import {newTab, switchTab} from "./tabs.js";
-import {saveCustomTheme} from "./ipc.js";
+import {saveCustomTheme, getCustomTheme, onResCustomTheme} from "./ipc.js";
+
+let gWebview;
+
+onResCustomTheme((theme) => {
+  gWebview.send("res-custom-theme", theme);
+})
 
 export let settings = {};
 
@@ -53,6 +59,12 @@ function handleIpcMessage(webview, event){
     case "save-custom-theme":
       const cTheme = event.args[0];
       saveCustomTheme(cTheme);
+      break;
+    
+    case "get-custom-theme":
+      const cThemeId = event.args[0];
+      getCustomTheme(cThemeId);
+      gWebview = webview;
       break;
   }
 };
