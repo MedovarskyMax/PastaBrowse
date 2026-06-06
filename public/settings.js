@@ -35,37 +35,42 @@ export function openSettings(preloadPath) {
 
 
 function handleIpcMessage(webview, event){
+  gWebview = webview;
+
   switch (event.channel){
-    case "theme-change":
+    case "theme-change": {
       const variant = event.args[0];
       setTheme(variant);
       webview.send("res-settings", settings);
       break;
-    
-    case "set-linear-gradient":
+    }
+    case "set-linear-gradient": {
       toggleLinearGradient();
       webview.send("res-settings", settings);
       break;
-    
-    case "toggle-rgb":
+    }
+    case "toggle-rgb": {
       toggleRGB(event.args[0]);
       break;
-    
-    case "toggle-auto-dark-mode":
+    }
+    case "toggle-auto-dark-mode": {
       const state = event.args[0];
       toggleAutoDarkMode(state);
       break;
-    
-    case "save-custom-theme":
+    }
+    case "save-custom-theme": {
       const cTheme = event.args[0];
       saveCustomTheme(cTheme);
+      const styleLink = document.querySelector(`link[rel="stylesheet"]`);
+      styleLink.href = styleLink.href.split("?")[0] + "?v=" + Date.now();
       break;
-    
-    case "get-custom-theme":
+    }
+    case "get-custom-theme": {
       const cThemeId = event.args[0];
-      getCustomTheme(cThemeId);
       gWebview = webview;
+      getCustomTheme(cThemeId);
       break;
+    }
   }
 };
 
@@ -164,6 +169,7 @@ function toggleLinearGradient(){
 }
 
 export function setTheme(variant){
+  document.documentElement.classList.remove(settings["theme"]);
   settings["theme"] = variant;
   
   try {

@@ -1,4 +1,5 @@
-import {sendCustomTheme, getCustomTheme, onResCustomTheme} from "../ipc.js" 
+import {sendCustomTheme, getCustomTheme, onResCustomTheme, setTheme} from "../ipc.js";
+import { linearGradientCheck } from "./main.js";
 
 
 export function openCustomThemeConfig(e){
@@ -76,7 +77,7 @@ export function openCustomThemeConfig(e){
   const confirmBtn = document.getElementById("confirmBtn");
   confirmBtn.addEventListener("click", () => {
     saveCustomTheme(cThemeId);
-    closeCustomThemeConfig();
+    setTheme(linearGradientCheck.checked ? `theme-custom-${cThemeId}-linear-gradient` : `theme-custom-${cThemeId}`);
   })
 }
 

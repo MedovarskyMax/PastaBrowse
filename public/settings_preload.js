@@ -8,5 +8,5 @@ contextBridge.exposeInMainWorld("settingsApi", {
   toggleAutoDarkMode: (state) => ipcRenderer.sendToHost("toggle-auto-dark-mode", state),
   sendCustomTheme: (cTheme) => ipcRenderer.sendToHost("save-custom-theme", cTheme),
   getCustomTheme: (id) => ipcRenderer.sendToHost("get-custom-theme", id),
-  onResCustomTheme: (callback) => ipcRenderer.on("res-custom-theme", (_event, theme) => callback(theme))
+  onResCustomTheme: (callback) => ipcRenderer.once("res-custom-theme", (_event, theme) => callback(theme))
 })
