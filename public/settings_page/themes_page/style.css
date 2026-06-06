@@ -238,3 +238,48 @@ input:checked + .slider:before{
   border-bottom: 1px solid var(--col-0);
   margin-bottom: 1%;
 }
+
+.ct_controls{
+  margin-top: auto;
+  height: 10%;
+}
+
+.ctBtn{
+  width: 15%;
+  height: 75%;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid var(--col-0);
+  color: var(--text);
+  margin-top: 1%;
+  margin-right: 1.5%;
+  margin-left: 1%
+}
+
+.cancelBtn{
+  background: var(--bg-200);
+}
+
+.cancelBtn:hover{
+  background: var(--bg-50);
+  cursor: pointer;
+}
+
+.confirmBtn{
+  background: var(--bg-200);
+}
+
+.confirmBtn:hover{
+  background: var(--bg-50);
+  cursor: pointer;
+}
+
+.colInput:hover{
+  cursor: pointer;
+}
+
+.ct_column{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

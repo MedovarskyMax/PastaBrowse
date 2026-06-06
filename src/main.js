@@ -177,9 +177,9 @@ ipcMain.on("get-custom-theme", (_event, cThemeId) => {
 
 ipcMain.on("save-custom-theme", (_event, data) => {
   const custom_theme = `.theme-custom-${data["id"]}{
-    --text: #ccc;
-    --exit: #f00;
-    --border: #2e2e2e;
+    --text: ${data["--text"]};
+    --exit: ${data["--exit"]};
+    --border: ${data["--border"]};
 
     --col-0: var(--bg-0);
     --col-50: var(--bg-50);
@@ -201,9 +201,9 @@ ipcMain.on("save-custom-theme", (_event, data) => {
   }
 
   .theme-custom-${data["id"]}-linear-gradient{
-    --text: #ccc;
-    --exit: #f00;
-    --border: #2e2e2e;
+    --text: ${data["--text"]};
+    --exit: ${data["--exit"]};
+    --border: ${data["--border"]};
 
     --col-0: ${data["--col-0"]};
     --col-50: ${data["--col-50"]};
