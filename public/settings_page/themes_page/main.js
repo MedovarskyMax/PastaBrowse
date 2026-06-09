@@ -15,8 +15,15 @@ rgbCheck.addEventListener("change", (e) => {
   }
 })
 
-onResSettings((settings) => {
+function bustCssCache(){
   document.documentElement.removeAttribute("class");
+  const styleLink = document.querySelector(`link[rel="stylesheet"]`);
+  styleLink.href = styleLink.href.split("?")[0] + "?v=" + Date.now();
+}
+
+onResSettings((settings) => {
+  bustCssCache();
+  
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
   rgbCheck.checked = settings["rgb-cycle"];
