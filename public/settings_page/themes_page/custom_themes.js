@@ -71,6 +71,7 @@ export function openCustomThemeConfig(e){
     <div class="ct_controls">
       <button class="cancelBtn ctBtn" id="cancelBtn">Cancel</button>
       <button class="confirmBtn ctBtn" id="confirmBtn">Confirm</button>
+      <button class="resetBtn ctBtn" id="resetBtn">Reset</button>
     </div>
   </div>`;
 
@@ -99,7 +100,30 @@ export function openCustomThemeConfig(e){
     saveCustomTheme(cThemeId);
     setTheme(linearGradientCheck.checked ? `theme-custom-${cThemeId}-linear-gradient` : `theme-custom-${cThemeId}`);
   })
+
+  const resetBtn = document.getElementById("resetBtn");
+  resetBtn.addEventListener("click", () => {resetCustomTheme(cThemeId)});
 }
+
+
+function resetCustomTheme(cThemeId){
+  document.getElementById("--col-0").value = "#7b7b7b";
+  document.getElementById("--col-50").value = "#565656";
+  document.getElementById("--col-100").value = "#5a5959";
+  document.getElementById("--col-150").value = "#535353";
+  document.getElementById("--col-200").value = "#515151";
+  document.getElementById("--col-250").value = "#494949";
+  document.getElementById("--col-300").value = "#3f3f3f";
+  document.getElementById("--col-350").value = "#2f2f2f";
+
+  document.getElementById("--text").value = "#ccc";
+  document.getElementById("--exit").value = "#f00";
+  document.getElementById("--border").value = "#2e2e2e";
+
+  saveCustomTheme(cThemeId);
+  setTheme(linearGradientCheck.checked ? `theme-custom-${cThemeId}-linear-gradient` : `theme-custom-${cThemeId}`);
+}
+
 
 function saveCustomTheme(cThemeId){
   let custom_theme = {
