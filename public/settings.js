@@ -151,7 +151,7 @@ function toggleRGB(state){
 }
 
 function rgbCycle(webview){
-  const settings_webview = document.getElementById("view_settings");
+  const settings_webview = document.getElementById("view_settings_themes");
 
   setTheme(settings["linear-gradient"] ? `${rgb_themes[rgbThemeIndex]}-linear-gradient` : rgb_themes[rgbThemeIndex]);
   
