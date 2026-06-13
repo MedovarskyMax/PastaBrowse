@@ -286,3 +286,7 @@ input:checked + .slider:before{
   height: 100%;
   width: 75%;
 }
+
+.active_custom_theme{
+  border: 4px solid var(--col-0);
+}

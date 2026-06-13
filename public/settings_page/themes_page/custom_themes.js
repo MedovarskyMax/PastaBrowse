@@ -3,6 +3,14 @@ import { linearGradientCheck } from "./main.js";
 
 
 export function openCustomThemeConfig(e){
+  const ctOpenButton = document.querySelector(".active_custom_theme");
+
+  if (ctOpenButton){
+    ctOpenButton.classList.remove("active_custom_theme")
+  };
+
+  e.target.classList.add("active_custom_theme")
+
   const cThemeId = e.target.id.slice(17);
 
   const themeSettings = document.getElementById("themeSettings");
@@ -148,5 +156,6 @@ function saveCustomTheme(cThemeId){
 
 function closeCustomThemeConfig(){
   const ct_config = document.querySelector(".custom_theme_config");
+  document.querySelector(".active_custom_theme").classList.remove("active_custom_theme");
   ct_config.remove();
 }
