@@ -119,6 +119,11 @@ export function switchTab(tab){
 
   newView.classList.remove("bg_view");
   newView.classList.add("main_view");
+
+  if (tab.id.includes("settings")){
+    const input = document.getElementById("url");
+    input.value = "";
+  }
 }
 
 
