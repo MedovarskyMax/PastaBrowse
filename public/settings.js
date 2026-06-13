@@ -92,7 +92,7 @@ function scheduleAutoDarkMode(){
 
   settings["auto-dark-mode"] = true;
 
-  const settings_webview = document.getElementById("view_settings");
+  const settings_webview = document.getElementById("view_settings_themes");
     
   const now = new Date();
   const hours = now.getHours();
