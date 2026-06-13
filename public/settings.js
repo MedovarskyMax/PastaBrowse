@@ -195,4 +195,8 @@ export function setSetting(key, value){
 
 export function navToSettingsRoot(){
   gWebview.src = "./settings_page/settings.html";
+  gWebview.id = "view_settings";
+
+  const tab = document.querySelector(".settings");   /*Only the tab has the settings class, not the view*/
+  tab.id = "tab_settings";
 }
