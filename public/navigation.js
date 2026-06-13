@@ -27,6 +27,12 @@ export let tab_list = {
 }
 
 export function loadURL(){
+  const temp_tab = document.querySelector(".main_tab");
+
+  if (temp_tab.id.includes("settings")){
+    return;
+  };
+
   const input = document.getElementById("url");
   let trimmed_input = input.value.trim();
 
