@@ -36,3 +36,8 @@ export function getCustomTheme(id){
 export function onResCustomTheme(callback){
   window.settingsApi.onResCustomTheme(callback);
 }
+
+
+export function setSettingsTabId(page){
+  window.settingsApi.setSettingsTabId(page);
+}

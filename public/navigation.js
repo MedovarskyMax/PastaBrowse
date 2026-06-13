@@ -1,4 +1,5 @@
 import {setTitleAndFavIcon} from "./tabs.js"; 
+import {navToSettingsRoot} from "./settings.js";
 
 let isProgrammaticNav = false;
 let isRestoringSession = false;
@@ -165,6 +166,12 @@ export function refresh(){
 export function history_backward(){
   const tab_container = document.getElementById("tab_container");
   const tab_id = tab_container.querySelector(".main_tab").id.slice(4);
+
+  if (tab_id.includes("settings") && tab_id.length > 12){
+    navToSettingsRoot();
+    return;
+  }
+
   const tab = tab_list["tabs"].find(obj => obj["tab_id"] === Number(tab_id))
 
   isProgrammaticNav = true;

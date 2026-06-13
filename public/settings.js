@@ -10,7 +10,7 @@ onResCustomTheme((theme) => {
 export let settings = {};
 
 export function openSettings(preloadPath) {
-  const settings_tab = document.getElementById("tab_settings");
+  const settings_tab = document.querySelector(".settings");
 
   if (settings_tab) {
     switchTab(settings_tab);
@@ -70,6 +70,14 @@ function handleIpcMessage(webview, event){
       gWebview = webview;
       getCustomTheme(cThemeId);
       break;
+    }
+    case "set-settings-tab-id": {
+      const page = event.args[0];
+      const tab = document.getElementById("tab_settings");
+      const view = document.getElementById("view_settings");
+
+      tab.id += ("_" + page);
+      view.id += ("_" + page);
     }
   }
 };
@@ -182,4 +190,9 @@ export function setTheme(variant){
 
 export function setSetting(key, value){
   settings[key] = value;
+}
+
+
+export function navToSettingsRoot(){
+  gWebview.src = "./settings_page/settings.html";
 }
