@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain, screen, globalShortcut } = require("electron");
-const { writeFileSync, readFileSync } = require("fs");
+const { writeFileSync, readFileSync, copyFileSync, existsSync, mkdirSync } = require("fs");
 const path = require("path");
 
 let win;
@@ -95,6 +95,23 @@ function createWindow() {
     win.webContents.send("settings", settings);
     win.webContents.send("settings-preload-path", settings_preload_path);
   })
+}
+
+
+function ensureCustomThemesInUserData(){
+  const dir = path.join(app.getPath("userData"), "custom_themes");
+  
+  if (!existsSync(dir)){
+    mkdirSync(dir, { recursive: true});
+  }
+
+  for (let i = 1; i <= 4; i++){
+    const dest = path.join(dir, `ct_${i}.css`);
+    if (!existsSync(dest)){
+      const src = path.join(process.resourcesPath, "app.asar", "public", "custom_themes", `ct_${i}.css`);
+      copyFileSync(src, dest);
+    }
+  }
 }
 
 
@@ -231,6 +248,10 @@ ipcMain.on("save-custom-theme", (_event, data) => {
 app.on("ready", () => {
   createWindow();
 
+  if (!isDev){
+    ensureCustomThemesInUserData();
+  }
+  
   globalShortcut.register("CommandOrControl+T", () => {
     if (win.isFocused()) {
       win.webContents.send("ctrl-t");
