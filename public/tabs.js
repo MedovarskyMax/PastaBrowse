@@ -6,7 +6,7 @@ let id_count = 1
 
 export function newTab(isSettings = false){
   const newTabHTML = `
-    <div class="tab main_tab settings" id="tab_${isSettings ? "settings" : id_count}">
+    <div class="tab main_tab ${isSettings ? "settings" : ""}" id="tab_${isSettings ? "settings" : id_count}">
       <img src="" alt="">
       <p class="tab_title">New Tab</p>
       <button class="tabXBtn" id="tabXBtn"><img src="../Icons/close.svg" alt="x"></button>
