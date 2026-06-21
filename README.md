@@ -4,7 +4,7 @@ Custom browser made with Electron as both a passion and learning project
 ## Installation
 Download the installer from the [latest release](https://github.com/MedovarskyMax/PastaBrowse/releases/latest)
 
-- Windows: `PastaBrowse.Setup.1.0.0.exe`
+- Windows: `PastaBrowse.Setup.1.1.0.exe`
 - macOS: (coming soon)
 - Linux: (coming soon)
 ## Usage
@@ -16,10 +16,23 @@ Run the installer and launch PastaBrowse from your desktop or start menu.
 - Per-tab history navigation - back and forward buttons to navigate each tab's history
 - Multi-engine search - choose between Google, DuckDuckGo, and Bing directly from the toolbar
 - Smart URL detection - automatically distinguishes URLs from search queries; adds `https://` when missing
-- Zoom controls - zoom in/out or reset zoom with `ctrl/cmd + =` ; `ctrl/cmd + -` ; `ctrl/cmd + 0`
-- Keyboard shortcuts - new tab `ctrl/cmd + T` ; close tab `ctrl/cmd + W` ; refresh `ctrl/cmd + R` or `F5`
 - Custom frameless window - native-feeling title bar with minimize, maximize and close controls
 - Favicon & title display - tab titles and favicons update automatically as you browse
+- 12 Preset Themes
+- 4 Custom Theme Slots
+- Linear gradient version for every theme (including custom ones)
+- Automatic Dark Mode (based on time)
+- RGB Theme Cycling
+- Hotkeys:
+  - New Tab => `CTRL/CMD + T`
+  - Close Tab => `CTRL/CMD + W`
+  - Refresh => `F5` or `CTRL/CMD + R`
+  - Next Tab => `CTRL/CMD + Tab`
+  - Previous Tab => `CTRL/CMD + Shift + Tab`
+  - Zoom in => `CTRL/CMD + =`
+  - Zoom out => `CTRL/CMD + -`
+  - Reset Zoom => `CTRL/CMD + 0`
+  - Load Last Session => `CTRL/CMD + Shift + T`
 
 ## Development
 If you want to run PastaBrowse from source:
