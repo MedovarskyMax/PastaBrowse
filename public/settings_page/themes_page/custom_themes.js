@@ -159,3 +159,15 @@ function closeCustomThemeConfig(){
   document.querySelector(".active_custom_theme").classList.remove("active_custom_theme");
   ct_config.remove();
 }
+
+export function injectCss(css){
+  let el = document.getElementById("injected-custom-theme");
+    
+  if (!el){
+    el = document.createElement("style");
+    el.id = "injected-custom-theme";
+    document.head.appendChild(el);
+  }
+  
+  el.textContent = css;
+}

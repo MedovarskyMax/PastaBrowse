@@ -1,7 +1,11 @@
-import {setTheme, onResSettings, setLinearGradient, toggleRGB, toggleAutoDarkMode, setSettingsTabId} from "../ipc.js";
-import {openCustomThemeConfig} from "./custom_themes.js";
+import {setTheme, onResSettings, setLinearGradient, toggleRGB, toggleAutoDarkMode, setSettingsTabId, onResCustomThemeCss, getCustomThemeCss} from "../ipc.js";
+import {openCustomThemeConfig, injectCss} from "./custom_themes.js";
 
 setSettingsTabId("themes");
+
+onResCustomThemeCss((css) => {
+  injectCss(css);
+})
 
 const autoDarkMode = document.getElementById("autoDarkMode");
 autoDarkMode.addEventListener("change", (e) => {
@@ -24,12 +28,16 @@ function bustCssCache(){
 }
 
 onResSettings((settings) => {
-  bustCssCache();
+  /*bustCssCache();*/
   
   document.documentElement.classList = settings["theme"];
   linearGradientCheck.checked = settings["linear-gradient"];
   rgbCheck.checked = settings["rgb-cycle"];
   autoDarkMode.checked = settings["auto-dark-mode"];
+
+  if (settings["theme"].includes("custom")){
+    getCustomThemeCss();
+  }
 })
 
 export const linearGradientCheck = document.getElementById("linearGradient");

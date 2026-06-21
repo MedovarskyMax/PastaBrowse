@@ -150,6 +150,12 @@ function adjustColor(hex, delta){
 }
 
 
+ipcMain.on("get-custom-theme-css", (_event, id) => {
+  css = readFileSync(customThemesPathsObj[`ct_${id}`], "utf-8");
+  win.webContents.send("res-custom-theme-css", css);
+})
+
+
 ipcMain.on("kill-app", (_event, data) => {
   const tab_list = data["tab_list"];
   const settings = data["settings"];

@@ -9,5 +9,7 @@ contextBridge.exposeInMainWorld("settingsApi", {
   sendCustomTheme: (cTheme) => ipcRenderer.sendToHost("save-custom-theme", cTheme),
   getCustomTheme: (id) => ipcRenderer.sendToHost("get-custom-theme", id),
   onResCustomTheme: (callback) => ipcRenderer.once("res-custom-theme", (_event, theme) => callback(theme)),
-  setSettingsTabId: (page) => ipcRenderer.sendToHost("set-settings-tab-id", page)
+  setSettingsTabId: (page) => ipcRenderer.sendToHost("set-settings-tab-id", page),
+  onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css)),
+  getCustomThemeCss: () => ipcRenderer.sendToHost("get-custom-theme-css")
 })

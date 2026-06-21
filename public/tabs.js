@@ -225,6 +225,8 @@ function newWebview(isSettings = false){
   newView.classList.add("view");
   newView.classList.add("main_view");
 
+  newView.classList.add("settings_view_id_class");
+
   newView.id = `view_${isSettings ? "settings" : id_count}`;
 
   if (!isSettings){        /*remove condition*/

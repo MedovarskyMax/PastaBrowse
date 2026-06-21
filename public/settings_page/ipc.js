@@ -41,3 +41,13 @@ export function onResCustomTheme(callback){
 export function setSettingsTabId(page){
   window.settingsApi.setSettingsTabId(page);
 }
+
+
+export function onResCustomThemeCss(callback){
+  window.settingsApi.onResCustomThemeCss(callback);
+}
+
+
+export function getCustomThemeCss(){
+  window.settingsApi.getCustomThemeCss();
+}

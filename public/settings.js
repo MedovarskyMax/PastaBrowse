@@ -1,7 +1,11 @@
 import {newTab, switchTab} from "./tabs.js";
-import {saveCustomTheme, getCustomTheme, onResCustomTheme} from "./ipc.js";
+import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss} from "./ipc.js";
 
 let gWebview;
+
+onResCustomThemeCss((css) => {
+  injectCssIntoRenderer(css);
+})
 
 onResCustomTheme((theme) => {
   gWebview.send("res-custom-theme", theme);
@@ -61,8 +65,10 @@ function handleIpcMessage(webview, event){
     case "save-custom-theme": {
       const cTheme = event.args[0];
       saveCustomTheme(cTheme);
+      /*
       const styleLink = document.querySelector(`link[rel="stylesheet"]`);
       styleLink.href = styleLink.href.split("?")[0] + "?v=" + Date.now();
+      */
       break;
     }
     case "get-custom-theme": {
@@ -78,6 +84,11 @@ function handleIpcMessage(webview, event){
 
       tab.id += ("_" + page);
       view.id += ("_" + page);
+      break;
+    }
+    case "get-custom-theme-css": {
+      const themeId = settings["theme"].slice(13, 14);
+      getCustomThemeCss(themeId)
     }
   }
 };
@@ -151,7 +162,7 @@ function toggleRGB(state){
 }
 
 function rgbCycle(webview){
-  const settings_webview = document.getElementById("view_settings_themes");
+  const settings_webview = document.querySelector(".settings_view_id_class")
 
   setTheme(settings["linear-gradient"] ? `${rgb_themes[rgbThemeIndex]}-linear-gradient` : rgb_themes[rgbThemeIndex]);
   
@@ -180,10 +191,18 @@ export function setTheme(variant){
   document.documentElement.classList.remove(settings["theme"]);
   settings["theme"] = variant;
   
+  if (variant.includes("custom")){
+    getCustomThemeCss(variant.slice(13, 14));
+  
+  } else{
+    const el = document.getElementById("injected-custom-theme");
+    if (el){ el.remove() };
+  }
+
   try {
     document.documentElement.classList = variant;
-  } catch (er){
-    console.error(er);
+  } catch (er) {
+    console.log(er);
   }
 };
 
@@ -199,4 +218,18 @@ export function navToSettingsRoot(){
 
   const tab = document.querySelector(".settings");   /*Only the tab has the settings class, not the view*/
   tab.id = "tab_settings";
+}
+
+export function injectCssIntoRenderer(css){
+  let el = document.getElementById("injected-custom-theme");
+  
+  if (!el){
+    el = document.createElement("style");
+    el.id = "injected-custom-theme";
+    document.head.appendChild(el);
+  }
+
+  el.textContent = css;
+
+  gWebview.send("res-custom-theme-css", css);
 }

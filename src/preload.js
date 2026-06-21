@@ -21,5 +21,7 @@ contextBridge.exposeInMainWorld("api", {
   onCtrlShiftT: (callback) => ipcRenderer.on("ctrl-shift-t", (_event) => callback()),
   saveCustomTheme: (cTheme) => ipcRenderer.send("save-custom-theme", cTheme),
   getCustomTheme: (id) => ipcRenderer.send("get-custom-theme", id),
-  onResCustomTheme: (callback) => ipcRenderer.on("res-custom-theme", (_event, theme) => callback(theme))
+  onResCustomTheme: (callback) => ipcRenderer.on("res-custom-theme", (_event, theme) => callback(theme)),
+  getCustomThemeCss: (id) => ipcRenderer.send("get-custom-theme-css", id),
+  onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css))
 });

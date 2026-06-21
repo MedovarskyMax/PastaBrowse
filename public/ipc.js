@@ -121,3 +121,13 @@ export function getCustomTheme(id){
 export function onResCustomTheme(callback){
   window.api.onResCustomTheme(callback);
 }
+
+
+export function getCustomThemeCss(id){
+  window.api.getCustomThemeCss(id);
+}
+
+
+export function onResCustomThemeCss(callback){
+  window.api.onResCustomThemeCss(callback);
+}
