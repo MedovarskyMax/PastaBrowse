@@ -13,4 +13,14 @@ export function addBookmark(){
   }
 
   bookmarks[title] = url;
+
+  changeBookmarkIcon("saved");
+}
+
+/**
+  "default"  |  "add"  |  "saved"  - valid bookmark icon types
+*/
+function changeBookmarkIcon(new_icon_name){ 
+  const bookmark_img = document.getElementById("bookmarkImg");
+  bookmark_img.src = `../Icons/bookmark_${new_icon_name}.svg`;
 }
