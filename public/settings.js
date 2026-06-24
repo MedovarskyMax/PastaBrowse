@@ -1,5 +1,6 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss} from "./ipc.js";
+import {bookmarks} from "./bookmarks.js";
 
 let gWebview;
 
@@ -88,7 +89,12 @@ function handleIpcMessage(webview, event){
     }
     case "get-custom-theme-css": {
       const themeId = settings["theme"].slice(13, 14);
-      getCustomThemeCss(themeId)
+      getCustomThemeCss(themeId);
+      break;
+    }
+    case "get-bookmarks": {
+      webview.send("res-bookmarks", bookmarks);
+      break;
     }
   }
 };

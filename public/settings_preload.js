@@ -11,5 +11,7 @@ contextBridge.exposeInMainWorld("settingsApi", {
   onResCustomTheme: (callback) => ipcRenderer.once("res-custom-theme", (_event, theme) => callback(theme)),
   setSettingsTabId: (page) => ipcRenderer.sendToHost("set-settings-tab-id", page),
   onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css)),
-  getCustomThemeCss: () => ipcRenderer.sendToHost("get-custom-theme-css")
+  getCustomThemeCss: () => ipcRenderer.sendToHost("get-custom-theme-css"),
+  getBookmarks: () => ipcRenderer.sendToHost("get-bookmarks"),
+  onResBookmarks: (callback) => ipcRenderer.on("res-bookmarks", (_event, bookmarks) => callback(bookmarks))
 })

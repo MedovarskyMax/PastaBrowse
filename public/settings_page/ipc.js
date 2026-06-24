@@ -51,3 +51,13 @@ export function onResCustomThemeCss(callback){
 export function getCustomThemeCss(){
   window.settingsApi.getCustomThemeCss();
 }
+
+
+export function getBookmarks(){
+  window.settingsApi.getBookmarks();
+}
+
+
+export function onResBookmarks(callback){
+  window.settingsApi.onResBookmarks(callback);
+}
