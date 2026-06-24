@@ -23,5 +23,6 @@ contextBridge.exposeInMainWorld("api", {
   getCustomTheme: (id) => ipcRenderer.send("get-custom-theme", id),
   onResCustomTheme: (callback) => ipcRenderer.on("res-custom-theme", (_event, theme) => callback(theme)),
   getCustomThemeCss: (id) => ipcRenderer.send("get-custom-theme-css", id),
-  onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css))
+  onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css)),
+  onBookmarks: (callback) => ipcRenderer.on("bookmarks", (_event, bookmarks) => callback(bookmarks))
 });

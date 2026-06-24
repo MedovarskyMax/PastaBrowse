@@ -133,3 +133,8 @@ export function getCustomThemeCss(id){
 export function onResCustomThemeCss(callback){
   window.api.onResCustomThemeCss(callback);
 }
+
+
+export function onBookmarks(callback){
+  window.api.onBookmarks(callback);
+}

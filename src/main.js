@@ -96,8 +96,20 @@ function createWindow() {
     settings = default_settings;
   };
 
+
+  let bookmarks;
+
+  try {
+    const bookmarks_json = readFileSync(bookmarksPath);
+    bookmarks = JSON.parse(bookmarks_json);
+  } catch (er){
+    console.error(er);
+    bookmarks = {"Null": "Error while reading/parsing bookmarks"}
+  }
+
   win.webContents.on("did-finish-load", () => {
     win.webContents.send("settings", settings);
+    win.webContents.send("bookmarks", bookmarks);
     win.webContents.send("settings-preload-path", settings_preload_path);
   })
 }

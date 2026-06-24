@@ -2,10 +2,10 @@ import {loadURL, saveNav, refresh, history_backward, history_forward} from "./na
 import {newTab, removeTab, switchTab, loadLastSesh, switchToNeigborTab} from "./tabs.js";
 import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, getHistory, onResHistory,
     onCtrlEqual, onCtrlMinus, onCtrlZero, onSettingsPreloadPath, onSettings, onCtrlTab, onCtrlShiftTab,
-    onCtrlShiftT} from "./ipc.js";
+    onCtrlShiftT, onBookmarks} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
 import {openSettings, setTheme, setSetting, toggleAutoDarkMode} from "./settings.js";
-import {addBookmark, bookmarkBtnHover} from "./bookmarks.js";
+import {addBookmark, bookmarkBtnHover, setBookmark} from "./bookmarks.js";
 
 onSettings((settings) => {
   setTheme(settings["theme"]);
@@ -16,6 +16,10 @@ onSettings((settings) => {
   if (settings["auto-dark-mode"]){
     toggleAutoDarkMode(true);
   }
+})
+
+onBookmarks((bookmarks) => {
+  Object.keys(bookmarks).forEach((key) => {setBookmark(key, bookmarks[key])});
 })
 
 let settingsPreloadPath;

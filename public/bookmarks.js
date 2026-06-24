@@ -61,3 +61,8 @@ export function updateBookmarkIcon(url){
     changeBookmarkIcon("default");
   }
 }
+
+
+export function setBookmark(key, value){
+  bookmarks[key] = value;
+}
