@@ -5,6 +5,7 @@ import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, ge
     onCtrlShiftT} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
 import {openSettings, setTheme, setSetting, toggleAutoDarkMode} from "./settings.js";
+import {addBookmark} from "./bookmarks.js";
 
 onSettings((settings) => {
   setTheme(settings["theme"]);
@@ -141,3 +142,6 @@ onCtrlShiftTab(() => {
 onCtrlShiftT(() => {
   getHistory();
 })
+
+const bookmarkBtn = document.getElementById("bookmarkBtn");
+bookmarkBtn.addEventListener("click", addBookmark);
