@@ -18,9 +18,32 @@ export function addBookmark(){
 }
 
 /**
-  "default"  |  "add"  |  "saved"  - valid bookmark icon types
+  "default"  |  "add"  |  "saved"  |  "remove"  - valid bookmark icon types
 */
 function changeBookmarkIcon(new_icon_name){ 
   const bookmark_img = document.getElementById("bookmarkImg");
   bookmark_img.src = `../Icons/bookmark_${new_icon_name}.svg`;
+}
+
+
+export function bookmarkBtnHover(e){
+  const bookmark_img = document.getElementById("bookmarkImg");
+
+  switch (e.type){
+    case "mouseover":
+      if (bookmark_img.src.includes("default")){
+        changeBookmarkIcon("add");
+      } else {
+        changeBookmarkIcon("remove");
+      }
+      break;
+
+    case "mouseout":
+      if (bookmark_img.src.includes("add")){
+        changeBookmarkIcon("default");
+      } else {
+        changeBookmarkIcon("saved");
+      }
+      break;
+  }
 }
