@@ -5,7 +5,7 @@ import {root_exit, toggleMaximize, minimize, onCtrlT, onCtrlW, onCtrlR, onF5, ge
     onCtrlShiftT, onBookmarks} from "./ipc.js";
 import {setViewZoom, resetViewZoom} from "./zoom.js";
 import {openSettings, setTheme, setSetting, toggleAutoDarkMode} from "./settings.js";
-import {addBookmark, bookmarkBtnHover, setBookmark} from "./bookmarks.js";
+import {toggleBookmark, bookmarkBtnHover, setBookmark} from "./bookmarks.js";
 
 onSettings((settings) => {
   setTheme(settings["theme"]);
@@ -148,7 +148,7 @@ onCtrlShiftT(() => {
 })
 
 const bookmarkBtn = document.getElementById("bookmarkBtn");
-bookmarkBtn.addEventListener("click", addBookmark);
+bookmarkBtn.addEventListener("click", toggleBookmark);
 
 bookmarkBtn.addEventListener("mouseover", (e) => {bookmarkBtnHover(e)});
 bookmarkBtn.addEventListener("mouseout", (e) => {bookmarkBtnHover(e)});

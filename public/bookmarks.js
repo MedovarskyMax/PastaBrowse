@@ -1,5 +1,6 @@
 export let bookmarks = {}
 
+/*
 export function addBookmark(){
   const input = document.getElementById("url");
   const url = input.value;
@@ -15,6 +16,24 @@ export function addBookmark(){
   bookmarks[title] = url;
 
   changeBookmarkIcon("saved");
+}
+*/
+
+export function toggleBookmark(){
+  const input = document.getElementById("url");
+  const url = input.value;
+
+  const tab = document.querySelector(".main_tab");
+  const title = tab.querySelector("p").textContent;
+
+  if (Object.values(bookmarks).includes(url)){
+    const existingKey = Object.keys(bookmarks).find(key => bookmarks[key] === url);
+    delete bookmarks[existingKey];
+  } else {
+    bookmarks[title] = url
+  }
+
+  updateBookmarkIcon(url);
 }
 
 /**
