@@ -1,5 +1,6 @@
 import {setTitleAndFavIcon} from "./tabs.js"; 
 import {navToSettingsRoot} from "./settings.js";
+import {bookmarks, changeBookmarkIcon, updateBookmarkIcon} from "./bookmarks.js";
 
 let isProgrammaticNav = false;
 let isRestoringSession = false;
@@ -107,7 +108,9 @@ export function loadURLfromTabList(tab, h = 0){
 }
 
 
-export function saveNav(e, tab_id){          /*refactor to support settings behavior*/
+export function saveNav(e, tab_id){
+  updateBookmarkIcon(e.url);
+
   if (isRestoringSession){
     return;
   }

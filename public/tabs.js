@@ -1,6 +1,7 @@
 import {tab_list, saveNav, setIsRestoringSession} from "./navigation.js";
 import {root_exit} from "./ipc.js";
-import {setTheme} from "./settings.js"
+import {setTheme} from "./settings.js";
+import {changeBookmarkIcon} from "./bookmarks.js";
 
 let id_count = 1
 
@@ -41,6 +42,8 @@ export function newTab(isSettings = false){
     tab_list["main_tab_id"] = id_count;
     id_count += 1;        /*increase only if !settings*/
   }
+
+  changeBookmarkIcon("default");
 }
 
 

@@ -1,4 +1,4 @@
-let bookmarks = {}
+export let bookmarks = {}
 
 export function addBookmark(){
   const input = document.getElementById("url");
@@ -20,7 +20,7 @@ export function addBookmark(){
 /**
   "default"  |  "add"  |  "saved"  |  "remove"  - valid bookmark icon types
 */
-function changeBookmarkIcon(new_icon_name){
+export function changeBookmarkIcon(new_icon_name){
   if (!["default", "add", "saved", "remove"].includes(new_icon_name)){
     console.error(`Invalid new_icon_name : ${new_icon_name}`);
     return;
@@ -50,5 +50,14 @@ export function bookmarkBtnHover(e){
         changeBookmarkIcon("saved");
       }
       break;
+  }
+}
+
+
+export function updateBookmarkIcon(url){
+  if (Object.values(bookmarks).includes(url)){
+    changeBookmarkIcon("saved");
+  } else {
+    changeBookmarkIcon("default");
   }
 }
