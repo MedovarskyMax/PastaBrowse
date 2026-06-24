@@ -51,23 +51,20 @@ export function changeBookmarkIcon(new_icon_name){
 
 
 export function bookmarkBtnHover(e){
-  const bookmark_img = document.getElementById("bookmarkImg");
+  const input = document.getElementById("url");
+  const url = input.value;
 
   switch (e.type){
-    case "mouseover":
-      if (bookmark_img.src.includes("default")){
-        changeBookmarkIcon("add");
-      } else {
+    case "mouseenter":
+      if (Object.values(bookmarks).includes(url)){
         changeBookmarkIcon("remove");
+      } else {
+        changeBookmarkIcon("add");
       }
       break;
 
-    case "mouseout":
-      if (bookmark_img.src.includes("add")){
-        changeBookmarkIcon("default");
-      } else {
-        changeBookmarkIcon("saved");
-      }
+    case "mouseleave":
+      updateBookmarkIcon(url);
       break;
   }
 }

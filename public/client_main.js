@@ -150,5 +150,5 @@ onCtrlShiftT(() => {
 const bookmarkBtn = document.getElementById("bookmarkBtn");
 bookmarkBtn.addEventListener("click", toggleBookmark);
 
-bookmarkBtn.addEventListener("mouseover", (e) => {bookmarkBtnHover(e)});
-bookmarkBtn.addEventListener("mouseout", (e) => {bookmarkBtnHover(e)});
+bookmarkBtn.addEventListener("mouseenter", (e) => {bookmarkBtnHover(e)});
+bookmarkBtn.addEventListener("mouseleave", (e) => {bookmarkBtnHover(e)});
