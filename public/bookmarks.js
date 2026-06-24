@@ -20,7 +20,12 @@ export function addBookmark(){
 /**
   "default"  |  "add"  |  "saved"  |  "remove"  - valid bookmark icon types
 */
-function changeBookmarkIcon(new_icon_name){ 
+function changeBookmarkIcon(new_icon_name){
+  if (!["default", "add", "saved", "remove"].includes(new_icon_name)){
+    console.error(`Invalid new_icon_name : ${new_icon_name}`);
+    return;
+  }
+
   const bookmark_img = document.getElementById("bookmarkImg");
   bookmark_img.src = `../Icons/bookmark_${new_icon_name}.svg`;
 }
