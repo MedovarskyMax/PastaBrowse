@@ -214,7 +214,7 @@ p {
   background: var(--bg-150);
 }
 
-.loadLastSeshBtn {
+.margin_left {
   margin-left: auto;
 }
 
@@ -245,4 +245,8 @@ p {
 
 .side_tab:hover .side_tabXBtn:hover {
   background: var(--bg-100);
+}
+
+.bookmark_img{
+  transform: scale(0.9);
 }
