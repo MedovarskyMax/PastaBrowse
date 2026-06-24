@@ -5,6 +5,7 @@ const path = require("path");
 let win;
 let historyPath;
 let settingsPath;
+let bookmarksPath;
 let customThemesPathsObj;
 
 const settings_preload_path = path.join(__dirname, "..", "public", "settings_preload.js")
@@ -14,6 +15,8 @@ const isDev = !app.isPackaged;
 if (isDev) {
   historyPath = path.join(__dirname, "history.json");
   settingsPath = path.join(__dirname, "settings.json");
+  bookmarksPath = path.join(__dirname, "bookmarks.json");
+
   customThemesPathsObj = {
     "ct_1": path.join(__dirname, "..", "public", "custom_themes", "ct_1.css"),
     "ct_2": path.join(__dirname, "..", "public", "custom_themes", "ct_2.css"),
@@ -23,6 +26,8 @@ if (isDev) {
 } else {
   historyPath = path.join(app.getPath("userData"), "history.json");
   settingsPath = path.join(app.getPath("userData"), "settings.json");
+  bookmarksPath = path.join(app.getPath("userData"), "bookmarks.json");
+
   customThemesPathsObj = {
     "ct_1": path.join(app.getPath("userData"), "custom_themes", "ct_1.css"),
     "ct_2": path.join(app.getPath("userData"), "custom_themes", "ct_2.css"),
@@ -159,9 +164,11 @@ ipcMain.on("get-custom-theme-css", (_event, id) => {
 ipcMain.on("kill-app", (_event, data) => {
   const tab_list = data["tab_list"];
   const settings = data["settings"];
+  const bookmarks = data["bookmarks"];
 
   writeFileSync(historyPath, JSON.stringify(tab_list));
   writeFileSync(settingsPath, JSON.stringify(settings));
+  writeFileSync(bookmarksPath, JSON.stringify(bookmarks));
   app.quit();
 })
 
