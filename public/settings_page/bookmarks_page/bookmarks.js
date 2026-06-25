@@ -1,4 +1,4 @@
-import {sendRemoveBookmark} from "../ipc.js";
+import {sendRemoveBookmark, openBookmark} from "../ipc.js";
 
 export let bookmarks = {};
 
@@ -30,6 +30,11 @@ export function addBookmarkUI(key, value){
   img.src = `https://www.google.com/s2/favicons?domain=${value}&sz=${String(favIconSize)}`;
 
   template.querySelector("button").addEventListener("click", (e) => {removeBookmark(e)});
+  template.addEventListener("click", (e) => {
+    if (!e.target.closest("button")){
+      openBookmark(e.currentTarget.id);
+    }
+  })
 }
 
 

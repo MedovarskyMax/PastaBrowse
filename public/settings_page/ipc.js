@@ -66,3 +66,8 @@ export function onResBookmarks(callback){
 export function sendRemoveBookmark(url){
   window.settingsApi.sendRemoveBookmark(url);
 }
+
+
+export function openBookmark(url){
+  window.settingsApi.openBookmark(url);
+}

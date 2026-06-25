@@ -14,5 +14,6 @@ contextBridge.exposeInMainWorld("settingsApi", {
   getCustomThemeCss: () => ipcRenderer.sendToHost("get-custom-theme-css"),
   getBookmarks: () => ipcRenderer.sendToHost("get-bookmarks"),
   onResBookmarks: (callback) => ipcRenderer.on("res-bookmarks", (_event, bookmarks) => callback(bookmarks)),
-  sendRemoveBookmark: (url) => ipcRenderer.sendToHost("remove-bookmark", url)
+  sendRemoveBookmark: (url) => ipcRenderer.sendToHost("remove-bookmark", url),
+  openBookmark: (url) => ipcRenderer.sendToHost("open-bookmark", url)
 })

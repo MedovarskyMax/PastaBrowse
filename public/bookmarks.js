@@ -1,25 +1,9 @@
 import {sendToSettings, gWebview} from "./settings.js";
+import {newTab} from "./tabs.js";
+import {loadURL} from "./navigation.js";
 
 export let bookmarks = {}
 
-/*
-export function addBookmark(){
-  const input = document.getElementById("url");
-  const url = input.value;
-
-  const tab = document.querySelector(".main_tab");
-  const title = tab.querySelector("p").textContent;
-
-  if (Object.values(bookmarks).includes(url)){
-    console.error("Cannot store duplicate bookmark URLs");
-    return;
-  }
-
-  bookmarks[title] = url;
-
-  changeBookmarkIcon("saved");
-}
-*/
 
 export function toggleBookmark(){
   const input = document.getElementById("url");
@@ -99,4 +83,14 @@ export function removeBookmark(url){
     const existingKey = Object.keys(bookmarks).find(key => bookmarks[key] === url);
     delete bookmarks[existingKey];
   }
+}
+
+
+export function openBookmark(url){
+  newTab();
+  
+  const input = document.getElementById("url");
+  input.value = url;
+
+  loadURL();
 }

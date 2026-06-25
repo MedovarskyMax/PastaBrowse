@@ -1,6 +1,6 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss} from "./ipc.js";
-import {bookmarks, removeBookmark} from "./bookmarks.js";
+import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 
 export let gWebview;
 
@@ -99,6 +99,12 @@ function handleIpcMessage(webview, event){
     case "remove-bookmark": {
       const url = event.args[0];
       removeBookmark(url);
+      break;
+    }
+    case "open-bookmark": {
+      const url = event.args[0];
+      openBookmark(url);
+      break;
     }
   }
 };
