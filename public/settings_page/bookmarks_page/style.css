@@ -74,3 +74,9 @@ p{
 .remove_bookmark_icon{
   background: transparent;
 }
+
+.spacer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -44,10 +44,31 @@ function removeBookmark(e){
 
   sendRemoveBookmark(url);
   bookmark_div.remove();
+  delete bookmarks[url];
 }
 
 export function clearBookmarks(){
   bookmarks = {};
 
   document.querySelectorAll(".bookmark").forEach(el => el.remove());
+}
+
+
+export function writeNoBookmarksText(){
+  const spacer = document.getElementById("spacer");
+  const text = document.createElement("h2")
+  
+  text.id = "no_bookmarks_text";
+  text.textContent = "No currently saved Bookmarks";
+
+  spacer.appendChild(text);
+}
+
+
+export function removeNoBookmarksText(){
+  const text = document.getElementById("no_bookmarks_text");
+
+  if (text){
+    text.remove();
+  }
 }
