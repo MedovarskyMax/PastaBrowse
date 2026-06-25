@@ -128,6 +128,7 @@ export function switchTab(tab){
   if (tab.id.includes("settings")){
     const input = document.getElementById("url");
     input.value = "";
+    updateBookmarkIcon("");
   }
 }
 
