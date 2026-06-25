@@ -4,7 +4,7 @@ Custom browser made with Electron as both a passion and learning project
 ## Installation
 Download the installer from the [latest release](https://github.com/MedovarskyMax/PastaBrowse/releases/latest)
 
-- Windows: `PastaBrowse.Setup.1.1.0.exe`
+- Windows: `PastaBrowse.Setup.1.2.0.exe`
 - macOS: (coming soon)
 - Linux: (coming soon)
 ## Usage
@@ -23,6 +23,9 @@ Run the installer and launch PastaBrowse from your desktop or start menu.
 - Linear gradient version for every theme (including custom ones)
 - Automatic Dark Mode (based on time)
 - RGB Theme Cycling
+- Bookmarks page - Browse, open and remove bookmarks with ease
+- Bookmarks button - Save or remove the current page directly from the adress bar
+- Persistent bookmarks - Bookmarks are saved across sessions
 - Hotkeys:
   - New Tab => `CTRL/CMD + T`
   - Close Tab => `CTRL/CMD + W`
