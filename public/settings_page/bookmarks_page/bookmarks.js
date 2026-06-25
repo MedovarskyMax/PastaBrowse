@@ -40,3 +40,9 @@ function removeBookmark(e){
   sendRemoveBookmark(url);
   bookmark_div.remove();
 }
+
+export function clearBookmarks(){
+  bookmarks = {};
+
+  document.querySelectorAll(".bookmark").forEach(el => el.remove());
+}

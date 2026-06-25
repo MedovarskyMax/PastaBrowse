@@ -1,3 +1,5 @@
+import {sendToSettings, gWebview} from "./settings.js";
+
 export let bookmarks = {}
 
 /*
@@ -34,6 +36,10 @@ export function toggleBookmark(){
   }
 
   updateBookmarkIcon(url);
+
+  if (gWebview){
+    sendToSettings("res-bookmarks", bookmarks);
+  }
 }
 
 /**

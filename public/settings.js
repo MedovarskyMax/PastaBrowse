@@ -2,7 +2,7 @@ import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss} from "./ipc.js";
 import {bookmarks, removeBookmark} from "./bookmarks.js";
 
-let gWebview;
+export let gWebview;
 
 onResCustomThemeCss((css) => {
   injectCssIntoRenderer(css);
@@ -242,4 +242,9 @@ export function injectCssIntoRenderer(css){
   el.textContent = css;
 
   gWebview.send("res-custom-theme-css", css);
+}
+
+
+export function sendToSettings(ipc_channel, data){
+  gWebview.send(ipc_channel, data);
 }
