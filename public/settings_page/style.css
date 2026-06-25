@@ -49,4 +49,6 @@ body{
 
 .subsetting:hover{
   background: var(--bg-100);
+  transform: scale(1.01);
+  box-shadow: 0 0 15px 5px var(--col-300);
 }
