@@ -1,3 +1,5 @@
+import {sendRemoveBookmark} from "../ipc.js";
+
 let bookmarks = {};
 
 export function setBookmark(key, value){
@@ -17,6 +19,7 @@ export function addBookmarkUI(key, value){
 
 
   template.classList.add("bookmark");
+  template.id = value;
   template.innerHTML = html;
 
   document.body.appendChild(template);
@@ -25,4 +28,15 @@ export function addBookmarkUI(key, value){
   const favIconSize = 64;
 
   img.src = `https://www.google.com/s2/favicons?domain=${value}&sz=${String(favIconSize)}`;
+
+  template.querySelector("button").addEventListener("click", (e) => {removeBookmark(e)});
+}
+
+
+function removeBookmark(e){
+  const bookmark_div = e.target.parentElement.parentElement;
+  const url = bookmark_div.id;
+
+  sendRemoveBookmark(url);
+  bookmark_div.remove();
 }

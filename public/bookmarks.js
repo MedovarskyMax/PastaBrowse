@@ -82,3 +82,11 @@ export function updateBookmarkIcon(url){
 export function setBookmark(key, value){
   bookmarks[key] = value;
 }
+
+
+export function removeBookmark(url){
+  if (Object.values(bookmarks).includes(url)){
+    const existingKey = Object.keys(bookmarks).find(key => bookmarks[key] === url);
+    delete bookmarks[existingKey];
+  }
+}
