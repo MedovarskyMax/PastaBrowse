@@ -8,11 +8,12 @@ export function setBookmark(key, value){
 export function addBookmarkUI(key, value){
   const template = document.createElement("div");
   const html = `
-    <img alt="" id="img_${value}">
+    <img class="favicon" alt="" id="img_${value}">
     <div class="b_container">
       <h2 class="title">${key}</h2>
       <p>${value}</p>
-    </div>`;
+    </div>
+    <button class="remove_bookmark_button"><img class="remove_bookmark_icon" alt="X" src="../../../Icons/close.svg"></button>`;
 
 
   template.classList.add("bookmark");

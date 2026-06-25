@@ -46,6 +46,28 @@ p{
   transform: scale(1.01);
 }
 
-img{
+.favicon{
   transform: scale(0.8);
+}
+
+.remove_bookmark_button{
+  aspect-ratio: 1;
+  background: transparent;
+  outline: none;
+  margin-left: auto;
+  border: 2px solid var(--col-0);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: ease-in-out 200ms;
+}
+
+.remove_bookmark_button:hover{
+  background: var(--bg-0);
+}
+
+.remove_bookmark_icon{
+  background: transparent;
 }
