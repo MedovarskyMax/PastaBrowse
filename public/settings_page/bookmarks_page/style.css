@@ -10,12 +10,42 @@ body{
 .spacer{
   height: 5vh;
   width: 100%;
-  background-color: var(--text);
+}
+
+h2{
+  margin: 0;
+  color: var(--text);
+}
+
+p{
+  margin: 0;
+  color: var(--text);
+}
+
+.b_container{
+  margin-left: 1vw;
 }
 
 .bookmark{
-  width: 60%;
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  height: 5vh;
   margin-top: 2.5vh;
   background: var(--bg-150);
   border: 2px solid var(--col-0);
+  padding: 50px;
+  border-radius: 15px;
+
+  transition: ease-in-out 200ms;
+}
+
+.bookmark:hover{
+  background: var(--bg-100);
+  box-shadow: 0 0 15px 5px var(--col-300);
+  transform: scale(1.01);
+}
+
+img{
+  transform: scale(0.8);
 }
