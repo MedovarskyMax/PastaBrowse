@@ -1,5 +1,5 @@
 import {setSettingsTabId, onResCustomThemeCss, onResSettings, getBookmarks, onResBookmarks, getCustomThemeCss} from "../ipc.js";
-import {setBookmark, addBookmarkUI} from "./bookmarks.js";
+import {setBookmark, addBookmarkUI, bookmarks} from "./bookmarks.js";
 
 
 function injectCss(css){
@@ -31,9 +31,13 @@ onResSettings((settings) => {
 
 getBookmarks();
 
-onResBookmarks((bookmarks) => {
-  Object.keys(bookmarks).forEach((key) => {
-    setBookmark(key, bookmarks[key]);
-    addBookmarkUI(key, bookmarks[key]);
+onResBookmarks((resBookmarks) => {
+  Object.keys(resBookmarks).forEach((key) => {
+    if (Object.keys(bookmarks).includes(key)){
+      return;
+    }
+
+    setBookmark(key, resBookmarks[key]);
+    addBookmarkUI(key, resBookmarks[key]);
   })
 })

@@ -1,6 +1,6 @@
 import {sendRemoveBookmark} from "../ipc.js";
 
-let bookmarks = {};
+export let bookmarks = {};
 
 export function setBookmark(key, value){
   bookmarks[key] = value;
