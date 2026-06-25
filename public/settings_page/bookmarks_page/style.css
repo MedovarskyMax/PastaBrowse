@@ -44,6 +44,7 @@ p{
   background: var(--bg-100);
   box-shadow: 0 0 15px 5px var(--col-300);
   transform: scale(1.01);
+  cursor: pointer;
 }
 
 .favicon{
@@ -67,6 +68,7 @@ p{
 .remove_bookmark_button:hover{
   background: var(--bg-0);
   box-shadow: 0 0 4px 1px var(--col-300);
+  cursor: pointer;
 }
 
 .remove_bookmark_icon{
