@@ -28,6 +28,10 @@ export function toggleBookmark(){
   const tab = document.querySelector(".main_tab");
   const title = tab.querySelector("p").textContent;
 
+  if (tab.classList.contains("settings")){
+    return;
+  }
+
   if (Object.values(bookmarks).includes(url)){
     const existingKey = Object.keys(bookmarks).find(key => bookmarks[key] === url);
     delete bookmarks[existingKey];
