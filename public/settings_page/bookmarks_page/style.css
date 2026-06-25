@@ -66,6 +66,7 @@ p{
 
 .remove_bookmark_button:hover{
   background: var(--bg-0);
+  box-shadow: 0 0 4px 1px var(--col-300);
 }
 
 .remove_bookmark_icon{
