@@ -1,5 +1,19 @@
-import {setSettingsTabId, onResCustomThemeCss, onResSettings, getBookmarks, onResBookmarks} from "../ipc.js";
-import {setBookmark} from "./bookmarks.js";
+import {setSettingsTabId, onResCustomThemeCss, onResSettings, getBookmarks, onResBookmarks, getCustomThemeCss} from "../ipc.js";
+import {setBookmark, addBookmarkUI} from "./bookmarks.js";
+
+
+function injectCss(css){
+  let el = document.getElementById("injected-custom-theme");
+    
+  if (!el){
+    el = document.createElement("style");
+    el.id = "injected-custom-theme";
+    document.head.appendChild(el);
+  }
+  
+  el.textContent = css;
+}
+
 
 setSettingsTabId("bookmarks");
 
@@ -18,18 +32,8 @@ onResSettings((settings) => {
 getBookmarks();
 
 onResBookmarks((bookmarks) => {
-  Object.keys(bookmarks).forEach((key) => {setBookmark(key, bookmarks[key])})
+  Object.keys(bookmarks).forEach((key) => {
+    setBookmark(key, bookmarks[key]);
+    addBookmarkUI(key, bookmarks[key]);
+  })
 })
-
-
-function injectCss(css){
-  let el = document.getElementById("injected-custom-theme");
-    
-  if (!el){
-    el = document.createElement("style");
-    el.id = "injected-custom-theme";
-    document.head.appendChild(el);
-  }
-  
-  el.textContent = css;
-}
