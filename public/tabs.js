@@ -1,7 +1,7 @@
 import {tab_list, saveNav, setIsRestoringSession} from "./navigation.js";
 import {root_exit} from "./ipc.js";
 import {setTheme} from "./settings.js";
-import {changeBookmarkIcon} from "./bookmarks.js";
+import {changeBookmarkIcon, updateBookmarkIcon} from "./bookmarks.js";
 
 let id_count = 1
 
@@ -110,6 +110,8 @@ export function switchTab(tab){
     } else {
       input.value = "";
     }
+
+    updateBookmarkIcon(url);
   }
   
   const view_container = document.getElementById("webview_container");
