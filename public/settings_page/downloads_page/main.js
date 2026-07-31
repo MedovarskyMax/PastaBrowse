@@ -1,5 +1,5 @@
-import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss, getDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "../ipc.js";
-import {displayPath} from "./downloads.js";
+import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss, onResDownloadsDirectoryPath} from "../ipc.js";
+import {changeDownloadsDir, displayDownloadsPath} from "./downloads.js";
 
 
 function injectCss(css){
@@ -29,10 +29,10 @@ onResSettings((settings) => {
   }
 })
 
+const downloadDirBtn = document.getElementById("download_dir_btn");
+downloadDirBtn.addEventListener("click", changeDownloadsDir)
 
 onResDownloadsDirectoryPath((path) => {
-  displayPath(path);
+  displayDownloadsPath(path);
 })
-
-getDownloadsDirectoryPath();
 

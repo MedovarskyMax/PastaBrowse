@@ -4,8 +4,61 @@ body {
   height: 98vh;
   width: 99vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Segoe UI", Arial, sans-serif;
   color: var(--text);
+}
+
+header{
+  width: 45vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-250);
+  border: 2px solid var(--col-0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px 5px var(--col-300);
+}
+
+.downloadDirLeft{
+  width: 66.66%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloadDirPath{
+  font-size: 1.75rem;
+}
+
+.downloadDirRight{
+  width: 33.34%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid var(--col-150);
+}
+
+.downloadDirBtn{
+  color: var(--text);
+  width: auto;
+  width: 73%;
+  height: 45%;
+  outline: none;
+  background: var(--bg-150);
+  border: 2px solid var(--col-0);
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.35rem;
+
+  transition: ease 200ms;
+}
+
+.downloadDirBtn:hover{
+  background: var(--bg-100);
+  cursor: pointer;
 }
