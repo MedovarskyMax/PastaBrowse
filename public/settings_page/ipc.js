@@ -71,3 +71,13 @@ export function sendRemoveBookmark(url){
 export function openBookmark(url){
   window.settingsApi.openBookmark(url);
 }
+
+
+export function getDownloadsDirectoryPath(){
+  window.settingsApi.getDownloadsDirectoryPath();
+}
+
+
+export function onResDownloadsDirectoryPath(callback){
+  window.settingsApi.onResDownloadsDirectoryPath(callback);
+}

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, screen, globalShortcut } = require("electron");
+const { app, BrowserWindow, ipcMain, screen, globalShortcut, dialog } = require("electron");
 const { writeFileSync, readFileSync, copyFileSync, existsSync, mkdirSync } = require("fs");
 const path = require("path");
 
@@ -267,6 +267,15 @@ ipcMain.on("save-custom-theme", (_event, data) => {
   }`.replace(/^  /gm, "");
 
   writeFileSync(customThemesPathsObj[`ct_${data["id"]}`], custom_theme);
+})
+
+
+ipcMain.on("get-downloads-dir-path", async (_event) => {
+  const result = await dialog.showOpenDialog({properties: ['openDirectory']});
+  
+  console.log(result.canceled ? null : result.filePaths[0])
+
+  win.webContents.send("res-downloads-dir-path", result.canceled ? null : result.filePaths[0])
 })
 
 

@@ -1,5 +1,5 @@
 import {newTab, switchTab} from "./tabs.js";
-import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss} from "./ipc.js";
+import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss, getDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 
 export let gWebview;
@@ -10,6 +10,10 @@ onResCustomThemeCss((css) => {
 
 onResCustomTheme((theme) => {
   gWebview.send("res-custom-theme", theme);
+})
+
+onResDownloadsDirectoryPath((path) => {
+  gWebview.send("res-downloads-dir-path", path);
 })
 
 export let settings = {};
@@ -104,6 +108,11 @@ function handleIpcMessage(webview, event){
     case "open-bookmark": {
       const url = event.args[0];
       openBookmark(url);
+      break;
+    }
+
+    case "get-downloads-dir-path": {
+      getDownloadsDirectoryPath();
       break;
     }
   }

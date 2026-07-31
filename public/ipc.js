@@ -138,3 +138,13 @@ export function onResCustomThemeCss(callback){
 export function onBookmarks(callback){
   window.api.onBookmarks(callback);
 }
+
+
+export function getDownloadsDirectoryPath(){
+  window.api.getDownloadsDirectoryPath();
+}
+
+
+export function onResDownloadsDirectoryPath(callback){
+  window.api.onResDownloadsDirectoryPath(callback);
+}

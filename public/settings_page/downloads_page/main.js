@@ -1,4 +1,5 @@
-import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss} from "../ipc.js";
+import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss, getDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "../ipc.js";
+import {displayPath} from "./downloads.js";
 
 
 function injectCss(css){
@@ -27,3 +28,11 @@ onResSettings((settings) => {
     getCustomThemeCss();
   }
 })
+
+
+onResDownloadsDirectoryPath((path) => {
+  displayPath(path);
+})
+
+getDownloadsDirectoryPath();
+

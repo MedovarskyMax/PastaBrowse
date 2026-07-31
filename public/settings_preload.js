@@ -15,5 +15,7 @@ contextBridge.exposeInMainWorld("settingsApi", {
   getBookmarks: () => ipcRenderer.sendToHost("get-bookmarks"),
   onResBookmarks: (callback) => ipcRenderer.on("res-bookmarks", (_event, bookmarks) => callback(bookmarks)),
   sendRemoveBookmark: (url) => ipcRenderer.sendToHost("remove-bookmark", url),
-  openBookmark: (url) => ipcRenderer.sendToHost("open-bookmark", url)
+  openBookmark: (url) => ipcRenderer.sendToHost("open-bookmark", url),
+  getDownloadsDirectoryPath: () => ipcRenderer.sendToHost("get-downloads-dir-path"),
+  onResDownloadsDirectoryPath: (callback) => ipcRenderer.on("res-downloads-dir-path", (_event, path) => callback(path))
 })
