@@ -140,8 +140,8 @@ export function onBookmarks(callback){
 }
 
 
-export function getDownloadsDirectoryPath(){
-  window.api.getDownloadsDirectoryPath();
+export function getDownloadsDirectoryPath(promptUser){
+  window.api.getDownloadsDirectoryPath(promptUser);
 }
 
 

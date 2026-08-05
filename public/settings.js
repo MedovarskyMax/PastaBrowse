@@ -112,7 +112,8 @@ function handleIpcMessage(webview, event){
     }
 
     case "get-downloads-dir-path": {
-      getDownloadsDirectoryPath();
+      const promptUser = event.args[0];
+      getDownloadsDirectoryPath(promptUser);
       break;
     }
   }

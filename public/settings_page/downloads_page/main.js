@@ -1,4 +1,4 @@
-import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss, onResDownloadsDirectoryPath} from "../ipc.js";
+import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss, onResDownloadsDirectoryPath, getDownloadsDirectoryPath} from "../ipc.js";
 import {changeDownloadsDir, displayDownloadsPath} from "./downloads.js";
 
 
@@ -28,6 +28,8 @@ onResSettings((settings) => {
     getCustomThemeCss();
   }
 })
+
+getDownloadsDirectoryPath(false);
 
 const downloadDirBtn = document.getElementById("download_dir_btn");
 downloadDirBtn.addEventListener("click", changeDownloadsDir)

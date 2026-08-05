@@ -1,7 +1,7 @@
 import { getDownloadsDirectoryPath } from "../ipc.js";
 
 export function changeDownloadsDir(){
-  getDownloadsDirectoryPath()
+  getDownloadsDirectoryPath(true)
 }
 
 

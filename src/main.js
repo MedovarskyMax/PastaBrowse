@@ -8,6 +8,8 @@ let settingsPath;
 let bookmarksPath;
 let customThemesPathsObj;
 
+let downloadsPath = app.getPath("downloads");   // get from JSON if empty set default, if not use read path
+
 const settings_preload_path = path.join(__dirname, "..", "public", "settings_preload.js")
 
 const isDev = !app.isPackaged;
@@ -270,12 +272,16 @@ ipcMain.on("save-custom-theme", (_event, data) => {
 })
 
 
-ipcMain.on("get-downloads-dir-path", async (_event) => {
-  const result = await dialog.showOpenDialog({properties: ['openDirectory']});
+ipcMain.on("get-downloads-dir-path", async (_event, promptUser) => {
+  let result_canceled = false;
   
-  console.log(result.canceled ? null : result.filePaths[0])
+  if (promptUser){
+    const result = await dialog.showOpenDialog({properties: ['openDirectory']});
+    result_canceled = result.canceled;
+    downloadsPath = result.filePaths[0];
+  }
 
-  win.webContents.send("res-downloads-dir-path", result.canceled ? null : result.filePaths[0])
+  win.webContents.send("res-downloads-dir-path", result_canceled ? null : downloadsPath);
 })
 
 
