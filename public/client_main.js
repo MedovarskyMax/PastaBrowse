@@ -25,7 +25,6 @@ onBookmarks((bookmarks) => {
 })
 
 onDownloads((downloads) => {
-  console.log(downloads);
   Object.keys(downloads).forEach((key) => {setDownloads(key, downloads[key])});
 })
 
