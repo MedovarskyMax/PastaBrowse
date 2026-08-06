@@ -8,7 +8,7 @@ let settingsPath;
 let bookmarksPath;
 let customThemesPathsObj;
 
-let downloadsPath = app.getPath("downloads");   // get from JSON if empty set default, if not use read path
+let downloadsJsonPath;
 
 const settings_preload_path = path.join(__dirname, "..", "public", "settings_preload.js")
 
@@ -18,6 +18,7 @@ if (isDev) {
   historyPath = path.join(__dirname, "history.json");
   settingsPath = path.join(__dirname, "settings.json");
   bookmarksPath = path.join(__dirname, "bookmarks.json");
+  downloadsJsonPath = path.join(__dirname, "downloads.json");
 
   customThemesPathsObj = {
     "ct_1": path.join(__dirname, "..", "public", "custom_themes", "ct_1.css"),
@@ -29,6 +30,7 @@ if (isDev) {
   historyPath = path.join(app.getPath("userData"), "history.json");
   settingsPath = path.join(app.getPath("userData"), "settings.json");
   bookmarksPath = path.join(app.getPath("userData"), "bookmarks.json");
+  downloadsJsonPath = path.join(app.getPath("userData"), "downloads.json");
 
   customThemesPathsObj = {
     "ct_1": path.join(app.getPath("userData"), "custom_themes", "ct_1.css"),
@@ -109,11 +111,25 @@ function createWindow() {
     bookmarks = {"Null": "Error while reading/parsing bookmarks"}
   }
 
+  let downloads;
+
+  try {
+    const downloads_json = readFileSync(downloadsJsonPath);
+    downloads = JSON.parse(downloads_json);
+    if (downloads["downloadsPath"] === ""){
+      downloads["downloadsPath"] = app.getPath("downloads");
+    }
+  } catch (er){
+    console.error(er);
+    downloads = {"downloadsPath": app.getPath("downloads"), "parsingError": true};
+  }
+
   win.webContents.on("did-finish-load", () => {
     win.webContents.send("settings", settings);
     win.webContents.send("bookmarks", bookmarks);
     win.webContents.send("settings-preload-path", settings_preload_path);
-  })
+    win.webContents.send("downloads", downloads) // send to renderer, rewrite downstream logic to only query the renderer copy
+  })                         // only read/write to json at app launch and termination
 }
 
 
@@ -272,16 +288,9 @@ ipcMain.on("save-custom-theme", (_event, data) => {
 })
 
 
-ipcMain.on("get-downloads-dir-path", async (_event, promptUser) => {
-  let result_canceled = false;
-  
-  if (promptUser){
-    const result = await dialog.showOpenDialog({properties: ['openDirectory']});
-    result_canceled = result.canceled;
-    downloadsPath = result.filePaths[0];
-  }
-
-  win.webContents.send("res-downloads-dir-path", result_canceled ? null : downloadsPath);
+ipcMain.on("change-downloads-dir-path", async (_event) => {
+  const result = await dialog.showOpenDialog({properties: ['openDirectory']});
+  win.webContents.send("res-downloads-dir-path", result.canceled ? null : result.filePaths[0]);
 })
 
 

@@ -73,11 +73,21 @@ export function openBookmark(url){
 }
 
 
-export function getDownloadsDirectoryPath(promptUser){
-  window.settingsApi.getDownloadsDirectoryPath(promptUser);
+export function changeDownloadsDirectoryPath(){
+  window.settingsApi.changeDownloadsDirectoryPath();
 }
 
 
 export function onResDownloadsDirectoryPath(callback){
   window.settingsApi.onResDownloadsDirectoryPath(callback);
+}
+
+
+export function getDownloads(){
+  window.settingsApi.getDownloads();
+}
+
+
+export function onResDownloads(callback){
+  window.settingsApi.onResDownloads(callback);
 }

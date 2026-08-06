@@ -25,6 +25,7 @@ contextBridge.exposeInMainWorld("api", {
   getCustomThemeCss: (id) => ipcRenderer.send("get-custom-theme-css", id),
   onResCustomThemeCss: (callback) => ipcRenderer.on("res-custom-theme-css", (_event, css) => callback(css)),
   onBookmarks: (callback) => ipcRenderer.on("bookmarks", (_event, bookmarks) => callback(bookmarks)),
-  getDownloadsDirectoryPath: (promptUser) => ipcRenderer.send("get-downloads-dir-path", promptUser),
-  onResDownloadsDirectoryPath: (callback) => ipcRenderer.on("res-downloads-dir-path", (_event, path) => callback(path))
+  changeDownloadsDirectoryPath: () => ipcRenderer.send("change-downloads-dir-path"),
+  onResDownloadsDirectoryPath: (callback) => ipcRenderer.on("res-downloads-dir-path", (_event, path) => callback(path)),
+  onDownloads: (callback) => ipcRenderer.on("downloads", (_event, downloads) => callback(downloads))
 });

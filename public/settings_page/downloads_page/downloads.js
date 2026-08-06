@@ -1,7 +1,8 @@
-import { getDownloadsDirectoryPath } from "../ipc.js";
+let downloads = {};
 
-export function changeDownloadsDir(){
-  getDownloadsDirectoryPath(true)
+
+export function setDownloads(key, value){
+  downloads[key] = value;
 }
 
 

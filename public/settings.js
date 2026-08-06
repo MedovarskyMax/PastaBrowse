@@ -1,6 +1,7 @@
 import {newTab, switchTab} from "./tabs.js";
-import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss, getDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "./ipc.js";
+import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss, changeDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
+import { setDownloads, getDownloads } from "./downloads.js";
 
 export let gWebview;
 
@@ -14,6 +15,7 @@ onResCustomTheme((theme) => {
 
 onResDownloadsDirectoryPath((path) => {
   gWebview.send("res-downloads-dir-path", path);
+  setDownloads["downloadsPath"] = path;
 })
 
 export let settings = {};
@@ -111,9 +113,13 @@ function handleIpcMessage(webview, event){
       break;
     }
 
-    case "get-downloads-dir-path": {
-      const promptUser = event.args[0];
-      getDownloadsDirectoryPath(promptUser);
+    case "change-downloads-dir-path": {
+      changeDownloadsDirectoryPath();
+      break;
+    }
+
+    case "get-downloads": {
+      webview.send("res-downloads", getDownloads())
       break;
     }
   }

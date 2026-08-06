@@ -140,11 +140,16 @@ export function onBookmarks(callback){
 }
 
 
-export function getDownloadsDirectoryPath(promptUser){
-  window.api.getDownloadsDirectoryPath(promptUser);
+export function changeDownloadsDirectoryPath(){
+  window.api.changeDownloadsDirectoryPath();
 }
 
 
 export function onResDownloadsDirectoryPath(callback){
   window.api.onResDownloadsDirectoryPath(callback);
+}
+
+
+export function onDownloads(callback){
+  window.api.onDownloads(callback);
 }
