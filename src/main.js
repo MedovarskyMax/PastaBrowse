@@ -195,10 +195,13 @@ ipcMain.on("kill-app", (_event, data) => {
   const tab_list = data["tab_list"];
   const settings = data["settings"];
   const bookmarks = data["bookmarks"];
+  const downloads = data["downloads"];
 
   writeFileSync(historyPath, JSON.stringify(tab_list));
   writeFileSync(settingsPath, JSON.stringify(settings));
   writeFileSync(bookmarksPath, JSON.stringify(bookmarks));
+  writeFileSync(downloadsJsonPath, JSON.stringify(downloads));
+
   app.quit();
 })
 

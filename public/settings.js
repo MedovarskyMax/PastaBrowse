@@ -14,8 +14,11 @@ onResCustomTheme((theme) => {
 })
 
 onResDownloadsDirectoryPath((path) => {
-  gWebview.send("res-downloads-dir-path", path);
-  setDownloads["downloadsPath"] = path;
+  if (path){
+    gWebview.send("res-downloads-dir-path", path);
+    setDownloads("downloadsPath", path);
+  }
+
 })
 
 export let settings = {};

@@ -1,6 +1,7 @@
 import {tab_list} from "./navigation.js";
 import {settings} from "./settings.js";
 import {bookmarks} from "./bookmarks.js";
+import {getDownloads} from "./downloads.js";
 
 export function root_exit(){
   const tab_container = document.getElementById("tab_container");
@@ -11,7 +12,8 @@ export function root_exit(){
   const data = {
     "tab_list": tab_list,
     "settings": settings,
-    "bookmarks": bookmarks
+    "bookmarks": bookmarks,
+    "downloads": getDownloads()
   }
 
   window.api.killApp(data);
