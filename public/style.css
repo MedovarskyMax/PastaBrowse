@@ -20,7 +20,7 @@ header {
 }
 
 .header.blink{
-  animation: border-blink 1s ease-in-out;
+  animation: border-blink 1s ease;
 }
 
 @keyframes border-blink{
