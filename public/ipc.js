@@ -155,3 +155,8 @@ export function onResDownloadsDirectoryPath(callback){
 export function onDownloads(callback){
   window.api.onDownloads(callback);
 }
+
+
+export function onStartedDownload(callback){
+  window.api.onStartedDownload(callback);
+}

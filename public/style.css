@@ -15,6 +15,20 @@ header {
   height: 6%;
 }
 
+.header{
+  border-bottom: 3px solid transparent;
+}
+
+.header.blink{
+  animation: border-blink 1s ease-in-out;
+}
+
+@keyframes border-blink{
+  0% {border-bottom-color: transparent;}
+  50% {border-bottom-color: var(--text);}
+  100% {border-bottom-color: transparent;}
+}
+
 .tab_container {
   width: 100%;
   height: 50%;

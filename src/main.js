@@ -132,7 +132,8 @@ function createWindow() {
   })                         // only read/write to json at app launch and termination
 
   win.webContents.session.on("will-download", (event, item, webContents) => {
-    item.setSavePath(path.join(downloads["downloadsPath"], item.getFilename()))
+    item.setSavePath(path.join(downloads["downloadsPath"], item.getFilename()));
+    win.webContents.send("started-download");
   })
 }
 
