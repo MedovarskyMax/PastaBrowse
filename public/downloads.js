@@ -1,11 +1,6 @@
-import { onStartedDownload } from "./ipc.js";
+import { onStartedDownload, onAddDownloadObj } from "./ipc.js";
 
 let downloads = {};
-
-const header = document.getElementById("header");
-header.addEventListener("animationend", () => { header.classList.remove("blink") })
-onStartedDownload(() => { header.classList.add("blink")})
-
 
 export function setDownloads(key, value){
   downloads[key] = value;
@@ -15,3 +10,13 @@ export function setDownloads(key, value){
 export function getDownloads(){
   return downloads;
 }
+
+const header = document.getElementById("header");
+header.addEventListener("animationend", () => { header.classList.remove("blink") })
+onStartedDownload(() => { header.classList.add("blink")})
+
+
+onAddDownloadObj((downloadObj) => {
+  downloads["history"].push(downloadObj)
+  console.log(downloads)
+})

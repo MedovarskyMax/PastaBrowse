@@ -122,7 +122,7 @@ function createWindow() {
     }
   } catch (er){
     console.error(er);
-    downloads = {"downloadsPath": app.getPath("downloads"), "parsingError": true};
+    downloads = {"downloadsPath": app.getPath("downloads"), "parsingError": true, "history": []};
   }
 
   win.webContents.on("did-finish-load", () => {

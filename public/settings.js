@@ -1,5 +1,6 @@
 import {newTab, switchTab} from "./tabs.js";
-import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss, changeDownloadsDirectoryPath, onResDownloadsDirectoryPath} from "./ipc.js";
+import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
+  changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj} from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads } from "./downloads.js";
 
@@ -18,8 +19,10 @@ onResDownloadsDirectoryPath((path) => {
     gWebview.send("res-downloads-dir-path", path);
     setDownloads("downloadsPath", path);
   }
-
 })
+
+onAddDownloadObj((downloadObj) => {gWebview.send("add-download-obj", downloadObj)})
+
 
 export let settings = {};
 

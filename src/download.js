@@ -5,6 +5,7 @@ function handleDownload(event, item, webContents, downloadsDirPath, win) {
   win.webContents.send("started-download");
 
   const downloadObj = createDownloadObj(item);
+  win.webContents.send("add-download-obj", downloadObj);
 
   item.on("updated", (event, state) => {
     if (state === "interrupted") {
@@ -21,7 +22,7 @@ function handleDownload(event, item, webContents, downloadsDirPath, win) {
   item.once("done", (event, state) => {
     if (state === "completed") {
       console.log("Download Successful")
-      console.log(downloadObj)
+      console.log(downloadObj) // TODO: remove when done developing
     } else {
       console.log(`Download failed: ${state}`)
     }

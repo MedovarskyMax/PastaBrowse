@@ -91,3 +91,8 @@ export function getDownloads(){
 export function onResDownloads(callback){
   window.settingsApi.onResDownloads(callback);
 }
+
+
+export function onAddDownloadObj(callback){
+  window.settingsApi.onAddDownloadObj(callback);
+}

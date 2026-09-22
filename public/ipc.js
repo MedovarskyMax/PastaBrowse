@@ -160,3 +160,8 @@ export function onDownloads(callback){
 export function onStartedDownload(callback){
   window.api.onStartedDownload(callback);
 }
+
+
+export function onAddDownloadObj(callback){
+  window.api.onAddDownloadObj(callback)
+}
