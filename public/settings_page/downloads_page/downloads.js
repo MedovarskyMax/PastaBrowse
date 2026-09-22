@@ -16,7 +16,7 @@ export function displayDownloadsPath(path){
   h2.innerHTML = path;
 }
 
-function renderDownloadObj(downloadObj){
+export function renderDownloadObj(downloadObj){
   const icon = downloadObj["icon"] == "downloadInProgress" ? "../../../Icons/shuffle-square-circles.svg" : downloadObj["icon"];
 
   const container = document.createElement("div")
