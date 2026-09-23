@@ -30,8 +30,8 @@ export function renderDownloadObj(downloadObj){
         <h2 class="fileDir">${downloadObj["savePath"]}</h2>
       </div>
       <div class="flex">
-        <button class="do_button"><img src="../../../Icons/close.svg" alt="copy to clipboard"></button>
-        <button class="do_button"><img src="../../../Icons/close.svg" alt="show in folder"></button>
+        <button class="do_button"><img src="../../../Icons/link.svg" alt="copy to clipboard"></button>
+        <button class="do_button"><img src="../../../Icons/folder.svg" alt="show in folder"></button>
         <button class="do_button"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
       </div>
     </div>
