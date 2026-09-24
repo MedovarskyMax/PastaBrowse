@@ -1,3 +1,6 @@
+import {sendDownloadRemoveId} from "../ipc.js"
+
+
 let downloads = {};
 
 
@@ -21,6 +24,7 @@ export function renderDownloadObj(downloadObj){
 
   const container = document.createElement("div")
   container.classList.add("do_container");
+  container.id = downloadObj["id"];
 
   const html = `
     <div class="header">
@@ -32,13 +36,28 @@ export function renderDownloadObj(downloadObj){
       <div class="flex">
         <button class="do_button"><img src="../../../Icons/link.svg" alt="copy to clipboard"></button>
         <button class="do_button"><img src="../../../Icons/folder.svg" alt="show in folder"></button>
-        <button class="do_button"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
+        <button class="do_button remove"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
       </div>
     </div>
     <h2 class="date">${downloadObj["date"]}</h2>
   `
-  
-  container.innerHTML = html;
 
+  container.innerHTML = html;
+  container.querySelector(".remove").addEventListener("click", removeDownloadFromHistory)
   document.querySelector("header").insertAdjacentElement("afterend", container)
+}
+
+function removeDownloadFromHistory(e){
+  const container = e.currentTarget.closest(".do_container");
+  const id = container.id;
+
+  downloads["history"].forEach((obj, index, arr) => {
+    if (obj["id"] === id){
+      arr.splice(index, 1)
+    }
+  })
+
+  sendDownloadRemoveId(id);
+
+  container.remove();
 }

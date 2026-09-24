@@ -96,3 +96,8 @@ export function onResDownloads(callback){
 export function onAddDownloadObj(callback){
   window.settingsApi.onAddDownloadObj(callback);
 }
+
+
+export function sendDownloadRemoveId(id){
+  window.settingsApi.sendDownloadRemoveId(id);
+}

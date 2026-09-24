@@ -2,7 +2,7 @@ import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
   changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj} from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
-import { setDownloads, getDownloads } from "./downloads.js";
+import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
 export let gWebview;
 
@@ -126,6 +126,12 @@ function handleIpcMessage(webview, event){
 
     case "get-downloads": {
       webview.send("res-downloads", getDownloads())
+      break;
+    }
+
+    case "remove-from-download-history": {
+      const id = event.args[0];
+      removeDownloadFromHistory(id);
       break;
     }
   }

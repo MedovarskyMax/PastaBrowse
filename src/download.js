@@ -1,3 +1,4 @@
+const { randomUUID } = require("crypto");
 const path = require("path");
 
 function handleDownload(event, item, webContents, downloadsDirPath, win) {
@@ -34,6 +35,7 @@ function createDownloadObj(item){
   const tempDate = new Date();
 
   return {
+    "id": randomUUID(),
     "fileName": item.getFilename(),
     "savePath": item.getSavePath(),
     "date": tempDate.toLocaleDateString("en-US", {dateStyle: "long"}),

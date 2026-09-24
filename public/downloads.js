@@ -11,6 +11,17 @@ export function getDownloads(){
   return downloads;
 }
 
+
+
+export function removeDownloadFromHistory(id){
+  downloads["history"].forEach((obj, index, arr) => {
+    if (obj["id"] === id){
+      arr.splice(index, 1)
+    }
+  })
+}
+
+
 const header = document.getElementById("header");
 header.addEventListener("animationend", () => { header.classList.remove("blink") })
 onStartedDownload(() => { header.classList.add("blink")})
