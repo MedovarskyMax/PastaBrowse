@@ -1,4 +1,4 @@
-import {sendDownloadRemoveId} from "../ipc.js"
+import {sendDownloadRemoveId, sendFilePathToOpen} from "../ipc.js"
 
 
 let downloads = {};
@@ -35,7 +35,7 @@ export function renderDownloadObj(downloadObj){
       </div>
       <div class="flex">
         <button class="do_button"><img src="../../../Icons/link.svg" alt="copy to clipboard"></button>
-        <button class="do_button"><img src="../../../Icons/folder.svg" alt="show in folder"></button>
+        <button class="do_button open"><img src="../../../Icons/folder.svg" alt="show in folder"></button>
         <button class="do_button remove"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
       </div>
     </div>
@@ -43,9 +43,26 @@ export function renderDownloadObj(downloadObj){
   `
 
   container.innerHTML = html;
-  container.querySelector(".remove").addEventListener("click", removeDownloadFromHistory)
-  document.querySelector("header").insertAdjacentElement("afterend", container)
+  container.querySelector(".remove").addEventListener("click", removeDownloadFromHistory);
+  container.querySelector(".open").addEventListener("click", openFileInDir);
+  document.querySelector("header").insertAdjacentElement("afterend", container);
 }
+
+
+function openFileInDir(e){
+  const container = e.currentTarget.closest(".do_container");
+  const id = container.id;
+  let path;
+
+  downloads["history"].forEach((obj) => {
+    if (obj["id"] === id){
+      path = obj["savePath"];
+    }
+  })
+
+  sendFilePathToOpen(path);
+}
+
 
 function removeDownloadFromHistory(e){
   const container = e.currentTarget.closest(".do_container");

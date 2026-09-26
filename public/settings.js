@@ -1,6 +1,7 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
-  changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon} from "./ipc.js";
+  changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon,
+  openFileInDir } from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
@@ -133,6 +134,12 @@ function handleIpcMessage(webview, event){
     case "remove-from-download-history": {
       const id = event.args[0];
       removeDownloadFromHistory(id);
+      break;
+    }
+
+    case "open-file-in-dir": {
+      const path = event.args[0];
+      openFileInDir(path);
       break;
     }
   }

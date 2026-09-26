@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, screen, globalShortcut, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain, screen, globalShortcut, dialog, shell } = require("electron");
 const { writeFileSync, readFileSync, copyFileSync, existsSync, mkdirSync } = require("fs");
 const path = require("path");
 const {handleDownload} = require("./download.js");
@@ -297,6 +297,10 @@ ipcMain.on("save-custom-theme", (_event, data) => {
 ipcMain.on("change-downloads-dir-path", async (_event) => {
   const result = await dialog.showOpenDialog({properties: ['openDirectory']});
   win.webContents.send("res-downloads-dir-path", result.canceled ? null : result.filePaths[0]);
+})
+
+ipcMain.on("open-file-in-dir", (_event, filePath) => {
+  shell.showItemInFolder(filePath);
 })
 
 

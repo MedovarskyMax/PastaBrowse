@@ -169,3 +169,8 @@ export function onAddDownloadObj(callback){
 export function onUpdateDownloadObjIcon(callback){
   window.api.onUpdateDownloadObjIcon(callback);
 }
+
+
+export function openFileInDir(path){
+  window.api.openFileInDir(path);
+}

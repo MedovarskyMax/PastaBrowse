@@ -106,3 +106,8 @@ export function sendDownloadRemoveId(id){
 export function onUpdateDownloadObjIcon(callback){
   window.settingsApi.onUpdateDownloadObjIcon(callback);
 }
+
+
+export function sendFilePathToOpen(path){
+  window.settingsApi.sendFilePathToOpen(path);
+}

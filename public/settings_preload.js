@@ -22,5 +22,6 @@ contextBridge.exposeInMainWorld("settingsApi", {
   onResDownloads: (callback) => ipcRenderer.on("res-downloads", (_event, downloads) => callback(downloads)),
   onAddDownloadObj: (callback) => ipcRenderer.on("add-download-obj", (_event, downloadObj) => callback(downloadObj)),
   sendDownloadRemoveId: (id) => ipcRenderer.sendToHost("remove-from-download-history", id),
-  onUpdateDownloadObjIcon: (callback) => ipcRenderer.on("update-download-obj-icon", (_event, data) => callback(data))
+  onUpdateDownloadObjIcon: (callback) => ipcRenderer.on("update-download-obj-icon", (_event, data) => callback(data)),
+  sendFilePathToOpen: (path) => ipcRenderer.sendToHost("open-file-in-dir", path)
 })
