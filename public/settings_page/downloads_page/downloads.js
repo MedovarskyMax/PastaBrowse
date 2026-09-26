@@ -34,7 +34,7 @@ export function renderDownloadObj(downloadObj){
         <h2 class="fileDir">${downloadObj["savePath"]}</h2>
       </div>
       <div class="flex">
-        <button class="do_button"><img src="../../../Icons/link.svg" alt="copy to clipboard"></button>
+        <button class="do_button copy"><img src="../../../Icons/link.svg" alt="copy to clipboard"></button>
         <button class="do_button open"><img src="../../../Icons/folder.svg" alt="show in folder"></button>
         <button class="do_button remove"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
       </div>
@@ -45,7 +45,24 @@ export function renderDownloadObj(downloadObj){
   container.innerHTML = html;
   container.querySelector(".remove").addEventListener("click", removeDownloadFromHistory);
   container.querySelector(".open").addEventListener("click", openFileInDir);
+  container.querySelector(".copy").addEventListener("click", copyDownloadUrlToClipboard);
   document.querySelector("header").insertAdjacentElement("afterend", container);
+}
+
+
+async function copyDownloadUrlToClipboard(e){
+  const container = e.currentTarget.closest(".do_container");
+  const id = container.id;
+
+  let text;
+
+  downloads["history"].forEach((obj) => {
+    if (obj["id"] === id){
+      text = obj["downloadUrl"];
+    }
+  })
+
+  await navigator.clipboard.writeText(text);
 }
 
 

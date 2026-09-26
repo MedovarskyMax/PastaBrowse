@@ -49,7 +49,8 @@ function createDownloadObj(item){
     "fileName": item.getFilename(),
     "savePath": item.getSavePath(),
     "date": tempDate.toLocaleDateString("en-US", {dateStyle: "long"}),
-    "icon": "downloadInProgress"
+    "icon": "downloadInProgress",
+    "downloadUrl": item.getURL()
   }
 }
 
