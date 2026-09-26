@@ -61,3 +61,16 @@ function removeDownloadFromHistory(e){
 
   container.remove();
 }
+
+
+export function updateDownloadObjIcon(data){
+  downloads["history"].forEach((obj) => {
+    if (obj["id"] === data["id"]){
+      obj["icon"] = data["icon"]
+    }
+  })
+
+  const container = document.getElementById(data["id"]);
+  const img = container.querySelector(".do_icon");
+  img.src = data["icon"];
+}

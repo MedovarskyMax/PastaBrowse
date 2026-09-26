@@ -165,3 +165,7 @@ export function onStartedDownload(callback){
 export function onAddDownloadObj(callback){
   window.api.onAddDownloadObj(callback)
 }
+
+export function onUpdateDownloadObjIcon(callback){
+  window.api.onUpdateDownloadObjIcon(callback);
+}

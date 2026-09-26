@@ -132,7 +132,7 @@ function createWindow() {
     win.webContents.send("downloads", downloads) // send to renderer, rewrite downstream logic to only query the renderer copy
   })                         // only read/write to json at app launch and termination
 
-  win.webContents.session.on("will-download", (event, item, webContents) => {handleDownload(event, item, webContents, downloads["downloadsPath"], win)})
+  win.webContents.session.on("will-download", (event, item, webContents) => {handleDownload(event, item, webContents, downloads["downloadsPath"], win, app)})
 }
 
 

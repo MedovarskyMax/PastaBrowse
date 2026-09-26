@@ -101,3 +101,8 @@ export function onAddDownloadObj(callback){
 export function sendDownloadRemoveId(id){
   window.settingsApi.sendDownloadRemoveId(id);
 }
+
+
+export function onUpdateDownloadObjIcon(callback){
+  window.settingsApi.onUpdateDownloadObjIcon(callback);
+}

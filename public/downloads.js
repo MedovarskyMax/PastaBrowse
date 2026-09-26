@@ -1,4 +1,4 @@
-import { onStartedDownload, onAddDownloadObj } from "./ipc.js";
+import { onStartedDownload, onAddDownloadObj, onUpdateDownloadObjIcon } from "./ipc.js";
 
 let downloads = {};
 
@@ -30,4 +30,13 @@ onStartedDownload(() => { header.classList.add("blink")})
 onAddDownloadObj((downloadObj) => {
   downloads["history"].push(downloadObj)
   console.log(downloads)
+})
+
+
+onUpdateDownloadObjIcon((data) => {
+  downloads["history"].forEach((obj) => {
+    if (obj["id"] === data["id"]){
+      obj["icon"] = data["icon"];
+    }
+  })
 })

@@ -1,6 +1,6 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
-  changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj} from "./ipc.js";
+  changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon} from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
@@ -23,6 +23,7 @@ onResDownloadsDirectoryPath((path) => {
 
 onAddDownloadObj((downloadObj) => {gWebview.send("add-download-obj", downloadObj)})
 
+onUpdateDownloadObjIcon((data) => {gWebview.send("update-download-obj-icon", data)})
 
 export let settings = {};
 

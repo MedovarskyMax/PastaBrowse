@@ -1,8 +1,10 @@
 const { randomUUID } = require("crypto");
 const path = require("path");
 
-function handleDownload(event, item, webContents, downloadsDirPath, win) {
-  item.setSavePath(path.join(downloadsDirPath, item.getFilename()));
+function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
+  const savePath = path.join(downloadsDirPath, item.getFilename())
+  
+  item.setSavePath(savePath);
   win.webContents.send("started-download");
 
   const downloadObj = createDownloadObj(item);
@@ -20,10 +22,18 @@ function handleDownload(event, item, webContents, downloadsDirPath, win) {
     }
   })
 
-  item.once("done", (event, state) => {
+  item.once("done", async (event, state) => {
     if (state === "completed") {
       console.log("Download Successful")
-      console.log(downloadObj) // TODO: remove when done developing
+      try{
+        const icon = await app.getFileIcon(savePath, {size: 'normal'});
+        const iconUrl = icon.toDataURL();
+        win.webContents.send("update-download-obj-icon", {
+          "id": downloadObj["id"],
+          "icon": iconUrl
+        })
+      } catch (err){ console.error("Failed to get file icon: ", err)}
+      
     } else {
       console.log(`Download failed: ${state}`)
     }
