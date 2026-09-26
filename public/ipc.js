@@ -37,140 +37,58 @@ export function toggleMaximize(){
 };
 
 
-export function minimize(){
-  window.api.minimize();
-};
+export function minimize(){ window.api.minimize() }
 
+export function onCtrlT(callback){ window.api.onCtrlT(callback) }
 
-export function onCtrlT(callback){
-  window.api.onCtrlT(callback);
-}
+export function onCtrlW(callback){ window.api.onCtrlW(callback) }
 
+export function onCtrlR(callback){ window.api.onCtrlR(callback) }
 
-export function onCtrlW(callback){
-  window.api.onCtrlW(callback);
-}
+export function getHistory(){ window.api.getHistory() }
 
+export function onResHistory(callback){ window.api.onResHistory(callback) }
 
-export function onCtrlR(callback){
-  window.api.onCtrlR(callback);
-}
+export function onF5(callback){ window.api.onF5(callback) }
 
+export function onCtrlEqual(callback){ window.api.onCtrlEqual(callback) }
 
-export function getHistory(){
-  window.api.getHistory();
-}
+export function onCtrlMinus(callback){ window.api.onCtrlMinus(callback) }
 
+export function onCtrlZero(callback){ window.api.onCtrlZero(callback) }
 
-export function onResHistory(callback){
-  window.api.onResHistory(callback);
-}
+export function onSettingsPreloadPath(data){ window.api.onSettingsPreloadPath(data) }
 
+export function onSettings(data){ window.api.onSettings(data) }
 
-export function onF5(callback){
-  window.api.onF5(callback);
-}
+export function onCtrlTab(callback){ window.api.onCtrlTab(callback) }
 
+export function onCtrlShiftTab(callback){ window.api.onCtrlShiftTab(callback) }
 
-export function onCtrlEqual(callback){
-  window.api.onCtrlEqual(callback);
-}
+export function onCtrlShiftT(callback){ window.api.onCtrlShiftT(callback) }
 
+export function saveCustomTheme(cTheme){ window.api.saveCustomTheme(cTheme) }
 
-export function onCtrlMinus(callback){
-  window.api.onCtrlMinus(callback);
-}
+export function getCustomTheme(id){ window.api.getCustomTheme(id) }
 
+export function onResCustomTheme(callback){ window.api.onResCustomTheme(callback) }
 
-export function onCtrlZero(callback){
-  window.api.onCtrlZero(callback);
-}
+export function getCustomThemeCss(id){ window.api.getCustomThemeCss(id) }
 
+export function onResCustomThemeCss(callback){ window.api.onResCustomThemeCss(callback) }
 
-export function onSettingsPreloadPath(data){
-  window.api.onSettingsPreloadPath(data);
-}
+export function onBookmarks(callback){ window.api.onBookmarks(callback) }
 
+export function changeDownloadsDirectoryPath(){ window.api.changeDownloadsDirectoryPath() }
 
-export function onSettings(data){
-  window.api.onSettings(data);
-}
+export function onResDownloadsDirectoryPath(callback){ window.api.onResDownloadsDirectoryPath(callback) }
 
+export function onDownloads(callback){ window.api.onDownloads(callback) }
 
-export function onCtrlTab(callback){
-  window.api.onCtrlTab(callback);
-}
+export function onStartedDownload(callback){ window.api.onStartedDownload(callback) }
 
+export function onAddDownloadObj(callback){ window.api.onAddDownloadObj(callback) }
 
-export function onCtrlShiftTab(callback){
-  window.api.onCtrlShiftTab(callback);
-}
+export function onUpdateDownloadObjIcon(callback){ window.api.onUpdateDownloadObjIcon(callback) }
 
-
-export function onCtrlShiftT(callback){
-  window.api.onCtrlShiftT(callback);
-}
-
-
-export function saveCustomTheme(cTheme){
-  window.api.saveCustomTheme(cTheme);
-}
-
-
-export function getCustomTheme(id){
-  window.api.getCustomTheme(id);
-}
-
-
-export function onResCustomTheme(callback){
-  window.api.onResCustomTheme(callback);
-}
-
-
-export function getCustomThemeCss(id){
-  window.api.getCustomThemeCss(id);
-}
-
-
-export function onResCustomThemeCss(callback){
-  window.api.onResCustomThemeCss(callback);
-}
-
-
-export function onBookmarks(callback){
-  window.api.onBookmarks(callback);
-}
-
-
-export function changeDownloadsDirectoryPath(){
-  window.api.changeDownloadsDirectoryPath();
-}
-
-
-export function onResDownloadsDirectoryPath(callback){
-  window.api.onResDownloadsDirectoryPath(callback);
-}
-
-
-export function onDownloads(callback){
-  window.api.onDownloads(callback);
-}
-
-
-export function onStartedDownload(callback){
-  window.api.onStartedDownload(callback);
-}
-
-
-export function onAddDownloadObj(callback){
-  window.api.onAddDownloadObj(callback)
-}
-
-export function onUpdateDownloadObjIcon(callback){
-  window.api.onUpdateDownloadObjIcon(callback);
-}
-
-
-export function openFileInDir(path){
-  window.api.openFileInDir(path);
-}
+export function openFileInDir(path){ window.api.openFileInDir(path) }
