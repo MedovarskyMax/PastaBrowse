@@ -20,7 +20,8 @@ export function displayDownloadsPath(path){
 }
 
 export function renderDownloadObj(downloadObj){
-  const icon = downloadObj["icon"] == "downloadInProgress" ? "../../../Icons/shuffle-square-circles.svg" : downloadObj["icon"];
+  const inProgress = downloadObj["icon"] === "downloadInProgress"
+  const icon = inProgress  ? "../../../Icons/shuffle-square-circles.svg" : downloadObj["icon"];
 
   const container = document.createElement("div")
   container.classList.add("do_container");
@@ -39,14 +40,34 @@ export function renderDownloadObj(downloadObj){
         <button class="do_button remove"><img src="../../../Icons/close.svg" alt="remove from download history"></button>
       </div>
     </div>
-    <h2 class="date">${downloadObj["date"]}</h2>
+    <div class="flex footer">
+      <h2 class="date">${downloadObj["date"]}</h2>
+    </div>
   `
 
   container.innerHTML = html;
   container.querySelector(".remove").addEventListener("click", removeDownloadFromHistory);
   container.querySelector(".open").addEventListener("click", openFileInDir);
   container.querySelector(".copy").addEventListener("click", copyDownloadUrlToClipboard);
+
+  if (inProgress) addActionButtons(container);
+
   document.querySelector("header").insertAdjacentElement("afterend", container);
+}
+
+
+function addActionButtons(container){
+  const html = `
+    <button class="do_button action_button"><img src="../../../Icons/close.svg" alt="pause"></button>
+    <button class="do_button action_button"><img src="../../../Icons/close.svg" alt="cancel"></button>
+  `;
+
+  container.querySelector(".date").insertAdjacentHTML("afterend", html)
+}
+
+
+function removeActionButtons(container){
+  container.querySelectorAll(".action_button").forEach(btn => btn.remove());
 }
 
 
@@ -109,6 +130,8 @@ export function updateDownloadObjIcon(data){
   const container = document.getElementById(data["id"]);
   const img = container.querySelector(".do_icon");
   img.src = data["icon"];
+
+  removeActionButtons(container);
 }
 
 let timerId;

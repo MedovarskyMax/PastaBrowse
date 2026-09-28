@@ -169,3 +169,14 @@ header{
   font-size: 25px;
   color: var(--text);
 }
+
+.footer{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer .date{
+  margin: 0;
+  margin-right: auto;
+}
