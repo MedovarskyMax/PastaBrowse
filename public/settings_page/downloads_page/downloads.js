@@ -54,15 +54,17 @@ async function copyDownloadUrlToClipboard(e){
   const container = e.currentTarget.closest(".do_container");
   const id = container.id;
 
-  let text;
+  let link;
 
   downloads["history"].forEach((obj) => {
     if (obj["id"] === id){
-      text = obj["downloadUrl"];
+      link = obj["downloadUrl"];
     }
   })
 
-  await navigator.clipboard.writeText(text);
+  await navigator.clipboard.writeText(link);
+
+  displayPopup(link);
 }
 
 
@@ -107,4 +109,33 @@ export function updateDownloadObjIcon(data){
   const container = document.getElementById(data["id"]);
   const img = container.querySelector(".do_icon");
   img.src = data["icon"];
+}
+
+let timerId;
+const popup = document.getElementById("popup");
+
+popup.addEventListener("mouseenter", startHover)
+popup.addEventListener("mouseleave", stopHover)
+
+function displayPopup(link = ""){
+  
+  const popup_text = document.getElementById("popup_link");
+  popup_text.textContent = link;
+
+
+  popup.classList.toggle("hidden")
+
+  timerId = setTimeout(() => {
+    popup.classList.toggle("hidden");
+  }, 2000)
+}
+
+function startHover(){
+  clearTimeout(timerId);
+}
+
+function stopHover(){
+  timerId = setTimeout(() => {
+    popup.classList.toggle("hidden");
+  }, 1000)
 }
