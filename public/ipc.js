@@ -92,3 +92,5 @@ export function onAddDownloadObj(callback){ window.api.onAddDownloadObj(callback
 export function onUpdateDownloadObjIcon(callback){ window.api.onUpdateDownloadObjIcon(callback) }
 
 export function openFileInDir(path){ window.api.openFileInDir(path) }
+
+export function sendTogglePause(id){ window.api.sendTogglePause(id) }

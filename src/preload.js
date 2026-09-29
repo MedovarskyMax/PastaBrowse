@@ -31,5 +31,6 @@ contextBridge.exposeInMainWorld("api", {
   onStartedDownload: (callback) => ipcRenderer.on("started-download", (_event) => callback()),
   onAddDownloadObj: (callback) => ipcRenderer.on("add-download-obj", (_event, downloadObj) => callback(downloadObj)),
   onUpdateDownloadObjIcon: (callback) => ipcRenderer.on("update-download-obj-icon", (_event, data) => callback(data)),
-  openFileInDir: (path) => ipcRenderer.send("open-file-in-dir", path)
+  openFileInDir: (path) => ipcRenderer.send("open-file-in-dir", path),
+  sendTogglePause: (id) => ipcRenderer.send("toggle-pause-download", id)
 });

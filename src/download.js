@@ -1,6 +1,9 @@
 const { randomUUID } = require("crypto");
 const path = require("path");
+const { ipcMain } = require("electron");
 
+const downloadItems = {};
+// TODO: use ipcMain not a pass through function from main.js
 function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
   const savePath = path.join(downloadsDirPath, item.getFilename())
   
@@ -8,6 +11,9 @@ function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
   win.webContents.send("started-download");
 
   const downloadObj = createDownloadObj(item);
+  
+  downloadItems[downloadObj["id"]] = item;
+  
   win.webContents.send("add-download-obj", downloadObj);
 
   item.on("updated", (event, state) => {
@@ -39,6 +45,17 @@ function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
     }
   })
 }
+
+
+ipcMain.on("toggle-pause-download", (_event, id) => {
+  const item = downloadItems[id];
+
+  if (!item.isPaused()){
+    item.pause();
+  } else {
+    item.resume();
+  }
+})
 
 
 function createDownloadObj(item){

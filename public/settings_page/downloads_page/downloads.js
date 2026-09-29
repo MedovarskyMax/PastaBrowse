@@ -1,4 +1,4 @@
-import {sendDownloadRemoveId, sendFilePathToOpen} from "../ipc.js"
+import {sendDownloadRemoveId, sendFilePathToOpen, sendTogglePause} from "../ipc.js";
 
 
 let downloads = {};
@@ -58,11 +58,31 @@ export function renderDownloadObj(downloadObj){
 
 function addActionButtons(container){
   const html = `
-    <button class="do_button action_button"><img src="../../../Icons/close.svg" alt="pause"></button>
-    <button class="do_button action_button"><img src="../../../Icons/close.svg" alt="cancel"></button>
+    <button class="do_button action_button" data-action="togglePause"><img src="../../../Icons/pause_circle.svg" alt="pause"></button>
+    <button class="do_button action_button" data-action="cancel"><img src="../../../Icons/close.svg" alt="cancel"></button>
   `;
 
-  container.querySelector(".date").insertAdjacentHTML("afterend", html)
+  container.querySelector(".date").insertAdjacentHTML("afterend", html);
+
+  container.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action]");
+    if (!btn){ return };
+    if (btn.dataset.action === "togglePause"){ togglePause(container, btn) }; // maybe add ID
+    if (btn.dataset.action === "cancel"){ cancelDownload() };
+  })
+}
+
+
+function togglePause(container, btn){
+  const img = btn.querySelector("img");
+  
+  if (img.src.includes("pause_circle")){
+    img.src = "../../../Icons/play_arrow.svg";
+  } else {
+    img.src = "../../../Icons/pause_circle.svg";
+  }
+
+  sendTogglePause(container.id)
 }
 
 

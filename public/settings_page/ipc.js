@@ -43,3 +43,5 @@ export function sendDownloadRemoveId(id){ window.settingsApi.sendDownloadRemoveI
 export function onUpdateDownloadObjIcon(callback){ window.settingsApi.onUpdateDownloadObjIcon(callback) }
 
 export function sendFilePathToOpen(path){ window.settingsApi.sendFilePathToOpen(path) }
+
+export function sendTogglePause(id){ window.settingsApi.sendTogglePause(id) };

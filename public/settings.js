@@ -1,7 +1,7 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
   changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon,
-  openFileInDir } from "./ipc.js";
+  openFileInDir, sendTogglePause } from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
@@ -140,6 +140,12 @@ function handleIpcMessage(webview, event){
     case "open-file-in-dir": {
       const path = event.args[0];
       openFileInDir(path);
+      break;
+    }
+
+    case "toggle-pause-download": {
+      const id = event.args[0];
+      sendTogglePause(id);
       break;
     }
   }
