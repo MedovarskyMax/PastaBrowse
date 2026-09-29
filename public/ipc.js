@@ -94,3 +94,7 @@ export function onUpdateDownloadObjIcon(callback){ window.api.onUpdateDownloadOb
 export function openFileInDir(path){ window.api.openFileInDir(path) }
 
 export function sendTogglePause(id){ window.api.sendTogglePause(id) }
+
+export function cancelDownload(id){ window.api.cancelDownload(id) }
+
+export function onSuccessfulDownloadCancel(callback){ window.api.onSuccessfulDownloadCancel(callback) }

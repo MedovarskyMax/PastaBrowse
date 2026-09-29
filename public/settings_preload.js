@@ -24,5 +24,7 @@ contextBridge.exposeInMainWorld("settingsApi", {
   sendDownloadRemoveId: (id) => ipcRenderer.sendToHost("remove-from-download-history", id),
   onUpdateDownloadObjIcon: (callback) => ipcRenderer.on("update-download-obj-icon", (_event, data) => callback(data)),
   sendFilePathToOpen: (path) => ipcRenderer.sendToHost("open-file-in-dir", path),
-  sendTogglePause: (id) => ipcRenderer.sendToHost("toggle-pause-download", id)
+  sendTogglePause: (id) => ipcRenderer.sendToHost("toggle-pause-download", id),
+  cancelDownload: (id) => ipcRenderer.sendToHost("cancel-download", id),
+  onSuccessfulDownloadCancel: (callback) => ipcRenderer.on("download-cancel-successful", (_event, id) => callback(id))
 })

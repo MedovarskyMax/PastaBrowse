@@ -45,3 +45,7 @@ export function onUpdateDownloadObjIcon(callback){ window.settingsApi.onUpdateDo
 export function sendFilePathToOpen(path){ window.settingsApi.sendFilePathToOpen(path) }
 
 export function sendTogglePause(id){ window.settingsApi.sendTogglePause(id) };
+
+export function cancelDownload(id){ window.settingsApi.cancelDownload(id) };
+
+export function onSuccessfulDownloadCancel(callback){ window.settingsApi.onSuccessfulDownloadCancel(callback) }

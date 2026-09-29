@@ -38,10 +38,13 @@ function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
           "id": downloadObj["id"],
           "icon": iconUrl
         })
-      } catch (err){ console.error("Failed to get file icon: ", err)}
-      
+      } catch (err){ console.error("Failed to get file icon: ", err)} // doesn't notify renderer of download success at all
+    
+    } else if (state === "cancelled"){
+      console.log("Download cancelled");
+      win.webContents.send("download-cancel-successful", downloadObj["id"]);
     } else {
-      console.log(`Download failed: ${state}`)
+      console.log(`Download failed: ${state}`) 
     }
   })
 }
@@ -55,6 +58,12 @@ ipcMain.on("toggle-pause-download", (_event, id) => {
   } else {
     item.resume();
   }
+})
+
+
+ipcMain.on("cancel-download", (_event, id) => {
+  const item = downloadItems[id];
+  item.cancel();
 })
 
 

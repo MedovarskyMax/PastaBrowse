@@ -1,7 +1,7 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
   changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon,
-  openFileInDir, sendTogglePause } from "./ipc.js";
+  openFileInDir, sendTogglePause, cancelDownload, onSuccessfulDownloadCancel } from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
@@ -25,6 +25,12 @@ onResDownloadsDirectoryPath((path) => {
 onAddDownloadObj((downloadObj) => {gWebview.send("add-download-obj", downloadObj)})
 
 onUpdateDownloadObjIcon((data) => {gWebview.send("update-download-obj-icon", data)})
+
+onSuccessfulDownloadCancel((id) => {
+  gWebview.send("download-cancel-successful", id)
+  removeDownloadFromHistory(id);
+})
+
 
 export let settings = {};
 
@@ -146,6 +152,12 @@ function handleIpcMessage(webview, event){
     case "toggle-pause-download": {
       const id = event.args[0];
       sendTogglePause(id);
+      break;
+    }
+
+    case "cancel-download": {
+      const id = event.args[0];
+      cancelDownload(id);
       break;
     }
   }

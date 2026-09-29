@@ -32,5 +32,7 @@ contextBridge.exposeInMainWorld("api", {
   onAddDownloadObj: (callback) => ipcRenderer.on("add-download-obj", (_event, downloadObj) => callback(downloadObj)),
   onUpdateDownloadObjIcon: (callback) => ipcRenderer.on("update-download-obj-icon", (_event, data) => callback(data)),
   openFileInDir: (path) => ipcRenderer.send("open-file-in-dir", path),
-  sendTogglePause: (id) => ipcRenderer.send("toggle-pause-download", id)
+  sendTogglePause: (id) => ipcRenderer.send("toggle-pause-download", id),
+  cancelDownload: (id) => ipcRenderer.send("cancel-download", id),
+  onSuccessfulDownloadCancel: (callback) => ipcRenderer.on("download-cancel-successful", (_event, id) => callback(id))
 });

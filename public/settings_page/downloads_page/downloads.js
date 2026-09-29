@@ -1,7 +1,12 @@
-import {sendDownloadRemoveId, sendFilePathToOpen, sendTogglePause} from "../ipc.js";
+import {sendDownloadRemoveId, sendFilePathToOpen, sendTogglePause, cancelDownload, onSuccessfulDownloadCancel } from "../ipc.js";
 
 
 let downloads = {};
+
+onSuccessfulDownloadCancel((id) => {
+  removeDownloadFromHistoryWithId(id);
+  removeDownloadFromDOM(id);
+})
 
 
 export function setDownloads(key, value){
@@ -59,7 +64,7 @@ export function renderDownloadObj(downloadObj){
 function addActionButtons(container){
   const html = `
     <button class="do_button action_button" data-action="togglePause"><img src="../../../Icons/pause_circle.svg" alt="pause"></button>
-    <button class="do_button action_button" data-action="cancel"><img src="../../../Icons/close.svg" alt="cancel"></button>
+    <button class="do_button action_button" data-action="cancel"><img src="../../../Icons/cancel.svg" alt="cancel"></button>
   `;
 
   container.querySelector(".date").insertAdjacentHTML("afterend", html);
@@ -68,7 +73,7 @@ function addActionButtons(container){
     const btn = e.target.closest("[data-action]");
     if (!btn){ return };
     if (btn.dataset.action === "togglePause"){ togglePause(container, btn) }; // maybe add ID
-    if (btn.dataset.action === "cancel"){ cancelDownload() };
+    if (btn.dataset.action === "cancel"){ cancelDownload(container.id) };
   })
 }
 
@@ -130,12 +135,26 @@ function removeDownloadFromHistory(e){
 
   downloads["history"].forEach((obj, index, arr) => {
     if (obj["id"] === id){
-      arr.splice(index, 1)
+      arr.splice(index, 1);
     }
   })
 
   sendDownloadRemoveId(id);
 
+  container.remove();
+}
+
+function removeDownloadFromHistoryWithId(id){
+  downloads["history"].forEach((obj, index, arr) => {
+    if (obj["id"] === id){
+      arr.splice(index, 1);
+    }
+  })
+}
+
+
+function removeDownloadFromDOM(id){
+  const container = document.getElementById(id);
   container.remove();
 }
 
