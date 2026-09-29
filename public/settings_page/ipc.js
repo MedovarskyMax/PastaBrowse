@@ -49,3 +49,5 @@ export function sendTogglePause(id){ window.settingsApi.sendTogglePause(id) };
 export function cancelDownload(id){ window.settingsApi.cancelDownload(id) };
 
 export function onSuccessfulDownloadCancel(callback){ window.settingsApi.onSuccessfulDownloadCancel(callback) }
+
+export function onUpdateProgressbar(callback){ window.settingsApi.onUpdateProgressbar(callback) }

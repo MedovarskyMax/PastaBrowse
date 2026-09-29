@@ -1,8 +1,8 @@
 import {setSettingsTabId, onResCustomThemeCss, onResSettings, getCustomThemeCss,
         onResDownloadsDirectoryPath, changeDownloadsDirectoryPath, getDownloads, 
-        onResDownloads, onAddDownloadObj, onUpdateDownloadObjIcon} from "../ipc.js";
+        onResDownloads, onAddDownloadObj, onUpdateDownloadObjIcon, onUpdateProgressbar} from "../ipc.js";
 import {displayDownloadsPath, setDownloads, addToDownloadHistory, renderDownloadObj,
-        updateDownloadObjIcon} from "./downloads.js";
+        updateDownloadObjIcon, setProgress} from "./downloads.js";
 
 
 function injectCss(css){
@@ -49,7 +49,9 @@ onResDownloadsDirectoryPath((path) => {
   displayDownloadsPath(path);
 })
 
-onUpdateDownloadObjIcon((data) => { updateDownloadObjIcon(data) })
+onUpdateDownloadObjIcon((data) => { updateDownloadObjIcon(data) });
+
+onUpdateProgressbar((id, percent) => setProgress(id, percent));
 
 getDownloads()
 

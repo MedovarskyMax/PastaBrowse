@@ -1,7 +1,7 @@
 import {newTab, switchTab} from "./tabs.js";
 import {saveCustomTheme, getCustomTheme, onResCustomTheme, getCustomThemeCss, onResCustomThemeCss,
   changeDownloadsDirectoryPath, onResDownloadsDirectoryPath, onAddDownloadObj, onUpdateDownloadObjIcon,
-  openFileInDir, sendTogglePause, cancelDownload, onSuccessfulDownloadCancel } from "./ipc.js";
+  openFileInDir, sendTogglePause, cancelDownload, onSuccessfulDownloadCancel, onUpdateProgressbar } from "./ipc.js";
 import {bookmarks, removeBookmark, openBookmark} from "./bookmarks.js";
 import { setDownloads, getDownloads, removeDownloadFromHistory } from "./downloads.js";
 
@@ -30,6 +30,8 @@ onSuccessfulDownloadCancel((id) => {
   gWebview.send("download-cancel-successful", id)
   removeDownloadFromHistory(id);
 })
+
+onUpdateProgressbar((id, percent) => { gWebview.send("update-progressbar", id, percent) })
 
 
 export let settings = {};

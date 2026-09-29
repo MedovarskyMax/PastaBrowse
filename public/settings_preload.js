@@ -26,5 +26,6 @@ contextBridge.exposeInMainWorld("settingsApi", {
   sendFilePathToOpen: (path) => ipcRenderer.sendToHost("open-file-in-dir", path),
   sendTogglePause: (id) => ipcRenderer.sendToHost("toggle-pause-download", id),
   cancelDownload: (id) => ipcRenderer.sendToHost("cancel-download", id),
-  onSuccessfulDownloadCancel: (callback) => ipcRenderer.on("download-cancel-successful", (_event, id) => callback(id))
+  onSuccessfulDownloadCancel: (callback) => ipcRenderer.on("download-cancel-successful", (_event, id) => callback(id)),
+  onUpdateProgressbar: (callback) => ipcRenderer.on("update-progressbar", (_event, id, percent) => callback(id, percent))
 })

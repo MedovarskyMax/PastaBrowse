@@ -55,9 +55,29 @@ export function renderDownloadObj(downloadObj){
   container.querySelector(".open").addEventListener("click", openFileInDir);
   container.querySelector(".copy").addEventListener("click", copyDownloadUrlToClipboard);
 
-  if (inProgress) addActionButtons(container);
+  if (inProgress){
+    addActionButtons(container);
+    addProgressBar(container);
+  }
 
   document.querySelector("header").insertAdjacentElement("afterend", container);
+}
+
+
+export function setProgress(id, percent){
+  const container = document.getElementById(id);
+  const fill = container.querySelector(".progress_fill");
+  fill.style.width = `${percent}%`;
+}
+
+
+function addProgressBar(container){
+  const html = `
+  <div class="progress" role="progressbar">
+    <div class="progress_fill"></div>
+  </div>`;
+
+  container.insertAdjacentHTML("afterbegin", html);
 }
 
 
@@ -93,6 +113,11 @@ function togglePause(container, btn){
 
 function removeActionButtons(container){
   container.querySelectorAll(".action_button").forEach(btn => btn.remove());
+}
+
+
+function removeProgressBar(container){
+  container.querySelector(".progress").remove();
 }
 
 
@@ -171,6 +196,7 @@ export function updateDownloadObjIcon(data){
   img.src = data["icon"];
 
   removeActionButtons(container);
+  removeProgressBar(container);
 }
 
 let timerId;

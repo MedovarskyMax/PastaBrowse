@@ -24,6 +24,7 @@ function handleDownload(event, item, webContents, downloadsDirPath, win, app) {
         console.log("Download is paused")
       } else {
         console.log(`Recieved bytes: ${item.getReceivedBytes()}`)
+        win.webContents.send("update-progressbar", downloadObj["id"], item.getPercentComplete());
       }
     }
   })
